@@ -3,106 +3,123 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="description" content="طلاء مانع تسرب شفاف - الحل النهائي للتسربات">
     <meta name="theme-color" content="#f97316">
     <title>طلاء مانع تسرب شفاف - Ayamall</title>
+    
     <link rel="preconnect" href="https://cdn.tailwindcss.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+    
     <style>
         :root { --brand-color: #f97316; --safe-bottom: env(safe-area-inset-bottom); }
         html { -webkit-tap-highlight-color: transparent; scroll-behavior: smooth; }
         body { font-family: 'Tajawal', sans-serif; background-color: #f0f2f5; margin: 0; padding: 0; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
-        .mobile-wrapper { width: 100%; max-width: 480px; margin: 0 auto; background-color: white; min-height: 100vh; position: relative; padding-bottom: calc(90px + var(--safe-bottom)); box-shadow: 0 0 20px rgba(0,0,0,0.05); }
+        .mobile-wrapper { width: 100%; max-width: 480px; margin: 0 auto; background-color: white; min-height: 100vh; position: relative; padding-bottom: calc(20px + var(--safe-bottom)); box-shadow: 0 0 20px rgba(0,0,0,0.05); }
+        
+        /* INPUTS & BUTTONS */
         .bg-brand { background-color: var(--brand-color); }
         .text-brand { color: var(--brand-color); }
         input, select, textarea { font-size: 16px !important; }
-        input[type="text"], input[type="tel"] { -webkit-appearance: none; border-radius: 0.5rem; }
+        input[type="text"], input[type="tel"] { -webkit-appearance: none; border-radius: 0.75rem; }
+        
+        /* ANIMATIONS */
         .animate-pulse-fast { animation: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
         @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .7; } }
         .scarcity-bar { background-image: linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent); background-size: 1rem 1rem; animation: stripes 1s linear infinite; }
         @keyframes stripes { from { background-position: 1rem 0; } to { background-position: 0 0; } }
+        
         .cta-btn { background: linear-gradient(180deg, #fb923c 0%, #ea580c 100%); box-shadow: 0 4px 0 #c2410c, 0 8px 15px rgba(234, 88, 12, 0.2); touch-action: manipulation; transition: transform 0.1s, box-shadow 0.1s; }
         .cta-btn:active { transform: translateY(3px); box-shadow: 0 0 0 #c2410c, 0 3px 5px rgba(0,0,0,0.1); }
+        
+        /* SELECTION CARDS */
         .radio-box:checked ~ .selection-card { border-color: #f97316; background-color: #fff7ed; box-shadow: 0 0 0 2px #f97316; }
         .radio-box:checked ~ .selection-card .check-circle { background-color: #f97316; border-color: #f97316; }
-        details > summary { list-style: none; }
-        details > summary::-webkit-details-marker { display: none; }
-        details[open] summary ~ * { animation: sweep .2s ease-in-out; }
-        @keyframes sweep { 0% {opacity: 0; transform: translateY(-5px)} 100% {opacity: 1; transform: translateY(0)} }
-        .sticky-footer { position: fixed; bottom: 0; left: 50%; transform: translateX(-50%); width: 100%; max-width: 480px; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); padding: 12px 16px; padding-bottom: calc(12px + var(--safe-bottom)); box-shadow: 0 -4px 20px rgba(0,0,0,0.08); z-index: 999; border-top: 1px solid #e5e7eb; transition: all 0.3s ease; }
+        
+        /* STICKY FOOTER LOGIC */
+        .sticky-footer { position: fixed; bottom: 0; left: 50%; transform: translateX(-50%); width: 100%; max-width: 480px; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); padding: 12px 16px; padding-bottom: calc(12px + var(--safe-bottom)); box-shadow: 0 -4px 20px rgba(0,0,0,0.08); z-index: 999; border-top: 1px solid #e5e7eb; transition: transform 0.4s ease; }
+        .sticky-footer.hidden-footer { transform: translate(-50%, 200%); }
+        
+        /* WHATSAPP */
         .whatsapp-float { position: fixed; bottom: calc(90px + var(--safe-bottom)); right: 16px; background-color: #25d366; color: #FFF; border-radius: 50px; text-align: center; font-size: 30px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); z-index: 998; width: 55px; height: 55px; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: all 0.3s ease; animation: whatsapp-pulse 2s infinite; }
         .whatsapp-float:active { transform: scale(0.95); }
         @keyframes whatsapp-pulse { 0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 70% { transform: scale(1.1); box-shadow: 0 0 0 12px rgba(37, 211, 102, 0); } 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
     </style>
 </head>
 <body>
+
 <div class="mobile-wrapper">
-    <a href="https://wa.me/212638501541?text=مرحبا، أريد طلب الطلاء المانع للتسرب" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
-        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 16 16"><path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/></svg>
+    <a href="https://wa.me/212638501541?text=مرحبا، أريد طلب الطلاء المانع للتسرب" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
+        </svg>
     </a>
+
     <div class="bg-brand text-white py-3 px-4 shadow-md flex justify-center items-center sticky top-0 z-50">
         <div class="font-bold text-3xl tracking-tighter">ayamall</div>
     </div>
+
     <div class="bg-red-600 text-white text-center py-2 px-3 text-xs font-bold flex justify-between items-center shadow-inner relative z-40">
-        <span class="animate-pulse-fast flex items-center gap-1"><svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd" /></svg>خصم 50% ينتهي قريباً!</span>
+        <span class="animate-pulse-fast flex items-center gap-1">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd" /></svg>
+            خصم 50% ينتهي قريباً!
+        </span>
         <div class="bg-red-800 px-2 py-0.5 rounded text-yellow-300 font-mono tracking-widest" id="header-timer">00:14:21</div>
     </div>
+
     <div class="px-4 pt-6 pb-2 text-center bg-white">
         <h1 class="text-3xl font-black text-gray-900 leading-tight mb-2">طلاء مانع تسرب شفاف</h1>
         <div class="flex justify-center items-center gap-3 mb-4">
             <span class="text-4xl font-black text-brand">99 درهم</span>
             <span class="text-gray-400 line-through text-lg decoration-red-500 decoration-2">250 درهم</span>
         </div>
+        
         <div class="relative mx-auto mb-8 max-w-[400px]">
             <div class="absolute top-2 right-2 bg-yellow-400 text-black font-black text-xs px-2 py-1 rounded shadow-md z-10 rotate-3 transform">الأصلي 100%</div>
             <div class="aspect-square w-full relative bg-gray-100 rounded-2xl overflow-hidden border border-gray-100 shadow-xl">
-                <img src="product.png" onerror="this.src='https://ae01.alicdn.com/kf/S2659779262294191942767171542f2e5B/300g-Transparent-Waterproof-Coating-Agent-Invisible-Paste-Sealant-With-Brush-Wall-Repair-Tools-For-Bathroom-Roof.jpg'" class="w-full h-full object-cover" alt="Product" width="400" height="400">
+                <img src="product.png" onerror="this.src='https://ae01.alicdn.com/kf/S2659779262294191942767171542f2e5B/300g-Transparent-Waterproof-Coating-Agent-Invisible-Paste-Sealant-With-Brush-Wall-Repair-Tools-For-Bathroom-Roof.jpg'" class="w-full h-full object-cover" alt="Product">
             </div>
             <div class="bg-white p-3 rounded-xl shadow-[0_10px_20px_-5px_rgba(0,0,0,0.1)] absolute -bottom-6 left-4 right-4 border border-gray-100 z-20">
                 <div class="flex justify-between text-[10px] font-bold mb-1">
-                    <span class="text-red-500 flex items-center gap-1"><svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd" /></svg>متبقي 9 قطع فقط!</span>
+                    <span class="text-red-500 flex items-center gap-1">🔥 متبقي 9 قطع فقط!</span>
                     <span class="text-gray-400">سارع بالطلب</span>
                 </div>
                 <div class="w-full bg-gray-200 rounded-full h-2.5 overflow-hidden"><div class="bg-red-500 h-2.5 rounded-full scarcity-bar" style="width: 85%"></div></div>
             </div>
         </div>
-        <div class="mt-8 mb-4 px-2"><p class="text-gray-600 text-sm font-bold leading-relaxed">الحل الثوري الشفاف لإغلاق الشقوق ومنع التسربات فوراً دون تشويه مظهر منزلك.</p></div>
-        <a href="#offers" class="flex w-full py-4 text-xl font-black text-white rounded-xl cta-btn mb-3 items-center justify-center gap-2"><span>اطلب الآن</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 13l-7 7-7-7m14-8l-7 7-7-7" /></svg></a>
+
+        <div class="mt-8 mb-4 px-2">
+             <p class="text-gray-600 text-sm font-bold leading-relaxed">الحل الثوري الشفاف لإغلاق الشقوق ومنع التسربات فوراً دون تشويه مظهر منزلك.</p>
+        </div>
+        
+        <a href="#offers" class="flex w-full py-4 text-xl font-black text-white rounded-xl cta-btn mb-3 items-center justify-center gap-2">
+            <span>اطلب الآن</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 13l-7 7-7-7m14-8l-7 7-7-7" /></svg>
+        </a>
     </div>
-    <div class="bg-gray-900 text-white py-8 px-4 text-center overflow-hidden">
+
+    <div class="bg-gray-900 text-white py-8 px-4 text-center">
         <h2 class="text-2xl font-bold text-white mb-4">شاهد الفرق بنفسك!</h2>
         <div class="relative rounded-xl overflow-hidden border-4 border-white shadow-2xl bg-black max-w-[400px] mx-auto">
-            <img src="before-after.gif" onerror="this.src='https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcDExaHJ4eW94eW94eW94eW94eW94eW94eW94eW94eW94eSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o6vXVzKWtk4jcog9i/giphy.gif'" class="w-full h-auto object-cover" alt="Demo GIF" loading="lazy">
+            <img src="before-after.gif" onerror="this.src='https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcDExaHJ4eW94eW94eW94eW94eW94eW94eW94eW94eW94eSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o6vXVzKWtk4jcog9i/giphy.gif'" class="w-full h-auto object-cover" loading="lazy">
         </div>
         <div class="flex justify-center gap-6 mt-4 text-sm font-bold px-2 max-w-[400px] mx-auto">
-            <div class="flex items-center gap-1 text-red-400 bg-red-900/30 px-3 py-1 rounded-full border border-red-500/30"><span>❌</span><span>تسرب وتآكل</span></div>
-            <div class="flex items-center gap-1 text-green-400 bg-green-900/30 px-3 py-1 rounded-full border border-green-500/30"><span>✅</span><span>حماية كاملة</span></div>
+            <div class="flex items-center gap-1 text-red-400 bg-red-900/30 px-3 py-1 rounded-full border border-red-500/30"><span>❌</span><span>تسرب</span></div>
+            <div class="flex items-center gap-1 text-green-400 bg-green-900/30 px-3 py-1 rounded-full border border-green-500/30"><span>✅</span><span>حماية</span></div>
         </div>
     </div>
+
     <div class="py-8 px-4 bg-white">
         <h2 class="text-center text-2xl font-black text-gray-800 mb-2">فعال على جميع الأسطح</h2>
-        <p class="text-center text-gray-500 text-xs mb-6 font-bold">بلاط • نوافذ • جدران خارجية</p>
-        <div class="max-w-[400px] mx-auto rounded-xl shadow-lg mb-6 border border-gray-200 overflow-hidden"><img src="surfaces.gif" onerror="this.src='https://i.ibb.co/sk6sZ0h/surfaces-collage.jpg'" class="w-full h-auto" alt="Surfaces" loading="lazy"></div>
+        <div class="max-w-[400px] mx-auto rounded-xl shadow-lg mb-6 border border-gray-200 overflow-hidden">
+            <img src="surfaces.gif" onerror="this.src='https://i.ibb.co/sk6sZ0h/surfaces-collage.jpg'" class="w-full h-auto" loading="lazy">
+        </div>
         <div class="grid grid-cols-2 gap-3 max-w-[400px] mx-auto">
-            <div class="p-3 bg-blue-50 rounded-xl border border-blue-100 text-center flex flex-col items-center"><div class="text-2xl mb-1">💧</div><h3 class="font-bold text-sm text-gray-900">شفاف تماماً</h3><p class="text-[10px] text-gray-500 leading-tight">لا يغير لون السطح</p></div>
-            <div class="p-3 bg-green-50 rounded-xl border border-green-100 text-center flex flex-col items-center"><div class="text-2xl mb-1">🛡️</div><h3 class="font-bold text-sm text-gray-900">حماية دائمة</h3><p class="text-[10px] text-gray-500 leading-tight">مقاوم للماء والحرارة</p></div>
+            <div class="p-3 bg-blue-50 rounded-xl border border-blue-100 text-center"><div class="text-2xl mb-1">💧</div><h3 class="font-bold text-sm text-gray-900">شفاف تماماً</h3></div>
+            <div class="p-3 bg-green-50 rounded-xl border border-green-100 text-center"><div class="text-2xl mb-1">🛡️</div><h3 class="font-bold text-sm text-gray-900">حماية دائمة</h3></div>
         </div>
     </div>
-    <div class="px-4 py-8 bg-gray-50 border-t border-gray-200">
-        <h2 class="text-center text-xl font-black text-gray-800 mb-6">أسئلة شائعة</h2>
-        <div class="space-y-3 max-w-[400px] mx-auto">
-            <details class="bg-white rounded-xl shadow-sm border border-gray-200 open:border-orange-300 transition-colors group">
-                <summary class="flex justify-between items-center p-4 font-bold cursor-pointer select-none text-sm text-gray-800"><span>هل يعمل على الأسطح المبللة؟</span><span class="text-orange-500 transform transition-transform text-xl group-open:rotate-45">+</span></summary>
-                <div class="px-4 pb-4 text-sm text-gray-600 border-t border-gray-100 pt-3 leading-relaxed">نعم! يلتصق حتى بوجود رطوبة بسيطة.</div>
-            </details>
-            <details class="bg-white rounded-xl shadow-sm border border-gray-200 open:border-orange-300 transition-colors group">
-                <summary class="flex justify-between items-center p-4 font-bold cursor-pointer select-none text-sm text-gray-800"><span>كم من الوقت يحتاج ليجف؟</span><span class="text-orange-500 transform transition-transform text-xl group-open:rotate-45">+</span></summary>
-                <div class="px-4 pb-4 text-sm text-gray-600 border-t border-gray-100 pt-3 leading-relaxed">يجف سطحياً خلال 2-4 ساعات، وتتم الحماية الكاملة خلال 24 ساعة.</div>
-            </details>
-        </div>
-    </div>
+
     <div id="offers" class="py-8 px-4 bg-white relative">
         <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-transparent via-gray-100 to-transparent"></div>
         <div class="text-center mb-6">
@@ -112,104 +129,172 @@
                 تم حجز طلبك لمدة <span id="form-timer" class="font-mono text-red-600 text-sm">05:00</span> دقيقة
             </div>
         </div>
+
         <form id="orderForm" onsubmit="handleOrder(event)" class="space-y-6 max-w-[400px] mx-auto">
+            
             <div class="space-y-4">
                 <label class="block relative cursor-pointer group tap-highlight-transparent">
                     <input type="radio" name="bundle" value="99" class="radio-box sr-only" checked onchange="updatePrice(99, 250)">
                     <div class="selection-card border-2 border-gray-200 rounded-xl p-3 flex justify-between items-center transition-all bg-white h-16">
                         <div class="flex items-center gap-3">
-                            <div class="w-5 h-5 rounded-full border-2 border-gray-300 flex items-center justify-center check-circle transition-colors"><svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 text-white" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg></div>
+                            <div class="w-5 h-5 rounded-full border-2 border-gray-300 flex items-center justify-center check-circle transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 text-white" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
+                            </div>
                             <div class="font-bold text-gray-600 text-sm">علبة واحدة</div>
                         </div>
                         <div class="text-lg font-bold text-gray-600">99 DH</div>
                     </div>
                 </label>
+
                 <label class="block relative cursor-pointer tap-highlight-transparent">
                     <input type="radio" name="bundle" value="179" class="radio-box sr-only" onchange="updatePrice(179, 198)">
                     <div class="absolute -top-3 right-3 bg-red-600 text-white text-[10px] font-bold px-3 py-1 rounded-full shadow-md z-10 animate-bounce-slow">🔥 العرض الأكثر طلباً</div>
                     <div class="selection-card border-2 border-gray-200 rounded-xl p-3 flex justify-between items-center transition-all bg-white relative shadow-sm h-20">
                         <div class="flex items-center gap-3">
-                            <div class="w-5 h-5 rounded-full border-2 border-gray-300 flex items-center justify-center bg-white check-circle"><svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 text-white" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg></div>
-                            <div><div class="font-black text-gray-900 text-sm">2 علب (حماية مضاعفة)</div><div class="text-[10px] text-green-600 font-bold flex items-center gap-1">شحن مجاني فوري</div></div>
+                            <div class="w-5 h-5 rounded-full border-2 border-gray-300 flex items-center justify-center bg-white check-circle">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 text-white" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
+                            </div>
+                            <div>
+                                <div class="font-black text-gray-900 text-sm">2 علب (حماية مضاعفة)</div>
+                                <div class="text-[10px] text-green-600 font-bold flex items-center gap-1">شحن مجاني فوري</div>
+                            </div>
                         </div>
-                        <div class="text-left flex flex-col justify-center"><div class="text-xs text-gray-400 line-through">198 DH</div><div class="text-2xl font-black text-red-600 leading-none">179 DH</div></div>
+                        <div class="text-left flex flex-col justify-center">
+                            <div class="text-xs text-gray-400 line-through">198 DH</div>
+                            <div class="text-2xl font-black text-red-600 leading-none">179 DH</div>
+                        </div>
                     </div>
                 </label>
             </div>
-            <div class="bg-gray-50 p-5 rounded-2xl border border-gray-100 shadow-inner">
-                <p class="text-right text-gray-600 text-sm font-bold mb-4 flex items-center gap-2">أين نرسل الطلبية؟</p>
+
+            <div class="bg-white p-4 rounded-2xl border-2 border-orange-100 shadow-lg">
+                <p class="text-right text-gray-600 text-sm font-bold mb-4 flex items-center gap-2">👇 معلومات التوصيل</p>
                 <div class="space-y-4">
-                    <div><label class="block text-xs font-bold text-gray-700 mb-1 mr-1">الاسم <span class="text-red-500">*</span></label><input type="text" name="name" required placeholder="الاسم الكامل" class="w-full bg-white border border-gray-300 rounded-xl p-3 text-right focus:border-brand focus:ring-2 focus:ring-orange-100 outline-none transition-all"></div>
-                    <div><label class="block text-xs font-bold text-gray-700 mb-1 mr-1">المدينة <span class="text-red-500">*</span></label><input type="text" name="city" required placeholder="المدينة" class="w-full bg-white border border-gray-300 rounded-xl p-3 text-right focus:border-brand focus:ring-2 focus:ring-orange-100 outline-none transition-all"></div>
-                    <div><label class="block text-xs font-bold text-gray-700 mb-1 mr-1">رقم الهاتف <span class="text-red-500">*</span></label><input type="tel" name="tel" required placeholder="06XXXXXXXX" class="w-full bg-white border border-gray-300 rounded-xl p-3 text-right focus:border-brand focus:ring-2 focus:ring-orange-100 outline-none transition-all" style="direction: ltr; text-align: right;"></div>
+                    <div>
+                        <label class="block text-xs font-bold text-gray-700 mb-1 mr-1">الاسم الكامل <span class="text-red-500">*</span></label>
+                        <input type="text" name="name" required placeholder="مثال: محمد العمري" class="w-full bg-gray-50 border border-gray-300 rounded-xl p-4 text-right focus:border-brand focus:ring-2 focus:ring-orange-100 outline-none transition-all font-bold text-gray-800">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-gray-700 mb-1 mr-1">المدينة <span class="text-red-500">*</span></label>
+                        <input type="text" name="city" required placeholder="مثال: الدار البيضاء" class="w-full bg-gray-50 border border-gray-300 rounded-xl p-4 text-right focus:border-brand focus:ring-2 focus:ring-orange-100 outline-none transition-all font-bold text-gray-800">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-gray-700 mb-1 mr-1">رقم الهاتف <span class="text-red-500">*</span></label>
+                        <input type="tel" name="tel" required placeholder="06XXXXXXXX" class="w-full bg-gray-50 border border-gray-300 rounded-xl p-4 text-right focus:border-brand focus:ring-2 focus:ring-orange-100 outline-none transition-all font-bold text-gray-800 tracking-widest" style="direction: ltr; text-align: right;">
+                    </div>
                 </div>
             </div>
-            <div class="pt-2 pb-6">
-                <button type="submit" class="w-full py-4 text-xl font-black text-white rounded-xl cta-btn flex items-center justify-center gap-2 group relative overflow-hidden"><span class="relative z-10">اضغط هنا لتأكيد الطلب</span></button>
-                <div class="flex justify-center items-center gap-2 mt-4 text-gray-400 grayscale opacity-80"><span class="text-[10px] font-bold">ضمان الرضا 100% أو استرجاع نقودك</span></div>
+
+            <div class="pt-4 pb-12">
+                <button type="submit" class="w-full py-5 text-xl font-black text-white rounded-xl cta-btn flex items-center justify-center gap-2 group relative overflow-hidden shadow-2xl">
+                    <span class="relative z-10">🛒 اضغط هنا لتأكيد الطلب</span>
+                </button>
+                <div class="flex justify-center items-center gap-2 mt-4 text-gray-400 grayscale opacity-80">
+                    <span class="text-[10px] font-bold">الدفع عند الاستلام - التوصيل مجاني</span>
+                </div>
             </div>
         </form>
     </div>
-    <div class="grid grid-cols-3 gap-2 px-6 pb-28 text-center opacity-60 grayscale filter">
-        <div class="flex flex-col items-center"><img src="https://cdn-icons-png.flaticon.com/512/2897/2897832.png" class="w-8 h-8 mb-1"><span class="text-[9px] font-bold">دفع عند الاستلام</span></div>
-        <div class="flex flex-col items-center"><img src="https://cdn-icons-png.flaticon.com/512/754/754702.png" class="w-8 h-8 mb-1"><span class="text-[9px] font-bold">شحن سريع</span></div>
-        <div class="flex flex-col items-center"><img src="https://cdn-icons-png.flaticon.com/512/9426/9426996.png" class="w-8 h-8 mb-1"><span class="text-[9px] font-bold">ضمان الجودة</span></div>
-    </div>
+
     <div class="sticky-footer flex items-center justify-between gap-3">
-        <div class="flex flex-col"><span id="footer-old-price" class="text-[10px] text-gray-500 font-bold decoration-red-500 line-through">250 DH</span><span id="footer-price" class="text-2xl font-black text-brand leading-none">99 DH</span></div>
-        <button onclick="document.getElementById('offers').scrollIntoView({behavior: 'smooth'})" class="bg-brand text-white px-8 py-3 rounded-xl font-bold shadow-lg flex-1 active:scale-95 transition-transform text-lg">اطلب الآن</button>
+        <div class="flex flex-col">
+            <span id="footer-old-price" class="text-[10px] text-gray-500 font-bold decoration-red-500 line-through">250 DH</span>
+            <span id="footer-price" class="text-2xl font-black text-brand leading-none">99 DH</span>
+        </div>
+        <button onclick="document.getElementById('offers').scrollIntoView({behavior: 'smooth'})" class="bg-brand text-white px-8 py-3 rounded-xl font-bold shadow-lg flex-1 active:scale-95 transition-transform text-lg">
+            اطلب الآن
+        </button>
     </div>
+
 </div>
+
 <div id="toast" class="fixed top-24 left-1/2 -translate-x-1/2 bg-gray-800/90 backdrop-blur text-white px-4 py-3 rounded-xl text-xs font-bold shadow-2xl z-50 transition-all duration-500 opacity-0 translate-y-10 flex items-center gap-3 w-[90%] max-w-[350px] pointer-events-none">
-    <span class="relative flex h-2 w-2 shrink-0"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span></span>
-    <div class="flex-1"><p id="toast-text" class="text-right">شخص ما من الدار البيضاء اشترى المنتج</p><p class="text-[10px] text-gray-400 text-right mt-0.5">منذ 2 دقيقة</p></div><div class="w-8 h-8 bg-white/10 rounded-lg flex items-center justify-center text-lg">📦</div>
+    <div class="flex-1"><p id="toast-text" class="text-right">شخص ما اشترى المنتج</p></div>
+    <div class="w-8 h-8 bg-white/10 rounded-lg flex items-center justify-center text-lg">📦</div>
 </div>
 
 <script>
-    // ---------- PASTE YOUR NEW URL HERE (INSIDE THE QUOTES) ----------
-    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwbFQBnId5-6KnYsIpR-kSwXqyqjgMCdA_WLFtw9JWvVWSF-fFxu_s5vJCKydY2SC3s/exec"; 
-    // -----------------------------------------------------------------
+    // --- I INSERTED YOUR NEW LINK BELOW ---
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwbFQBnId5-6KnYsIpR-kSwXqyqjgMCdA_WLFtw9JWvVWSF-fFxu_s5vJCKydY2SC3s/exec";
+    // -------------------------------------
 
-    // TIMERS
+    // 1. SMART FOOTER (Hides when form is visible)
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            const footer = document.querySelector('.sticky-footer');
+            const whatsapp = document.querySelector('.whatsapp-float');
+            if (entry.isIntersecting) {
+                footer.classList.add('hidden-footer');
+                whatsapp.style.bottom = "16px"; 
+            } else {
+                footer.classList.remove('hidden-footer');
+                whatsapp.style.bottom = "100px";
+            }
+        });
+    }, { threshold: 0.1 });
+    observer.observe(document.getElementById('orderForm'));
+
+    // 2. FORM SUBMISSION
+    function handleOrder(e) {
+        e.preventDefault();
+        const btn = e.target.querySelector('button[type="submit"]');
+        const originalContent = btn.innerHTML;
+        
+        btn.disabled = true;
+        btn.innerHTML = '⏳ جاري التسجيل...';
+        btn.classList.remove('bg-brand');
+        btn.classList.add('bg-gray-500');
+
+        const fd = new FormData(e.target);
+        
+        // This 'no-cors' mode allows mobile phones to send data without errors
+        fetch(GOOGLE_SCRIPT_URL, { 
+            method: "POST", 
+            mode: "no-cors", 
+            headers: {"Content-Type": "application/x-www-form-urlencoded"}, 
+            body: new URLSearchParams(fd).toString() 
+        })
+        .then(() => {
+            setTimeout(() => {
+                btn.innerHTML = '✅ تم بنجاح!';
+                btn.classList.remove('bg-gray-500');
+                btn.classList.add('bg-green-600');
+                
+                if (navigator.vibrate) navigator.vibrate(200);
+
+                alert('شكراً لك! سنتصل بك في أقرب وقت.');
+                e.target.reset();
+                
+                setTimeout(() => { 
+                    btn.innerHTML = originalContent; 
+                    btn.classList.remove('bg-green-600'); 
+                    btn.classList.add('bg-brand'); 
+                    btn.disabled = false; 
+                }, 3000);
+            }, 1000);
+        })
+        .catch(err => {
+            alert("خطأ في الاتصال، حاول مرة أخرى");
+            btn.disabled = false;
+            btn.innerHTML = originalContent;
+        });
+    }
+
+    // 3. UTILS
     let time = 854; const timerElement = document.getElementById('header-timer');
     setInterval(() => { const m = Math.floor(time/60), s = time%60; timerElement.innerText=`00:${m<10?'0'+m:m}:${s<10?'0'+s:s}`; if(time>0)time--; }, 1000);
-    let formTime = 300; const formTimerElement = document.getElementById('form-timer');
-    setInterval(() => { const m = Math.floor(formTime/60), s = formTime%60; formTimerElement.innerText=`0${m}:${s<10?'0'+s:s}`; if(formTime>0)formTime--; }, 1000);
-
-    // TOASTS
-    const cities = ['الدار البيضاء', 'مراكش', 'طنجة', 'فاس', 'أكادير', 'الرباط'];
-    const toast = document.getElementById('toast'), toastText = document.getElementById('toast-text');
-    function showToast() {
-        const city = cities[Math.floor(Math.random()*cities.length)], minutes = Math.floor(Math.random()*9)+1;
-        toastText.innerText=`زبون من ${city} طلب العرض للتو`; toast.querySelector('p:last-child').innerText=`منذ ${minutes} دقائق`;
-        toast.classList.remove('opacity-0', 'translate-y-10'); setTimeout(()=>toast.classList.add('opacity-0','translate-y-10'),4000);
-    }
-    setTimeout(showToast, 3500); setInterval(showToast, 12000);
-
-    // PRICES
+    
     function updatePrice(p, o) { document.getElementById('footer-price').innerText=p+' DH'; document.getElementById('footer-old-price').innerText=o+' DH'; }
     window.onload = function() { updatePrice(99, 250); };
 
-    // ORDER HANDLING
-    function handleOrder(e) {
-        e.preventDefault();
-        const btn = e.target.querySelector('button');
-        const originalContent = btn.innerHTML;
-        btn.disabled = true; btn.innerHTML = '<span class="animate-pulse">جاري المعالجة...</span>'; btn.classList.remove('bg-brand'); btn.classList.add('bg-gray-400');
-
-        const fd = new FormData(e.target);
-        fetch(GOOGLE_SCRIPT_URL, { method: "POST", mode: "no-cors", headers: {"Content-Type": "application/x-www-form-urlencoded"}, body: new URLSearchParams(fd).toString() })
-        .then(() => {
-            setTimeout(() => {
-                btn.innerHTML = '✅ تم استلام طلبك!'; btn.classList.remove('bg-gray-400'); btn.classList.add('bg-green-600');
-                if (navigator.vibrate) navigator.vibrate(200);
-                alert('شكراً لك! سنتصل بك في أقرب وقت لتأكيد الطلب.');
-                e.target.reset();
-                setTimeout(() => { btn.innerHTML = originalContent; btn.classList.remove('bg-green-600'); btn.classList.add('bg-brand'); btn.disabled = false; }, 3000);
-            }, 1000);
-        })
-        .catch(err => { alert("Error"); btn.disabled = false; btn.innerHTML = originalContent; });
+    const cities = ['الدار البيضاء', 'مراكش', 'طنجة', 'فاس', 'أكادير', 'الرباط'];
+    const toast = document.getElementById('toast'), toastText = document.getElementById('toast-text');
+    function showToast() {
+        const city = cities[Math.floor(Math.random()*cities.length)];
+        toastText.innerText=`زبون من ${city} طلب العرض للتو`;
+        toast.classList.remove('opacity-0', 'translate-y-10'); setTimeout(()=>toast.classList.add('opacity-0','translate-y-10'),4000);
     }
+    setTimeout(showToast, 3500); setInterval(showToast, 12000);
 </script>
 </body>
 </html>
