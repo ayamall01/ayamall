@@ -272,6 +272,19 @@ src="https://www.facebook.com/tr?id=2663210157367551&ev=PageView&noscript=1"
         })
         .then(() => {
             setTimeout(() => {
+
+                // --- FACEBOOK TRACKING START ---
+                try {
+                    // This grabs the price (99 or 179) the user selected
+                    var price = document.querySelector('input[name="bundle"]:checked').value;
+                    
+                    // This tells Facebook: "RECORD A PURCHASE NOW"
+                    fbq('track', 'Purchase', { 
+                        value: price, 
+                        currency: 'MAD' 
+                    });
+                } catch(err) { console.log('Pixel Error'); }
+                // --- FACEBOOK TRACKING END ---
                 btn.innerHTML = '✅ تم بنجاح!';
                 btn.classList.remove('bg-gray-500');
                 btn.classList.add('bg-green-600');
