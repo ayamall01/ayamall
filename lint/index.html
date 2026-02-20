@@ -312,10 +312,21 @@
                     </div>
                 </div>
 
-                <button type="submit" id="submitBtn" class="w-full bg-action hover:bg-actionDark text-white font-black text-2xl h-20 rounded-3xl shadow-btn transition-all active:scale-95 flex flex-col justify-center items-center mt-6 relative overflow-hidden group">
+                <button type="submit" id="submitBtn" class="w-full bg-action hover:bg-actionDark text-white font-black text-2xl py-3.5 rounded-3xl shadow-btn transition-all active:scale-95 flex flex-col justify-center items-center mt-6 relative overflow-hidden group">
                     <div class="absolute inset-0 w-full h-full bg-white/10 -translate-x-full animate-[shimmer_2.5s_infinite]"></div>
-                    تأكيد الطلب الآن
-                    <span class="text-sm font-bold bg-black/20 px-3 py-0.5 rounded-full mt-1" id="btnPriceDisplay">المجموع: 109 درهم</span>
+                    
+                    <div class="flex items-center gap-2 z-10">
+                        <i class="ph-bold ph-shopping-bag text-[28px]"></i>
+                        <span>تأكيد الطلب الآن</span>
+                    </div>
+                    
+                    <div class="flex items-center gap-2 text-[11px] sm:text-sm font-bold bg-black/30 px-4 py-1.5 rounded-full mt-2 z-10 border border-black/10 shadow-inner">
+                        <span id="btnPriceDisplay">المجموع: 109 درهم</span>
+                        <span class="text-white/40">|</span>
+                        <span class="text-[#4ade80] flex items-center gap-1">
+                            <i class="ph-fill ph-money text-base"></i> الدفع عند الاستلام
+                        </span>
+                    </div>
                 </button>
                 <p class="text-center text-[10px] font-bold text-gray-400 mt-3 flex items-center justify-center gap-1"><i class="ph-fill ph-lock text-xs"></i> بياناتك مشفرة وآمنة تماماً</p>
             </form>
