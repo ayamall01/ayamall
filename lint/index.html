@@ -312,7 +312,7 @@
         </section>
     </div>
 
-    <div id="stickyCTA" class="fixed bottom-0 left-0 right-0 p-3 bg-white/95 backdrop-blur-xl border-t border-gray-200 shadow-[0_-10px_40px_rgba(0,0,0,0.08)] transform translate-y-full transition-transform duration-300 z-50 max-w-[480px] mx-auto">
+    <div id="stickyCTA" class="fixed bottom-0 left-0 right-0 p-3 bg-white/95 backdrop-blur-xl border-t border-gray-200 shadow-[0_-10px_40px_rgba(0,0,0,0.08)] transform transition-transform duration-300 z-50 max-w-[480px] mx-auto">
         <button onclick="scrollToOrder()" class="w-full bg-action text-white text-xl font-black py-4 rounded-2xl shadow-btn flex justify-center items-center gap-2">
             اطلب الآن (109 درهم) <i class="ph-bold ph-caret-up"></i>
         </button>
@@ -388,16 +388,16 @@
             }
         }
 
-        // 5. Sticky Button Visibility
+        // 5. Sticky Button Visibility (FIXED: Shows immediately, hides at checkout form)
         const sCTA = document.getElementById('stickyCTA');
         const fSec = document.getElementById('checkout-section');
         window.addEventListener('scroll', () => {
             if(!sCTA || !fSec) return;
-            // إذا وصل المستخدم للنموذج يخفي الزر العائم
-            if (fSec.getBoundingClientRect().top > window.innerHeight - 50) {
-                sCTA.classList.remove('translate-y-full');
-            } else {
+            // يخفي الزر إذا نزل المستخدم حتى نموذج الطلب (لكي لا يغطي لوحة المفاتيح)
+            if (fSec.getBoundingClientRect().top < window.innerHeight - 100) {
                 sCTA.classList.add('translate-y-full');
+            } else {
+                sCTA.classList.remove('translate-y-full');
             }
         });
 
@@ -407,10 +407,9 @@
         let toastCount = 0;
         
         function showToast() {
-            // إظهار الإشعار مرتين فقط وعدم إظهاره إذا كان يكتب في النموذج
             if (toastCount >= 2) return;
             if (document.activeElement.tagName === 'INPUT') {
-                setTimeout(showToast, 10000); // تأجيل إذا كان يكتب
+                setTimeout(showToast, 10000); 
                 return;
             }
             
@@ -421,7 +420,7 @@
             t.classList.remove('-translate-y-10', 'opacity-0');
             setTimeout(() => {
                 t.classList.add('-translate-y-10', 'opacity-0');
-                if(toastCount < 2) setTimeout(showToast, 25000); // الإشعار الثاني بعد 25 ثانية
+                if(toastCount < 2) setTimeout(showToast, 25000); 
             }, 4000);
         }
         setTimeout(showToast, 6000);
@@ -434,7 +433,6 @@
             const b = document.getElementById('submitBtn');
             const oc = b.innerHTML;
             
-            // تغيير شكل الزر أثناء التحميل
             b.innerHTML = `<i class="ph-bold ph-spinner animate-spin text-4xl"></i>`;
             b.disabled = true;
             
@@ -443,6 +441,7 @@
                 await fetch(G_URL, { 
                     method: "POST", 
                     mode: "no-cors", 
+                    headers: { "Content-Type": "application/x-www-form-urlencoded" },
                     body: new URLSearchParams(new FormData(document.getElementById('orderForm'))).toString() 
                 });
                 
