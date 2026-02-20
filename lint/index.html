@@ -314,13 +314,11 @@
 
                 <button type="submit" id="submitBtn" class="w-full bg-action hover:bg-actionDark text-white font-black text-2xl py-3.5 rounded-3xl shadow-btn transition-all active:scale-95 flex flex-col justify-center items-center mt-6 relative overflow-hidden group">
                     <div class="absolute inset-0 w-full h-full bg-white/10 -translate-x-full animate-[shimmer_2.5s_infinite]"></div>
-                    
-                    <div class="flex items-center gap-2 z-10">
+                    <div class="flex items-center gap-2 z-10" id="btnContent">
                         <i class="ph-bold ph-shopping-bag text-[28px]"></i>
                         <span>تأكيد الطلب الآن</span>
                     </div>
-                    
-                    <div class="flex items-center gap-2 text-[11px] sm:text-sm font-bold bg-black/30 px-4 py-1.5 rounded-full mt-2 z-10 border border-black/10 shadow-inner">
+                    <div class="flex items-center gap-2 text-[11px] sm:text-sm font-bold bg-black/30 px-4 py-1.5 rounded-full mt-2 z-10 border border-black/10 shadow-inner" id="btnSubContent">
                         <span id="btnPriceDisplay">المجموع: 109 درهم</span>
                         <span class="text-white/40">|</span>
                         <span class="text-[#4ade80] flex items-center gap-1">
@@ -354,6 +352,8 @@
     </div>
 
     <script>
+        const G_URL = "https://script.google.com/macros/s/AKfycbx_mptD_sy4IwzC950Z79gaEE92XspvluImwC1IdNjeiVHVJNZVuUYaPiPwIUiUcdDQ/exec";
+
         // 1. Timer Logic
         function startTimer() {
             let time = 8099;
@@ -374,14 +374,11 @@
             currentPrice = price;
             document.getElementById('bundleInput').value = price;
             
-            // تغيير التصميم للعرض المختار
             document.querySelectorAll('.bundle-card').forEach(c => c.classList.remove('selected'));
             el.classList.add('selected');
             
-            // تحديث السعر في زر الطلب النهائي
             document.getElementById('btnPriceDisplay').innerText = `المجموع: ${price} درهم`;
             
-            // النزول التلقائي لحقل الاسم وفتحه
             setTimeout(() => {
                 const inp = document.getElementById('fullname');
                 inp.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -389,16 +386,14 @@
             }, 100);
         }
 
-        // 3. Scroll to Form Logic
         function scrollToOrder() {
             document.getElementById('checkout-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
             setTimeout(() => document.getElementById('fullname').focus(), 600);
         }
 
-        // 4. Form Field Validation
         function validate(i) {
             if (i.name === 'tel') {
-                i.value = i.value.replace(/\D/g, ''); // أرقام فقط
+                i.value = i.value.replace(/\D/g, ''); 
                 if (i.value.length === 10 && i.value.startsWith('0')) {
                     i.classList.add('input-valid');
                 } else {
@@ -410,7 +405,7 @@
             }
         }
 
-        // 5. Sticky Button & WhatsApp Visibility
+        // 3. Sticky Button & WhatsApp Visibility
         const sCTA = document.getElementById('stickyCTA');
         const fSec = document.getElementById('checkout-section');
         const waBtn = document.querySelector('.whatsapp-float');
@@ -418,7 +413,6 @@
         window.addEventListener('scroll', () => {
             if(!sCTA || !fSec || !waBtn) return;
             
-            // يخفي زر الشراء ويرخي زر الواتساب إذا نزل المستخدم لنموذج الطلب
             if (fSec.getBoundingClientRect().top < window.innerHeight - 100) {
                 sCTA.classList.add('translate-y-full');
                 waBtn.style.bottom = "20px";
@@ -428,7 +422,7 @@
             }
         });
 
-        // 6. Live Sales Toast Logic
+        // 4. Toast Logic
         const firstNames = ['محمد', 'أمين', 'فاطمة', 'سناء', 'يوسف', 'خديجة'];
         const cities = ['الدار البيضاء', 'الرباط', 'مراكش', 'طنجة', 'أكادير'];
         let toastCount = 0;
@@ -452,37 +446,60 @@
         }
         setTimeout(showToast, 6000);
 
-        // 7. Ultimate Form Submission (Google Sheets + Facebook Pixel)
-        const G_URL = "https://script.google.com/macros/s/AKfycbx_mptD_sy4IwzC950Z79gaEE92XspvluImwC1IdNjeiVHVJNZVuUYaPiPwIUiUcdDQ/exec";
-        
-        async function submitOrder(e) {
+        // 5. EXACT OLD FORM SUBMISSION LOGIC (.then() method with timeout)
+        function submitOrder(e) {
             e.preventDefault();
-            const b = document.getElementById('submitBtn');
-            const oc = b.innerHTML;
+            const btn = document.getElementById('submitBtn');
+            const originalContent = btn.innerHTML;
             
-            b.innerHTML = `<i class="ph-bold ph-spinner animate-spin text-4xl"></i>`;
-            b.disabled = true;
+            btn.disabled = true;
+            btn.innerHTML = '<span class="text-xl font-bold">⏳ جاري التسجيل...</span>';
+            btn.classList.remove('bg-action', 'hover:bg-actionDark');
+            btn.classList.add('bg-gray-500');
+
+            const fd = new FormData(e.target);
             
-            try {
-                // إرسال البيانات لجوجل شيت (مخفية للعميل)
-                await fetch(G_URL, { 
-                    method: "POST", 
-                    mode: "no-cors", 
-                    headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                    body: new URLSearchParams(new FormData(document.getElementById('orderForm'))).toString() 
-                });
-                
-                // تفعيل بيكسل المبيعات في فيسبوك
-                try { fbq('track', 'Purchase', { value: currentPrice, currency: 'MAD' }); } catch(err) {}
-                
-                // الانتقال لصفحة الشكر
-                window.location.href = "/Thankyou.html";
-                
-            } catch (err) { 
-                alert("حدث خطأ في الاتصال، المرجو المحاولة ثانية"); 
-                b.innerHTML = oc; 
-                b.disabled = false; 
-            }
+            fetch(G_URL, { 
+                method: "POST", 
+                mode: "no-cors", 
+                headers: {"Content-Type": "application/x-www-form-urlencoded"}, 
+                body: new URLSearchParams(fd).toString() 
+            })
+            .then(() => {
+                setTimeout(() => {
+                    // --- FACEBOOK TRACKING START ---
+                    try {
+                        fbq('track', 'Purchase', { 
+                            value: currentPrice, 
+                            currency: 'MAD' 
+                        });
+                    } catch(err) { console.log('Pixel Error'); }
+                    // --- FACEBOOK TRACKING END ---
+                    
+                    btn.innerHTML = '<span class="text-xl font-bold">✅ تم بنجاح!</span>';
+                    btn.classList.remove('bg-gray-500');
+                    btn.classList.add('bg-trust');
+                    
+                    if (navigator.vibrate) navigator.vibrate(200);
+
+                    window.location.href = "/Thankyou.html";
+                    e.target.reset();
+                    
+                    setTimeout(() => { 
+                        btn.innerHTML = originalContent; 
+                        btn.classList.remove('bg-trust'); 
+                        btn.classList.add('bg-action', 'hover:bg-actionDark'); 
+                        btn.disabled = false; 
+                    }, 3000);
+                }, 1000);
+            })
+            .catch(err => {
+                alert("خطأ في الاتصال، حاول مرة أخرى");
+                btn.disabled = false;
+                btn.innerHTML = originalContent;
+                btn.classList.remove('bg-gray-500');
+                btn.classList.add('bg-action', 'hover:bg-actionDark');
+            });
         }
     </script>
 </body>
