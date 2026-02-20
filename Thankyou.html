@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>شكراً لك - Thank You</title>
+    <title>تم تأكيد الطلب - Ayamall</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
     
     <script>
     !function(f,b,e,v,n,t,s)
@@ -14,37 +17,57 @@
     t.src=v;s=b.getElementsByTagName(e)[0];
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
-    
-    // 1. Start the Pixel
     fbq('init', '2663210157367551');
-    
-    // 2. Count the Page View ONLY (Facebook Rule handles the rest)
     fbq('track', 'PageView');
+
+    // 1. Look inside the URL for the secret price
+    const urlParams = new URLSearchParams(window.location.search);
+    const exactPrice = urlParams.get('price');
+
+    // 2. Fire the STANDARD Purchase Pixel with the exact value
+    if (exactPrice) {
+        fbq('track', 'Purchase', { 
+            value: exactPrice, 
+            currency: 'MAD' 
+        });
+    } else {
+        // Fallback for old products
+        fbq('track', 'Purchase'); 
+    }
     </script>
-    <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=2663210157367551&ev=PageView&noscript=1"
-    /></noscript>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
-    <style>body { font-family: 'Tajawal', sans-serif; }</style>
+    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2663210157367551&ev=PageView&noscript=1"/></noscript>
+
+    <style>
+        body { font-family: 'Cairo', sans-serif; background-color: #f8fafc; }
+        .success-animation { animation: popIn 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+        @keyframes popIn { 0% { transform: scale(0.5); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+    </style>
 </head>
-<body class="bg-gray-50 flex items-center justify-center h-screen px-4">
-    <div class="bg-white p-10 rounded-2xl shadow-xl text-center max-w-md w-full border border-gray-100">
+<body class="min-h-screen flex items-center justify-center p-4">
+
+    <div class="max-w-md w-full bg-white rounded-3xl shadow-xl p-8 text-center border border-gray-100 success-animation">
+        
         <div class="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+            <svg class="w-12 h-12 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
             </svg>
         </div>
-        <h1 class="text-3xl font-black text-gray-900 mb-2">شكراً لك!</h1>
-        <p class="text-xl text-green-600 font-bold mb-6">تم استلام طلبك بنجاح ✅</p>
-        <div class="bg-gray-50 rounded-xl p-4 mb-8 border border-gray-200">
-            <p class="text-gray-700 font-medium">
-                سيتصل بك فريقنا قريباً لتأكيد الطلب والعنوان.
-            </p>
+
+        <h1 class="text-3xl font-black text-gray-900 mb-2">تم تأكيد طلبك بنجاح!</h1>
+        <p class="text-gray-600 font-bold mb-8 leading-relaxed">شكراً لك على ثقتك في Ayamall.<br>سنتصل بك خلال <span class="text-orange-500 font-black">24 ساعة</span> من رقم هاتفنا لتأكيد العنوان وشحن طلبيتك.</p>
+
+        <div class="bg-orange-50 p-4 rounded-xl border border-orange-100 mb-8 text-right">
+            <h3 class="font-black text-orange-800 mb-2 text-sm flex items-center gap-2">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                ملاحظة هامة:
+            </h3>
+            <p class="text-xs text-orange-700 font-bold">يرجى إبقاء هاتفك قريباً منك للرد على مكالمة التأكيد لتسريع عملية الشحن.</p>
         </div>
-        <a href="index.html" class="block w-full bg-green-600 text-white px-6 py-4 rounded-xl font-bold hover:bg-green-700 transition shadow-lg text-lg">
-            العودة للصفحة الرئيسية
+
+        <a href="/" class="block w-full bg-gray-900 text-white font-black py-4 rounded-xl shadow-lg active:scale-95 transition-transform">
+            العودة للمتجر
         </a>
     </div>
+
 </body>
 </html>
