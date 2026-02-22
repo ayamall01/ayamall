@@ -539,26 +539,20 @@ src="https://www.facebook.com/tr?id=2663210157367551&ev=PageView&noscript=1"
         })
         .then(() => {
             setTimeout(() => {
-
-                // --- FACEBOOK TRACKING START ---
+                // Get the exact price the user chose (99, 179, or 249)
+                var price = "99";
                 try {
-                    // This grabs the price (99, 179, or 249) the user selected
-                    var price = document.querySelector('input[name="bundle"]:checked').value;
-                    
-                    // This tells Facebook: "RECORD A PURCHASE NOW"
-                    fbq('track', 'Purchase', { 
-                        value: price, 
-                        currency: 'MAD' 
-                    });
-                } catch(err) { console.log('Pixel Error'); }
-                // --- FACEBOOK TRACKING END ---
+                    price = document.querySelector('input[name="bundle"]:checked').value;
+                } catch(err) { console.log('Price Error'); }
+
                 btn.innerHTML = '✅ تم بنجاح!';
                 btn.classList.remove('bg-gray-500');
                 btn.classList.add('bg-green-600');
                 
                 if (navigator.vibrate) navigator.vibrate(200);
 
-                window.location.href = "Thankyou.html";
+                // MAGIC REDIRECT: Zero pixel fires here! Passes the price straight to Thank You page.
+                window.location.href = "Thankyou.html?price=" + price;
                 e.target.reset();
                 
                 setTimeout(() => { 
@@ -573,6 +567,8 @@ src="https://www.facebook.com/tr?id=2663210157367551&ev=PageView&noscript=1"
             alert("خطأ في الاتصال، حاول مرة أخرى");
             btn.disabled = false;
             btn.innerHTML = originalContent;
+            btn.classList.remove('bg-gray-500');
+            btn.classList.add('bg-brand');
         });
     }
 
