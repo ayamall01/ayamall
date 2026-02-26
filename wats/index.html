@@ -2,39 +2,45 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AyaHub WATS | Chargement</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>AyaHub WATS | Connexion</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
     <style>
         body { background-color: #f8fafc; font-family: 'Plus Jakarta Sans', sans-serif; }
         .spinner { border: 4px solid rgba(16, 185, 129, 0.1); border-left-color: #10b981; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; }
         @keyframes spin { to { transform: rotate(360deg); } }
+        .glass-btn { background: linear-gradient(135deg, #10b981 0%, #059669 100%); transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); }
+        .glass-btn:active { transform: scale(0.95); }
     </style>
 </head>
 <body class="flex items-center justify-center min-h-screen">
 
-    <div class="text-center px-6">
-        <div class="spinner mx-auto mb-6"></div>
-        <h1 class="text-2xl font-extrabold text-slate-900 mb-2">Synchronisation AyaHub</h1>
-        <p class="text-slate-500 font-medium mb-8">Ouverture du terminal WhatsApp...</p>
+    <div class="text-center px-6 max-w-sm animate-pulse">
+        <div class="spinner mx-auto mb-8 shadow-xl shadow-emerald-100"></div>
+        <h1 class="text-3xl font-extrabold text-slate-900 mb-3 tracking-tight">Ayamall Hub</h1>
+        <p class="text-slate-500 font-semibold mb-10 leading-relaxed">Synchronisation avec le terminal WhatsApp en cours...</p>
         
-        <a id="manual-link" href="https://script.google.com/macros/s/AKfycbyxeEa9phMlyoRamMHeYPt_b1zr92aG24IZjJKMZmDF09a13AJ11eSXY_60wF6X9NWT9g/exec" 
-           class="bg-emerald-500 text-white px-8 py-4 rounded-2xl font-bold shadow-lg shadow-emerald-200 active:scale-95 transition-transform inline-block">
-            Ouvrir Manuellement
+        <a id="target-link" href="https://script.google.com/macros/s/AKfycbyxeEa9phMlyoRamMHeYPt_b1zr92aG24IZjJKMZmDF09a13AJ11eSXY_60wF6X9NWT9g/exec" 
+           class="glass-btn text-white px-10 py-5 rounded-[24px] font-bold text-lg shadow-2xl shadow-emerald-200 block w-full">
+            Ouvrir le Terminal
         </a>
+        
+        <p class="mt-6 text-[10px] text-slate-400 font-bold uppercase tracking-[0.2em]">Secure Cloud Injection v2.0</p>
     </div>
 
     <script>
-        const target = "https://script.google.com/macros/s/AKfycbyxeEa9phMlyoRamMHeYPt_b1zr92aG24IZjJKMZmDF09a13AJ11eSXY_60wF6/exec";
+        const targetUrl = document.getElementById('target-link').href;
         
-        // Try auto-redirect first
-        window.location.replace(target);
-
-        // Fallback for Brave: if still here after 2 seconds, nudge the user
+        // 1. Attempt Auto-Redirect for Chrome/Safari users
         setTimeout(() => {
-            console.log("Redirect blocked by browser shields. Waiting for user action.");
-        }, 2000);
+            window.location.replace(targetUrl);
+        }, 500);
+
+        // 2. Logic for Brave: If still on this page after 3 seconds, highlight the button
+        setTimeout(() => {
+            console.log("Redirect potentially blocked by browser shields.");
+        }, 3000);
     </script>
 </body>
 </html>
