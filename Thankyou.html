@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f97316">
     <title>تم تأكيد الطلب - Ayamall</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
     
     <script>
     !function(f,b,e,v,n,t,s)
@@ -24,47 +25,62 @@
     const urlParams = new URLSearchParams(window.location.search);
     const exactPrice = urlParams.get('price');
 
-    // 2. Fire the STANDARD Purchase Pixel with the exact value
-    if (exactPrice) {
-        fbq('track', 'Purchase', { 
-            value: exactPrice, 
-            currency: 'MAD' 
-        });
+    // 2. MEMORY LOCK: Check if we already fired the pixel this session
+    if (!sessionStorage.getItem('pixel_fired')) {
+        
+        // 3. Fire the STANDARD Purchase Pixel
+        if (exactPrice) {
+            fbq('track', 'Purchase', { 
+                value: exactPrice, 
+                currency: 'MAD' 
+            });
+        } else {
+            fbq('track', 'Purchase'); 
+        }
+
+        // 4. Lock the door. It will never fire again for this session.
+        sessionStorage.setItem('pixel_fired', 'true');
+        console.log("Pixel fired successfully. Door locked.");
+        
     } else {
-        // Fallback for old products
-        fbq('track', 'Purchase'); 
+        console.log("Customer refreshed the page. Blocked fake duplicate pixel.");
     }
     </script>
     <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2663210157367551&ev=PageView&noscript=1"/></noscript>
 
     <style>
-        body { font-family: 'Cairo', sans-serif; background-color: #f8fafc; }
+        :root { --brand-color: #f97316; }
+        body { font-family: 'Tajawal', sans-serif; background-color: #f0f2f5; }
         .success-animation { animation: popIn 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
         @keyframes popIn { 0% { transform: scale(0.5); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+        
+        /* Matching the exact 3D button from your main page */
+        .cta-btn { background: linear-gradient(180deg, #fb923c 0%, #ea580c 100%); box-shadow: 0 4px 0 #c2410c, 0 8px 15px rgba(234, 88, 12, 0.2); transition: transform 0.1s, box-shadow 0.1s; }
+        .cta-btn:active { transform: translateY(3px); box-shadow: 0 0 0 #c2410c, 0 3px 5px rgba(0,0,0,0.1); }
     </style>
 </head>
 <body class="min-h-screen flex items-center justify-center p-4">
 
     <div class="max-w-md w-full bg-white rounded-3xl shadow-xl p-8 text-center border border-gray-100 success-animation">
         
-        <div class="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-            <svg class="w-12 h-12 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div class="w-24 h-24 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-6 shadow-inner border border-orange-200">
+            <svg class="w-12 h-12 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
             </svg>
         </div>
 
         <h1 class="text-3xl font-black text-gray-900 mb-2">تم تأكيد طلبك بنجاح!</h1>
-        <p class="text-gray-600 font-bold mb-8 leading-relaxed">شكراً لك على ثقتك في Ayamall.<br>سنتصل بك خلال <span class="text-orange-500 font-black">24 ساعة</span> من رقم هاتفنا لتأكيد العنوان وشحن طلبيتك.</p>
+        <p class="text-gray-600 font-bold mb-8 leading-relaxed">شكراً لك على ثقتك في <span class="text-orange-600 font-black text-xl">ayamall</span>.<br>سنتصل بك خلال <span class="text-orange-500 font-black">24 ساعة</span> لتأكيد العنوان وشحن طلبيتك.</p>
 
-        <div class="bg-orange-50 p-4 rounded-xl border border-orange-100 mb-8 text-right">
+        <div class="bg-orange-50 p-4 rounded-xl border border-orange-200 mb-8 text-right shadow-sm">
             <h3 class="font-black text-orange-800 mb-2 text-sm flex items-center gap-2">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                ملاحظة هامة:
+                <svg class="w-5 h-5 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                الخطوة الأخيرة:
             </h3>
-            <p class="text-xs text-orange-700 font-bold">يرجى إبقاء هاتفك قريباً منك للرد على مكالمة التأكيد لتسريع عملية الشحن.</p>
+            <p class="text-xs text-orange-800 font-bold leading-relaxed">يرجى إبقاء هاتفك قريباً منك للرد على مكالمة التأكيد. <span class="text-red-600">لن يتم شحن الطلب حتى نؤكد معك هاتفياً.</span></p>
         </div>
 
-        <a href="/" class="block w-full bg-gray-900 text-white font-black py-4 rounded-xl shadow-lg active:scale-95 transition-transform">
+        <a href="/" class="block w-full text-white font-black py-4 rounded-xl shadow-lg cta-btn text-xl">
             العودة للمتجر
         </a>
     </div>
