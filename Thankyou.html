@@ -25,8 +25,8 @@
     const urlParams = new URLSearchParams(window.location.search);
     const exactPrice = urlParams.get('price');
 
-    // 2. MEMORY LOCK: Check if we already fired the pixel this session
-    if (!sessionStorage.getItem('pixel_fired')) {
+    // 2. TITANIUM MEMORY LOCK: Check if we already fired the pixel permanently
+    if (!localStorage.getItem('pixel_fired_ayamall')) {
         
         // 3. Fire the STANDARD Purchase Pixel
         if (exactPrice) {
@@ -38,9 +38,9 @@
             fbq('track', 'Purchase'); 
         }
 
-        // 4. Lock the door. It will never fire again for this session.
-        sessionStorage.setItem('pixel_fired', 'true');
-        console.log("Pixel fired successfully. Door locked.");
+        // 4. Lock the vault FOREVER. It will never fire again on this phone.
+        localStorage.setItem('pixel_fired_ayamall', 'true');
+        console.log("Pixel fired successfully. Vault locked permanently.");
         
     } else {
         console.log("Customer refreshed the page. Blocked fake duplicate pixel.");
