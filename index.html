@@ -517,7 +517,7 @@ src="https://www.facebook.com/tr?id=2663210157367551&ev=PageView&noscript=1"
     }, { threshold: 0.1 });
     observer.observe(document.getElementById('orderForm'));
 
-    // 2. FORM SUBMISSION
+    // 2. FORM SUBMISSION (WITH BULLETPROOF PIXEL)
     function handleOrder(e) {
         e.preventDefault();
         const btn = e.target.querySelector('button[type="submit"]');
@@ -545,14 +545,20 @@ src="https://www.facebook.com/tr?id=2663210157367551&ev=PageView&noscript=1"
                     price = document.querySelector('input[name="bundle"]:checked').value;
                 } catch(err) { console.log('Price Error'); }
 
+                // 🔥 FIRE PIXEL HERE: ONLY WHEN FORM ACTUALLY SENDS TO GOOGLE SHEET 🔥
+                if(typeof fbq === 'function') {
+                    fbq('track', 'Purchase', { value: price, currency: 'MAD' });
+                    console.log("Real Purchase Fired! Price: " + price);
+                }
+
                 btn.innerHTML = '✅ تم بنجاح!';
                 btn.classList.remove('bg-gray-500');
                 btn.classList.add('bg-green-600');
                 
                 if (navigator.vibrate) navigator.vibrate(200);
 
-                // MAGIC REDIRECT: Zero pixel fires here! Passes the price straight to Thank You page.
-                window.location.href = "Thankyou.html?price=" + price;
+                // Redirect to the neutered Thank You page (No price in URL needed)
+                window.location.href = "Thankyou.html";
                 e.target.reset();
                 
                 setTimeout(() => { 
