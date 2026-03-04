@@ -25,26 +25,23 @@
     const urlParams = new URLSearchParams(window.location.search);
     const exactPrice = urlParams.get('price');
 
-    // 2. TITANIUM MEMORY LOCK: Check if we already fired the pixel permanently
+    // 2. TITANIUM MEMORY LOCK
     if (!localStorage.getItem('pixel_fired_ayamall')) {
-        
-        // 3. Fire the STANDARD Purchase Pixel
         if (exactPrice) {
-            fbq('track', 'Purchase', { 
-                value: exactPrice, 
-                currency: 'MAD' 
-            });
+            fbq('track', 'Purchase', { value: exactPrice, currency: 'MAD' });
         } else {
             fbq('track', 'Purchase'); 
         }
-
-        // 4. Lock the vault FOREVER. It will never fire again on this phone.
         localStorage.setItem('pixel_fired_ayamall', 'true');
-        console.log("Pixel fired successfully. Vault locked permanently.");
-        
-    } else {
-        console.log("Customer refreshed the page. Blocked fake duplicate pixel.");
+        console.log("Pixel fired. Vault locked.");
     }
+
+    // 3. YOUR GENIUS REDIRECT (The Auto-Destruct Sequence)
+    // After 20 seconds (20000 milliseconds), redirect and erase from history
+    setTimeout(function() {
+        window.location.replace("index.html"); 
+    }, 20000);
+    
     </script>
     <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2663210157367551&ev=PageView&noscript=1"/></noscript>
 
@@ -53,16 +50,17 @@
         body { font-family: 'Tajawal', sans-serif; background-color: #f0f2f5; }
         .success-animation { animation: popIn 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
         @keyframes popIn { 0% { transform: scale(0.5); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
-        
-        /* Matching the exact 3D button from your main page */
         .cta-btn { background: linear-gradient(180deg, #fb923c 0%, #ea580c 100%); box-shadow: 0 4px 0 #c2410c, 0 8px 15px rgba(234, 88, 12, 0.2); transition: transform 0.1s, box-shadow 0.1s; }
         .cta-btn:active { transform: translateY(3px); box-shadow: 0 0 0 #c2410c, 0 3px 5px rgba(0,0,0,0.1); }
     </style>
 </head>
 <body class="min-h-screen flex items-center justify-center p-4">
 
-    <div class="max-w-md w-full bg-white rounded-3xl shadow-xl p-8 text-center border border-gray-100 success-animation">
+    <div class="max-w-md w-full bg-white rounded-3xl shadow-xl p-8 text-center border border-gray-100 success-animation relative overflow-hidden">
         
+        <div class="absolute top-0 left-0 h-1 bg-orange-500 w-full" style="animation: shrink 20s linear forwards; transform-origin: right;"></div>
+        <style>@keyframes shrink { from { transform: scaleX(1); } to { transform: scaleX(0); } }</style>
+
         <div class="w-24 h-24 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-6 shadow-inner border border-orange-200">
             <svg class="w-12 h-12 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
@@ -70,9 +68,9 @@
         </div>
 
         <h1 class="text-3xl font-black text-gray-900 mb-2">تم تأكيد طلبك بنجاح!</h1>
-        <p class="text-gray-600 font-bold mb-8 leading-relaxed">شكراً لك على ثقتك في <span class="text-orange-600 font-black text-xl">ayamall</span>.<br>سنتصل بك خلال <span class="text-orange-500 font-black">24 ساعة</span> لتأكيد العنوان وشحن طلبيتك.</p>
+        <p class="text-gray-600 font-bold mb-6 leading-relaxed">شكراً لك على ثقتك في <span class="text-orange-600 font-black text-xl">ayamall</span>.<br>سنتصل بك خلال <span class="text-orange-500 font-black">24 ساعة</span> لتأكيد العنوان وشحن طلبيتك.</p>
 
-        <div class="bg-orange-50 p-4 rounded-xl border border-orange-200 mb-8 text-right shadow-sm">
+        <div class="bg-orange-50 p-4 rounded-xl border border-orange-200 mb-6 text-right shadow-sm">
             <h3 class="font-black text-orange-800 mb-2 text-sm flex items-center gap-2">
                 <svg class="w-5 h-5 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                 الخطوة الأخيرة:
@@ -80,9 +78,11 @@
             <p class="text-xs text-orange-800 font-bold leading-relaxed">يرجى إبقاء هاتفك قريباً منك للرد على مكالمة التأكيد. <span class="text-red-600">لن يتم شحن الطلب حتى نؤكد معك هاتفياً.</span></p>
         </div>
 
-        <a href="/" class="block w-full text-white font-black py-4 rounded-xl shadow-lg cta-btn text-xl">
-            العودة للمتجر
+        <a href="/" class="block w-full text-white font-black py-4 rounded-xl shadow-lg cta-btn text-xl mb-3">
+            العودة للمتجر الآن
         </a>
+        
+        <p class="text-[10px] text-gray-400 font-bold">سيتم إعادتك للصفحة الرئيسية تلقائياً خلال 20 ثانية...</p>
     </div>
 
 </body>
