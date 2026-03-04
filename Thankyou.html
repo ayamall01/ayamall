@@ -10,40 +10,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
     
     <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '2663210157367551');
-    fbq('track', 'PageView');
-
-    // 1. Look inside the URL for the secret price
-    const urlParams = new URLSearchParams(window.location.search);
-    const exactPrice = urlParams.get('price');
-
-    // 2. TITANIUM MEMORY LOCK
-    if (!localStorage.getItem('pixel_fired_ayamall')) {
-        if (exactPrice) {
-            fbq('track', 'Purchase', { value: exactPrice, currency: 'MAD' });
-        } else {
-            fbq('track', 'Purchase'); 
-        }
-        localStorage.setItem('pixel_fired_ayamall', 'true');
-        console.log("Pixel fired. Vault locked.");
-    }
-
-    // 3. YOUR GENIUS REDIRECT (The Auto-Destruct Sequence)
-    // After 20 seconds (20000 milliseconds), redirect and erase from history
+    // AUTO-DESTRUCT REDIRECT (No Pixel Here!)
     setTimeout(function() {
         window.location.replace("index.html"); 
     }, 20000);
-    
     </script>
-    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2663210157367551&ev=PageView&noscript=1"/></noscript>
 
     <style>
         :root { --brand-color: #f97316; }
