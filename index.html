@@ -243,7 +243,7 @@
     }, { threshold: 0.1 });
     observer.observe(document.getElementById('orderForm'));
 
-    // 2. FORM SUBMISSION WITH TITANIUM PIXEL
+    // 2. FORM SUBMISSION WITH TITANIUM PIXEL (AND SHEET HEADERS FIX)
     function handleOrder(e) {
         e.preventDefault();
         const btn = e.target.querySelector('button[type="submit"]');
@@ -256,15 +256,17 @@
 
         const fd = new FormData(e.target);
         
+        // THE FIX: headers included so data populates Google Sheets perfectly
         fetch(GOOGLE_SCRIPT_URL, { 
             method: "POST", 
             mode: "no-cors", 
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
             body: new URLSearchParams(fd).toString() 
         })
         .then(() => {
             setTimeout(() => {
                 
-                // 🔥 TITANIUM PIXEL FIRES HERE: Only on successful form pass 🔥
+                // 🔥 TITANIUM PIXEL FIRES HERE: Hardcoded to 199 DH 🔥
                 if(typeof fbq === 'function') {
                     fbq('track', 'Purchase', { value: '199', currency: 'MAD' });
                     console.log("Titanium Pixel Fired! Price: 199 DH");
@@ -275,7 +277,7 @@
                 btn.classList.add('bg-green-600');
                 if (navigator.vibrate) navigator.vibrate(200);
 
-                // Redirect to neutered Thank You page
+                // Redirect to Thank You page
                 window.location.href = "Thankyou.html";
                 e.target.reset();
                 
