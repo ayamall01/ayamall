@@ -16,7 +16,7 @@
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
     
-    // 👇 ضع الـ PIXEL ID ديالك هنا 👇
+    // 👇 BROSKI: YOUR_PIXEL_ID_HERE 👇
     fbq('init', 'YOUR_PIXEL_ID_HERE'); 
     fbq('track', 'PageView');
     </script>
@@ -56,9 +56,11 @@
         section { padding: 25px 20px; border-bottom: 6px solid var(--gray-bg); }
 
         /* ==========================================
-           2. URGENCY & HERO
+           2. URGENCY & HERO (ALIGNMENT FIXED)
            ========================================== */
-        .urgency-bar { background: var(--brand); color: #fff; text-align: center; padding: 10px; font-size: 14px; font-weight: 800; display: flex; align-items: center; justify-content: center; gap: 8px; }
+        /* 👇 Fixed text alignment here by removing flexbox 👇 */
+        .urgency-bar { background: var(--brand); color: #fff; text-align: center; padding: 10px; font-size: 14px; font-weight: 900; white-space: nowrap; overflow: hidden; line-height: 1.4; }
+        
         .stock-counter { background: #fff3f3; padding: 12px; text-align: center; color: var(--brand); font-weight: 800; font-size: 15px; border-bottom: 1px solid #ffebeb; }
         .pulse-text { animation: pulse-opacity 1.5s infinite; }
         @keyframes pulse-opacity { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
@@ -72,7 +74,7 @@
         .badge { background: #e8f5e9; color: var(--success); padding: 6px 12px; border-radius: 50px; font-size: 13px; font-weight: 800; }
 
         /* ==========================================
-           3. SOCIAL PROOF (WhatsApp)
+           3. SOCIAL PROOF 
            ========================================== */
         .reviews-section { background: var(--whatsapp-bg); }
         .reviews-section h2 { text-align: center; font-size: 20px; margin-bottom: 20px; color: #128c7e; }
@@ -87,7 +89,7 @@
         .ba-img img { width: 100%; height: 100%; object-fit: cover; }
 
         /* ==========================================
-           4. BUNDLES (DECOY PRICING)
+           4. BUNDLES (THE HERO TRAP)
            ========================================== */
         .pricing-section { background: #fff; }
         .pricing-section h2 { text-align: center; font-size: 22px; margin-bottom: 20px; }
@@ -105,7 +107,7 @@
         .best-seller { position: absolute; top: -10px; right: 15px; background: #ffb703; color: #000; font-size: 11px; font-weight: 900; padding: 4px 10px; border-radius: 50px; }
 
         /* ==========================================
-           5. CHECKOUT FORM (FRICTIONLESS)
+           5. CHECKOUT FORM
            ========================================== */
         .checkout { background: var(--gray-bg); padding-bottom: 40px; }
         .checkout h2 { text-align: center; font-size: 22px; margin-bottom: 5px; color: var(--brand); }
@@ -117,14 +119,14 @@
         @keyframes pulse-btn { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.02); } }
 
         /* ==========================================
-           6. FLOATING ELEMENTS (Corrected CSS Overlaps)
+           6. FLOATING ELEMENTS (TOP POPUP + WA FIX)
            ========================================== */
         .sticky-cta { position: fixed; bottom: 0; left: 0; width: 100%; background: #fff; padding: 12px 20px; box-shadow: 0 -4px 15px rgba(0,0,0,0.1); z-index: 99; display: flex; justify-content: center; transition: 0.3s; }
         .sticky-btn { width: 100%; max-width: 440px; height: 55px; background: var(--brand); color: #fff; border: none; border-radius: 12px; font-size: 18px; font-weight: 900; box-shadow: 0 4px 10px rgba(230,57,70,0.3); }
         .hide-sticky { transform: translateY(100%); }
         
-        .sales-popup { position: fixed; bottom: 95px; left: 10px; background: rgba(0,0,0,0.8); color: #fff; padding: 10px 15px; border-radius: 50px; font-size: 12px; font-weight: 700; display: flex; align-items: center; gap: 8px; opacity: 0; transform: translateY(20px); transition: all 0.5s ease; z-index: 100; pointer-events: none; }
-        .sales-popup.show { opacity: 1; transform: translateY(0); }
+        .sales-popup { position: fixed; top: 15px; left: 50%; width: max-content; max-width: 90%; background: rgba(0,0,0,0.85); color: #fff; padding: 10px 15px; border-radius: 50px; font-size: 12px; font-weight: 700; display: flex; align-items: center; gap: 8px; opacity: 0; transform: translate(-50%, -20px); transition: all 0.5s ease; z-index: 999; pointer-events: none; }
+        .sales-popup.show { opacity: 1; transform: translate(-50%, 0); }
         .popup-img { width: 20px; height: 20px; background: var(--success); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; }
         
         .float-wa { position: fixed; width: 60px; height: 60px; bottom: 95px; right: 15px; background-color: #25d366; color: #FFF; border-radius: 50px; box-shadow: 0 4px 10px rgba(37, 211, 102, 0.4); z-index: 100; display: flex; align-items: center; justify-content: center; text-decoration: none; animation: pulse-wa 2s infinite; }
@@ -138,7 +140,7 @@
 
 <div class="container">
 
-    <div class="urgency-bar">⚡ عرض التوصيل المجاني ينتهي يوم <span id="todayDate"></span></div>
+    <div class="urgency-bar">⚡ استفد من التوصيل المجاني اليوم (<span id="todayDate"></span>)</div>
     <div class="stock-counter">⚠️ أسرع! تبقت <span class="pulse-text" style="font-size: 18px;">14</span> قطعة فقط في المخزن</div>
 
     <section class="hero">
@@ -229,7 +231,6 @@
 
         <form id="google-sheet-form">
             <input type="text" class="input-lg" name="name" placeholder="الإسم ديالك..." required>
-            
             <input type="tel" class="input-lg" name="phone" placeholder="رقم الهاتف (مثال: 0612345678)" pattern="^(05|06|07)[0-9]{8}$" title="المرجو إدخال رقم هاتف صحيح يتكون من 10 أرقام ويبدأ بـ 06 أو 07" minlength="10" maxlength="10" required>
 
             <button type="submit" class="btn-submit" id="submitBtn">
@@ -260,17 +261,15 @@
 <div class="wa-tooltip">عندك سؤال؟ تواصل معانا</div>
 
 <script>
-    // 1. برمجة التاريخ الديناميكي باللغة العربية (اليوم)
-    const dateOptions = { weekday: 'long', month: 'long', day: 'numeric' };
+    // 🔥 DATE SCRIPT OPTIMIZED FOR ONE LINE 🔥
+    const dateOptions = { month: 'long', day: 'numeric' };
     document.getElementById('todayDate').innerText = new Date().toLocaleDateString('ar-MA', dateOptions);
 
-    // 2. التمرير الناعم للأسفل
     function scrollToForm() {
         document.getElementById('orderForm').scrollIntoView({ behavior: 'smooth' });
         setTimeout(() => document.querySelector('input[name="name"]').focus(), 500);
     }
 
-    // 3. إخفاء وإظهار الزر الثابت
     const observer = new IntersectionObserver((entries) => {
         const sticky = document.getElementById('stickyCta');
         if(entries[0].isIntersecting) {
@@ -281,7 +280,6 @@
     }, { threshold: 0.1 });
     observer.observe(document.getElementById('orderForm'));
 
-    // 4. نظام المبيعات الوهمي الآمن (مرتين كحد أقصى)
     const names =['سعيد', 'فاطمة', 'ياسين', 'عادل', 'مريم', 'رشيد', 'خديجة', 'إبراهيم', 'سناء'];
     const cities =['الدار البيضاء', 'الرباط', 'مراكش', 'طنجة', 'أكادير', 'فاس', 'وجدة', 'القنيطرة', 'سلا'];
     const packs =['الباك الذهبي', 'الباك الذهبي', 'الباك العادي', 'باك الجملة'];
@@ -311,10 +309,7 @@
     }
     setTimeout(schedulePopup, 8000);
 
-    // ==========================================
-    // 5. GOOGLE SHEETS & FB PIXEL SCRIPT
-    // ==========================================
-    // 👇 ضع رابط Google Apps Script الخاص بك هنا 👇
+    // 👇 BROSKI: YOUR_GOOGLE_SCRIPT_WEB_APP_URL_HERE 👇
     const scriptURL = 'YOUR_GOOGLE_SCRIPT_WEB_APP_URL_HERE'; 
     const form = document.getElementById('google-sheet-form');
     const submitBtn = document.getElementById('submitBtn');
@@ -322,7 +317,6 @@
     form.addEventListener('submit', e => {
         e.preventDefault();
         
-        // تعطيل الزر لتجنب الطلبات المكررة
         submitBtn.innerHTML = 'جاري إرسال الطلب... ⏳';
         submitBtn.style.background = '#e63946';
         submitBtn.disabled = true;
@@ -333,7 +327,6 @@
 
         fetch(scriptURL, { method: 'POST', body: formData})
             .then(response => {
-                // تفعيل FB Pixel بجودة بيانات عالية
                 if(typeof fbq !== 'undefined') {
                     fbq('track', 'Purchase', {
                         content_name: 'Eelhoe Water Gel',
@@ -343,7 +336,6 @@
                     });
                 }
                 
-                // إعطاء بيكسل فيسبوك نصف ثانية لتسجيل المبيعة قبل التوجيه لضمان عدم ضياع الداتا
                 setTimeout(() => {
                     window.location.href = "thank-you.html";
                 }, 500);
