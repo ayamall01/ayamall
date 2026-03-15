@@ -3,58 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#f97316">
-    <title>تم تأكيد الطلب - Ayamall</title>
-    
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
+    <title>تم تأكيد طلبك بنجاح!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@700;900&display=swap" rel="stylesheet">
     
     <script>
-    // AUTO-DESTRUCT REDIRECT (No Pixel Here!)
-    setTimeout(function() {
-        window.location.replace("index.html"); 
-    }, 20000);
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    
+    // 👇 ضع الـ PIXEL ID ديالك هنا (يجب أن يكون نفس الرقم الموجود في الصفحة الرئيسية) 👇
+    fbq('init', 'YOUR_PIXEL_ID_HERE'); 
+    fbq('track', 'PageView');
     </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID_HERE&ev=PageView&noscript=1"
+    /></noscript>
 
     <style>
-        :root { --brand-color: #f97316; }
-        body { font-family: 'Tajawal', sans-serif; background-color: #f0f2f5; }
-        .success-animation { animation: popIn 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
-        @keyframes popIn { 0% { transform: scale(0.5); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
-        .cta-btn { background: linear-gradient(180deg, #fb923c 0%, #ea580c 100%); box-shadow: 0 4px 0 #c2410c, 0 8px 15px rgba(234, 88, 12, 0.2); transition: transform 0.1s, box-shadow 0.1s; }
-        .cta-btn:active { transform: translateY(3px); box-shadow: 0 0 0 #c2410c, 0 3px 5px rgba(0,0,0,0.1); }
+        body { margin: 0; padding: 0; background-color: #f8f9fa; font-family: 'Tajawal', sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; text-align: center; }
+        .box { background: #fff; padding: 40px 20px; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); max-width: 400px; width: 90%; }
+        .icon { width: 80px; height: 80px; background: #2a9d8f; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 40px; margin: 0 auto 20px; animation: bounce 1s ease; }
+        h1 { color: #1d3557; font-size: 24px; margin-bottom: 10px; }
+        p { color: #6c757d; font-size: 16px; line-height: 1.5; font-weight: 700; margin-bottom: 20px; }
+        .highlight { background: #fff3f3; color: #e63946; padding: 10px; border-radius: 8px; font-weight: 900; }
+        @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-20px);} 60% {transform: translateY(-10px);} }
     </style>
 </head>
-<body class="min-h-screen flex items-center justify-center p-4">
-
-    <div class="max-w-md w-full bg-white rounded-3xl shadow-xl p-8 text-center border border-gray-100 success-animation relative overflow-hidden">
-        
-        <div class="absolute top-0 left-0 h-1 bg-orange-500 w-full" style="animation: shrink 20s linear forwards; transform-origin: right;"></div>
-        <style>@keyframes shrink { from { transform: scaleX(1); } to { transform: scaleX(0); } }</style>
-
-        <div class="w-24 h-24 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-6 shadow-inner border border-orange-200">
-            <svg class="w-12 h-12 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
-            </svg>
+<body>
+    <div class="box">
+        <div class="icon">✓</div>
+        <h1>تم تسجيل طلبك بنجاح!</h1>
+        <p>شكراً لثقتك بنا. لقد توصلنا بطلبك وسنقوم بمعالجته فوراً.</p>
+        <div class="highlight">
+            المرجو إبقاء هاتفك مشغلاً، سوف نتصل بك في غضون 24 ساعة لتأكيد العنوان وإرسال الطلب. 📞
         </div>
-
-        <h1 class="text-3xl font-black text-gray-900 mb-2">تم تأكيد طلبك بنجاح!</h1>
-        <p class="text-gray-600 font-bold mb-6 leading-relaxed">شكراً لك على ثقتك في <span class="text-orange-600 font-black text-xl">ayamall</span>.<br>سنتصل بك خلال <span class="text-orange-500 font-black">24 ساعة</span> لتأكيد العنوان وشحن طلبيتك.</p>
-
-        <div class="bg-orange-50 p-4 rounded-xl border border-orange-200 mb-6 text-right shadow-sm">
-            <h3 class="font-black text-orange-800 mb-2 text-sm flex items-center gap-2">
-                <svg class="w-5 h-5 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                الخطوة الأخيرة:
-            </h3>
-            <p class="text-xs text-orange-800 font-bold leading-relaxed">يرجى إبقاء هاتفك قريباً منك للرد على مكالمة التأكيد. <span class="text-red-600">لن يتم شحن الطلب حتى نؤكد معك هاتفياً.</span></p>
-        </div>
-
-        <a href="/" class="block w-full text-white font-black py-4 rounded-xl shadow-lg cta-btn text-xl mb-3">
-            العودة للمتجر الآن
-        </a>
-        
-        <p class="text-[10px] text-gray-400 font-bold">سيتم إعادتك للصفحة الرئيسية تلقائياً خلال 20 ثانية...</p>
     </div>
-
 </body>
 </html>
