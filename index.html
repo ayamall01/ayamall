@@ -2,15 +2,12 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#dc2626">
-    <title>تصفية المخزون - طلاء مانع تسرب شفاف</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Eelhoe - العازل المائي النهائي</title>
+    <!-- خط Tajawal السريع والحديث -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@500;700;800;900&display=swap" rel="stylesheet">
     
-    <link rel="preconnect" href="https://cdn.tailwindcss.com">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
-    
+    <!-- 🟢 FACEBOOK PIXEL 🟢 -->
     <script>
     !function(f,b,e,v,n,t,s)
     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -20,299 +17,347 @@
     t.src=v;s=b.getElementsByTagName(e)[0];
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '2663210157367551');
+    
+    // 👇 ضع الـ PIXEL ID ديالك هنا 👇
+    fbq('init', 'YOUR_PIXEL_ID_HERE'); 
     fbq('track', 'PageView');
     </script>
     <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=2663210157367551&ev=PageView&noscript=1"
+    src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID_HERE&ev=PageView&noscript=1"
     /></noscript>
-    
+
     <style>
-        :root { --brand-color: #dc2626; --safe-bottom: env(safe-area-inset-bottom); }
-        html { -webkit-tap-highlight-color: transparent; scroll-behavior: smooth; }
-        body { font-family: 'Tajawal', sans-serif; background-color: #f0f2f5; margin: 0; padding: 0; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
-        .mobile-wrapper { width: 100%; max-width: 480px; margin: 0 auto; background-color: white; min-height: 100vh; position: relative; padding-bottom: calc(20px + var(--safe-bottom)); box-shadow: 0 0 20px rgba(0,0,0,0.05); }
-        .bg-brand { background-color: var(--brand-color); }
-        .text-brand { color: var(--brand-color); }
-        input, select, textarea { font-size: 16px !important; }
-        input[type="text"], input[type="tel"] { -webkit-appearance: none; border-radius: 0.75rem; }
-        .animate-pulse-fast { animation: pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
-        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .7; } }
-        .scarcity-bar { background-image: linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent); background-size: 1rem 1rem; animation: stripes 1s linear infinite; }
-        @keyframes stripes { from { background-position: 1rem 0; } to { background-position: 0 0; } }
-        .cta-btn { background: linear-gradient(180deg, #ef4444 0%, #b91c1c 100%); box-shadow: 0 4px 0 #7f1d1d, 0 8px 15px rgba(220, 38, 38, 0.3); touch-action: manipulation; transition: transform 0.1s, box-shadow 0.1s; }
-        .cta-btn:active { transform: translateY(3px); box-shadow: 0 0 0 #7f1d1d, 0 3px 5px rgba(0,0,0,0.1); }
-        .sticky-footer { position: fixed; bottom: 0; left: 50%; transform: translateX(-50%); width: 100%; max-width: 480px; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); padding: 12px 16px; padding-bottom: calc(12px + var(--safe-bottom)); box-shadow: 0 -4px 20px rgba(0,0,0,0.08); z-index: 999; border-top: 1px solid #e5e7eb; transition: transform 0.4s ease; }
-        .sticky-footer.hidden-footer { transform: translate(-50%, 200%); }
-        .whatsapp-float { position: fixed; bottom: calc(90px + var(--safe-bottom)); right: 16px; background-color: #25d366; color: #FFF; border-radius: 50px; text-align: center; font-size: 30px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); z-index: 998; width: 55px; height: 55px; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: all 0.3s ease; animation: whatsapp-pulse 2s infinite; }
-        .whatsapp-float:active { transform: scale(0.95); }
-        @keyframes whatsapp-pulse { 0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 70% { transform: scale(1.1); box-shadow: 0 0 0 12px rgba(37, 211, 102, 0); } 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
+        /* ==========================================
+           1. CORE SETUP & COLORS
+           ========================================== */
+        :root {
+            --brand: #e63946;
+            --success: #2a9d8f;
+            --dark: #1d3557;
+            --gray-bg: #f8f9fa;
+            --text-main: #2b2d42;
+            --whatsapp-bg: #e5ddd5;
+            --whatsapp-msg: #dcf8c6;
+            --radius: 16px;
+        }
+
+        * {
+            box-sizing: border-box; margin: 0; padding: 0;
+            font-family: 'Tajawal', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body { background-color: #e0e0e0; color: var(--text-main); padding-bottom: 80px; }
+
+        .container {
+            max-width: 480px; margin: 0 auto; background: #ffffff;
+            min-height: 100vh; box-shadow: 0 0 25px rgba(0,0,0,0.1);
+            overflow: hidden; position: relative;
+        }
+
+        section { padding: 25px 20px; border-bottom: 6px solid var(--gray-bg); }
+
+        /* ==========================================
+           2. URGENCY & HERO
+           ========================================== */
+        .urgency-bar { background: var(--brand); color: #fff; text-align: center; padding: 10px; font-size: 14px; font-weight: 800; display: flex; align-items: center; justify-content: center; gap: 8px; }
+        .stock-counter { background: #fff3f3; padding: 12px; text-align: center; color: var(--brand); font-weight: 800; font-size: 15px; border-bottom: 1px solid #ffebeb; }
+        .pulse-text { animation: pulse-opacity 1.5s infinite; }
+        @keyframes pulse-opacity { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+        .hero { text-align: center; padding-top: 20px; }
+        .stars { color: #ffb703; font-size: 20px; letter-spacing: 2px; margin-bottom: 5px; }
+        .rating-text { font-size: 12px; color: #6c757d; font-weight: 700; margin-bottom: 15px; }
+        .hero h1 { font-size: 26px; font-weight: 900; line-height: 1.3; margin-bottom: 15px; color: var(--dark); }
+        .hero h1 span { color: var(--brand); background: #fff0f0; padding: 0 5px; border-radius: 4px; }
+        .trust-badges { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin-top: 15px; }
+        .badge { background: #e8f5e9; color: var(--success); padding: 6px 12px; border-radius: 50px; font-size: 13px; font-weight: 800; }
+
+        /* ==========================================
+           3. SOCIAL PROOF (WhatsApp)
+           ========================================== */
+        .reviews-section { background: var(--whatsapp-bg); }
+        .reviews-section h2 { text-align: center; font-size: 20px; margin-bottom: 20px; color: #128c7e; }
+        .wa-chat { display: flex; flex-direction: column; gap: 15px; margin-bottom: 20px; }
+        .wa-msg { max-width: 85%; padding: 10px 15px; border-radius: 12px; font-size: 15px; font-weight: 700; line-height: 1.4; position: relative; box-shadow: 0 1px 2px rgba(0,0,0,0.1); }
+        .wa-msg.client { background: var(--whatsapp-msg); align-self: flex-start; border-top-right-radius: 0; }
+        .wa-msg.us { background: #ffffff; align-self: flex-end; border-top-left-radius: 0; color: #555; font-size: 14px; }
+        .wa-time { font-size: 10px; color: #999; text-align: left; display: block; margin-top: 5px; }
+        .wa-name { font-size: 12px; font-weight: 900; color: #075e54; margin-bottom: 3px; }
+        .ba-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .ba-img { height: 140px; background: #fff; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 12px; color: #999; box-shadow: 0 2px 5px rgba(0,0,0,0.05); overflow: hidden; }
+        .ba-img img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* ==========================================
+           4. BUNDLES (DECOY PRICING)
+           ========================================== */
+        .pricing-section { background: #fff; }
+        .pricing-section h2 { text-align: center; font-size: 22px; margin-bottom: 20px; }
+        input[type="radio"] { display: none; }
+        .bundle { border: 2px solid #e9ecef; border-radius: var(--radius); padding: 15px; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; transition: 0.2s; background: #f8f9fa; position: relative; }
+        .bundle-title { font-size: 18px; font-weight: 900; margin-bottom: 4px; }
+        .bundle-desc { font-size: 13px; color: var(--success); font-weight: 800; }
+        .bundle-price { font-size: 22px; font-weight: 900; color: var(--dark); }
+        .radio-btn { width: 24px; height: 24px; border: 2px solid #ced4da; border-radius: 50%; background: #fff; display: flex; align-items: center; justify-content: center; }
+        .radio-btn::after { content: ''; width: 12px; height: 12px; background: var(--brand); border-radius: 50%; transform: scale(0); transition: 0.2s; }
+        input[type="radio"]:checked + .bundle { border-color: var(--brand); background: #fffafa; box-shadow: 0 4px 15px rgba(230, 57, 70, 0.1); transform: scale(1.02); }
+        input[type="radio"]:checked + .bundle .radio-btn { border-color: var(--brand); }
+        input[type="radio"]:checked + .bundle .radio-btn::after { transform: scale(1); }
+        input[type="radio"]:checked + .bundle .bundle-price { color: var(--brand); }
+        .best-seller { position: absolute; top: -10px; right: 15px; background: #ffb703; color: #000; font-size: 11px; font-weight: 900; padding: 4px 10px; border-radius: 50px; }
+
+        /* ==========================================
+           5. CHECKOUT FORM (FRICTIONLESS)
+           ========================================== */
+        .checkout { background: var(--gray-bg); padding-bottom: 40px; }
+        .checkout h2 { text-align: center; font-size: 22px; margin-bottom: 5px; color: var(--brand); }
+        .checkout p { text-align: center; font-size: 14px; color: #6c757d; font-weight: 700; margin-bottom: 20px; }
+        .input-lg { width: 100%; height: 60px; background: #fff; border: 2px solid #ced4da; border-radius: 12px; padding: 0 20px; font-size: 18px; font-weight: 700; text-align: center; margin-bottom: 15px; transition: 0.3s; }
+        .input-lg:focus { outline: none; border-color: var(--brand); box-shadow: 0 0 0 4px rgba(230, 57, 70, 0.1); }
+        .btn-submit { width: 100%; height: 65px; background: var(--success); color: #fff; border: none; border-radius: 12px; font-size: 22px; font-weight: 900; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; box-shadow: 0 8px 20px rgba(42, 157, 143, 0.3); transition: 0.3s; }
+        .btn-submit:not(:disabled) { animation: pulse-btn 2s infinite; }
+        @keyframes pulse-btn { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.02); } }
+
+        /* ==========================================
+           6. FLOATING ELEMENTS (Corrected CSS Overlaps)
+           ========================================== */
+        .sticky-cta { position: fixed; bottom: 0; left: 0; width: 100%; background: #fff; padding: 12px 20px; box-shadow: 0 -4px 15px rgba(0,0,0,0.1); z-index: 99; display: flex; justify-content: center; transition: 0.3s; }
+        .sticky-btn { width: 100%; max-width: 440px; height: 55px; background: var(--brand); color: #fff; border: none; border-radius: 12px; font-size: 18px; font-weight: 900; box-shadow: 0 4px 10px rgba(230,57,70,0.3); }
+        .hide-sticky { transform: translateY(100%); }
+        
+        /* أصلحنا مسافة الـ bottom لتجنب التداخل مع زر الشراء */
+        .sales-popup { position: fixed; bottom: 95px; left: 10px; background: rgba(0,0,0,0.8); color: #fff; padding: 10px 15px; border-radius: 50px; font-size: 12px; font-weight: 700; display: flex; align-items: center; gap: 8px; opacity: 0; transform: translateY(20px); transition: all 0.5s ease; z-index: 100; pointer-events: none; }
+        .sales-popup.show { opacity: 1; transform: translateY(0); }
+        .popup-img { width: 20px; height: 20px; background: var(--success); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; }
+        
+        .float-wa { position: fixed; width: 60px; height: 60px; bottom: 95px; right: 15px; background-color: #25d366; color: #FFF; border-radius: 50px; box-shadow: 0 4px 10px rgba(37, 211, 102, 0.4); z-index: 100; display: flex; align-items: center; justify-content: center; text-decoration: none; animation: pulse-wa 2s infinite; }
+        .float-wa svg { width: 35px; height: 35px; fill: white; margin-top: -1px; margin-left: 1px; }
+        .wa-tooltip { position: fixed; bottom: 110px; right: 85px; background-color: #fff; color: #333; padding: 5px 12px; border-radius: 20px; font-size: 12px; font-weight: 800; box-shadow: 0 2px 5px rgba(0,0,0,0.1); z-index: 100; border: 1px solid #eee; pointer-events: none; }
+        .wa-tooltip::after { content: ''; position: absolute; top: 50%; right: -5px; margin-top: -5px; border-width: 5px 0 5px 5px; border-style: solid; border-color: transparent transparent transparent #fff; }
+        @keyframes pulse-wa { 0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); } 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
     </style>
 </head>
 <body>
 
-<div class="mobile-wrapper">
-    <a href="https://wa.me/212638501541?text=مرحبا، أريد طلب عرض التصفية 3 علب بـ 199 درهم" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
-        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 16 16"><path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/></svg>
-    </a>
+<div class="container">
 
-    <div class="bg-gray-900 text-white py-3 px-4 shadow-md flex justify-center items-center sticky top-0 z-50 border-b-4 border-red-600">
-        <div class="font-bold text-3xl tracking-tighter">ayamall</div>
-    </div>
+    <!-- تاريخ ديناميكي في شريط الاستعجال -->
+    <div class="urgency-bar">⚡ عرض التوصيل المجاني ينتهي يوم <span id="todayDate"></span></div>
+    <div class="stock-counter">⚠️ أسرع! تبقت <span class="pulse-text" style="font-size: 18px;">14</span> قطعة فقط في المخزن</div>
 
-    <div class="bg-red-600 text-white text-center py-2 px-3 text-sm font-bold flex justify-center items-center shadow-inner relative z-40">
-        <span class="animate-pulse-fast flex items-center gap-2">
-            🚨 تصفية المخزون النهائي - آخر 12 عرض 🚨
-        </span>
-    </div>
-
-    <div class="px-4 pt-6 pb-2 text-center bg-white">
-        <h1 class="text-3xl font-black text-gray-900 leading-tight mb-2">طلاء مانع تسرب شفاف (عرض 3 علب)</h1>
+    <section class="hero">
+        <div class="stars">★★★★★</div>
+        <div class="rating-text">4.9/5 بناءً على +1,250 تقييم</div>
         
-        <div class="flex justify-center items-center gap-3 mb-4">
-            <span class="text-4xl font-black text-brand">199 درهم</span>
-            <span class="text-gray-400 line-through text-lg decoration-gray-500 decoration-2">450 درهم</span>
+        <h1>تهنى من قطرة الشتا والغمال <span>بصفة نهائية!</span> 🌧️</h1>
+        
+        <img src="save.gif" alt="عازل مائي Eelhoe" style="width: 100%; border-radius: 16px; margin-bottom: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.15); display: block;">
+
+        <div class="trust-badges">
+            <div class="badge">🚚 توصيل مجاني</div>
+            <div class="badge">🛡️ الدفع عند الاستلام</div>
+            <div class="badge">✅ ضمان الفعالية</div>
         </div>
-        
-        <div class="relative mx-auto mb-8 max-w-[400px]">
-            <div class="absolute top-2 right-2 bg-yellow-400 text-black font-black text-xs px-2 py-1 rounded shadow-md z-10 rotate-3 transform">عرض حصري 3 علب</div>
-            <div class="aspect-square w-full relative bg-gray-100 rounded-2xl overflow-hidden border border-gray-100 shadow-xl">
-                <img src="product.png" onerror="this.src='https://ae01.alicdn.com/kf/S2659779262294191942767171542f2e5B/300g-Transparent-Waterproof-Coating-Agent-Invisible-Paste-Sealant-With-Brush-Wall-Repair-Tools-For-Bathroom-Roof.jpg'" class="w-full h-full object-cover" alt="Product">
+    </section>
+
+    <section class="reviews-section">
+        <h2>آراء الكليان ديالنا (سكرين شوت واتساب) 💬</h2>
+        <div class="wa-chat">
+            <div class="wa-msg client">
+                <div class="wa-name">يوسف - الدار البيضاء</div>
+                خويا تبارك الله عليكم، داك البرودوي صدق مخير. دوزتو فواحد الشق فالسقف والبارح صبات الشتا مزيان والحمد لله قطرة مادازت. الله يرحم الوالدين 🙏
+                <span class="wa-time">14:22</span>
             </div>
-            <div class="bg-white p-3 rounded-xl shadow-[0_10px_20px_-5px_rgba(0,0,0,0.1)] absolute -bottom-6 left-4 right-4 border border-red-100 z-20">
-                <div class="flex justify-between text-[11px] font-bold mb-1">
-                    <span class="text-red-600 flex items-center gap-1">🔥 متبقي 12 عرض فقط!</span>
-                    <span class="text-gray-500">ينتهي العرض قريباً</span>
+            <div class="wa-msg us">
+                بصحتك أخويا يوسف، هدا هو الهدف ديالنا. شكرا على ثقتك!
+                <span class="wa-time">14:25</span>
+            </div>
+            <div class="wa-msg client">
+                <div class="wa-name">أمينة - طنجة</div>
+                وصلني الكوموند ديالي ليوم، شكرا على التوصيل السريع. الشيتة لي عطيتوني معاه عاوناتني بزاف باش نطلي البلايص الضيقين. خدمة نقية 👍
+                <span class="wa-time">09:15</span>
+            </div>
+        </div>
+
+        <h3 style="text-align:center; font-size:16px; margin: 20px 0 10px; color:#555;">صور قبل وبعد (من زبائننا):</h3>
+        <div class="ba-grid">
+            <div class="ba-img"><img src="before.jpg" alt="صورة قبل"></div>
+            <div class="ba-img"><img src="after.jpg" alt="صورة بعد"></div>
+        </div>
+    </section>
+
+    <section class="pricing-section">
+        <h2>شحال من عبوة بغيتي؟ 👇</h2>
+
+        <label>
+            <input type="radio" name="package_price" value="199">
+            <div class="bundle">
+                <div>
+                    <div class="bundle-title">الباك العادي (2 عبوات)</div>
+                    <div class="bundle-desc">🎁 + 2 فرشات مجاناً</div>
                 </div>
-                <div class="w-full bg-gray-200 rounded-full h-2.5 overflow-hidden"><div class="bg-red-600 h-2.5 rounded-full scarcity-bar" style="width: 92%"></div></div>
+                <div class="bundle-price">199 درهم</div>
+                <div class="radio-btn"></div>
             </div>
-        </div>
+        </label>
 
-        <div class="mt-8 mb-4 px-2">
-            <p class="text-gray-600 text-sm font-bold leading-relaxed">الحل الثوري لإغلاق الشقوق ومنع التسربات. <span class="text-red-600 font-black">احصل على 3 علب (900 غرام إجمالي) لتأمين منزلك بالكامل بسعر التصفية!</span></p>
-        </div>
-        
-        <a href="#offers" class="flex w-full py-4 text-xl font-black text-white rounded-xl cta-btn mb-3 items-center justify-center gap-2">
-            <span>احجز العرض الآن</span>
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 13l-7 7-7-7m14-8l-7 7-7-7" /></svg>
-        </a>
-    </div>
+        <label>
+            <input type="radio" name="package_price" value="249" checked>
+            <div class="bundle">
+                <div class="best-seller">🔥 الأكثر مبيعاً</div>
+                <div>
+                    <div class="bundle-title">الباك الذهبي (3 عبوات)</div>
+                    <div class="bundle-desc">🎁 + 3 فرشات مجاناً</div>
+                </div>
+                <div class="bundle-price">249 درهم</div>
+                <div class="radio-btn"></div>
+            </div>
+        </label>
 
-    <div class="bg-gray-900 text-white py-8 px-4 text-center">
-        <h2 class="text-2xl font-bold text-white mb-4">شاهد الفرق بنفسك!</h2>
-        <div class="relative rounded-xl overflow-hidden border-4 border-white shadow-2xl bg-black max-w-[400px] mx-auto">
-            <img src="before-after.gif" onerror="this.src='https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcDExaHJ4eW94eW94eW94eW94eW94eW94eW94eW94eSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o6vXVzKWtk4jcog9i/giphy.gif'" class="w-full h-auto object-cover" loading="lazy">
-        </div>
-    </div>
+        <label>
+            <input type="radio" name="package_price" value="449">
+            <div class="bundle">
+                <div>
+                    <div class="bundle-title">باك الجملة (6 عبوات)</div>
+                    <div class="bundle-desc">للمساحات الكبيرة 🏢</div>
+                </div>
+                <div class="bundle-price">449 درهم</div>
+                <div class="radio-btn"></div>
+            </div>
+        </label>
+    </section>
 
-    <div class="py-8 px-4 bg-gray-50 border-t border-gray-200">
-        <h2 class="text-center text-2xl font-black text-gray-800 mb-6">آراء الزبائن المغاربة 🇲🇦</h2>
-        <div class="space-y-4 max-w-[400px] mx-auto">
+    <section class="checkout" id="orderForm">
+        <h2>عمر هاد 2 خانات فقط 👇</h2>
+        <p>ماتعذبش راسك تكتب العنوان، غنعيطو ليك وناخدوه من عندك!</p>
+
+        <form id="google-sheet-form">
+            <input type="text" class="input-lg" name="name" placeholder="الإسم ديالك..." required>
             
-            <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100">
-                <div class="flex items-center gap-3 mb-2">
-                    <div class="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center font-bold text-gray-500">A</div>
-                    <div>
-                        <h4 class="font-bold text-sm text-gray-900">أحمد بنعلي (الدار البيضاء)</h4>
-                        <div class="flex text-yellow-400 text-xs">★★★★★</div>
-                    </div>
-                </div>
-                <p class="text-gray-600 text-sm">"خديت عرض 3 علب وخدمت بيهم للسطح، النتيجة كانت مبهرة نشف دغيا ومابقاتش القطرة. الله يعطيك الصحة."</p>
-            </div>
+            <!-- فلتر رقم الهاتف الصارم (10 أرقام تبدأ ب 05 أو 06 أو 07) -->
+            <input type="tel" class="input-lg" name="phone" placeholder="رقم الهاتف (مثال: 0612345678)" pattern="^(05|06|07)[0-9]{8}$" title="المرجو إدخال رقم هاتف صحيح يتكون من 10 أرقام ويبدأ بـ 06 أو 07" minlength="10" maxlength="10" required>
 
-            <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100">
-                <div class="flex items-center gap-3 mb-2">
-                    <div class="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center font-bold text-gray-500">F</div>
-                    <div>
-                        <h4 class="font-bold text-sm text-gray-900">فاطمة (مراكش)</h4>
-                        <div class="flex text-yellow-400 text-xs">★★★★★</div>
-                    </div>
-                </div>
-                <p class="text-gray-600 text-sm">"عجبني بزاف حيث شفاف ومخسرش ليا الديكور ديال الزليج فالحمام. شكراً على التوصيل السريع."</p>
-            </div>
-
-            <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100">
-                <div class="flex items-center gap-3 mb-2">
-                    <div class="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center font-bold text-gray-500">K</div>
-                    <div>
-                        <h4 class="font-bold text-sm text-gray-900">كريم (طنجة)</h4>
-                        <div class="flex text-yellow-400 text-xs">★★★★★</div>
-                    </div>
-                </div>
-                <p class="text-gray-600 text-sm">"كنت كنعاني من رطوبة فالحيط، درت هاد الطلاء وهناتني. الثمن ديال 3 علب مناسب جدا مقارنة مع السوق."</p>
-            </div>
-
-        </div>
-    </div>
-
-    <div id="offers" class="py-8 px-4 bg-white relative border-t border-gray-200">
-        <div class="text-center mb-6">
-            <h2 class="text-3xl font-black text-gray-900">الاستمارة لطلب العرض</h2>
-            <div class="inline-flex items-center gap-2 bg-red-50 text-red-800 px-3 py-1.5 rounded-lg text-xs font-bold mt-2 border border-red-100">
-                <span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-red-600"></span></span>
-                الكمية محدودة جداً!
-            </div>
-        </div>
-
-        <form id="orderForm" onsubmit="handleOrder(event)" class="space-y-6 max-w-[400px] mx-auto">
-            
-            <div class="space-y-4">
-                <input type="hidden" name="bundle" value="199">
-
-                <div class="selection-card border-2 border-red-500 bg-red-50 rounded-xl p-3 flex justify-between items-center relative shadow-md h-20">
-                    <div class="absolute -top-3 right-3 bg-red-600 text-white text-[10px] font-bold px-3 py-1 rounded-full shadow-md z-10 animate-pulse">🔥 عرض تصفية المخزون</div>
-                    <div class="flex items-center gap-3">
-                        <div class="w-5 h-5 rounded-full border-2 border-red-600 bg-red-600 flex items-center justify-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 text-white" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
-                        </div>
-                        <div>
-                            <div class="font-black text-gray-900 text-sm">3 علب بحجم 300g (900g)</div>
-                            <div class="text-[10px] text-green-700 font-bold flex items-center gap-1">توصيل مجاني في كل المغرب</div>
-                        </div>
-                    </div>
-                    <div class="text-left flex flex-col justify-center">
-                        <div class="text-xs text-gray-400 line-through">450 DH</div>
-                        <div class="text-2xl font-black text-red-600 leading-none">199 DH</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="bg-white p-4 rounded-2xl border-2 border-gray-200 shadow-lg">
-                <p class="text-right text-gray-600 text-sm font-bold mb-4 flex items-center gap-2">👇 معلومات التوصيل</p>
-                <div class="space-y-4">
-                    <div>
-                        <label class="block text-xs font-bold text-gray-700 mb-1 mr-1">الاسم الكامل <span class="text-red-500">*</span></label>
-                        <input type="text" name="name" required placeholder="مثال: محمد العمري" class="w-full bg-gray-50 border border-gray-300 rounded-xl p-4 text-right focus:border-red-500 focus:ring-2 focus:ring-red-100 outline-none transition-all font-bold text-gray-800">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-bold text-gray-700 mb-1 mr-1">المدينة <span class="text-red-500">*</span></label>
-                        <input type="text" name="city" required placeholder="مثال: الدار البيضاء" class="w-full bg-gray-50 border border-gray-300 rounded-xl p-4 text-right focus:border-red-500 focus:ring-2 focus:ring-red-100 outline-none transition-all font-bold text-gray-800">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-bold text-gray-700 mb-1 mr-1">رقم الهاتف <span class="text-red-500">*</span></label>
-                        <input type="tel" name="tel" required placeholder="06XXXXXXXX" class="w-full bg-gray-50 border border-gray-300 rounded-xl p-4 text-right focus:border-red-500 focus:ring-2 focus:ring-red-100 outline-none transition-all font-bold text-gray-800 tracking-widest" style="direction: ltr; text-align: right;">
-                    </div>
-                </div>
-            </div>
-
-            <div class="pt-4 pb-12">
-                <button type="submit" class="w-full py-5 text-xl font-black text-white rounded-xl cta-btn flex items-center justify-center gap-2 group relative overflow-hidden shadow-2xl">
-                    <span class="relative z-10">🛒 تأكيد الطلب (199 درهم)</span>
-                </button>
-                <div class="flex justify-center items-center gap-2 mt-4 text-gray-400 grayscale opacity-80">
-                    <span class="text-[10px] font-bold">الدفع عند الاستلام - التوصيل مجاني</span>
-                </div>
+            <button type="submit" class="btn-submit" id="submitBtn">
+                أطلب الآن والدفع لاحقاً 🚚
+            </button>
+            <div style="text-align:center; font-size:13px; font-weight:700; color:#2a9d8f; margin-top:12px;">
+                🔒 لن تدفع أي درهم حتى تستلم منتجك.
             </div>
         </form>
-    </div>
-
-    <div class="sticky-footer flex items-center justify-between gap-3">
-        <div class="flex flex-col">
-            <span class="text-[10px] text-gray-500 font-bold decoration-gray-400 line-through">450 DH</span>
-            <span class="text-2xl font-black text-brand leading-none">199 DH</span>
-        </div>
-        <button onclick="document.getElementById('offers').scrollIntoView({behavior: 'smooth'})" class="bg-brand text-white px-8 py-3 rounded-xl font-bold shadow-lg flex-1 active:scale-95 transition-transform text-lg">
-            اطلب 3 علب الآن
-        </button>
-    </div>
+    </section>
 
 </div>
 
-<div id="toast" class="fixed top-24 left-1/2 -translate-x-1/2 bg-gray-800/90 backdrop-blur text-white px-4 py-3 rounded-xl text-xs font-bold shadow-2xl z-50 transition-all duration-500 opacity-0 translate-y-10 flex items-center gap-3 w-[90%] max-w-[350px] pointer-events-none">
-    <div class="flex-1"><p id="toast-text" class="text-right">شخص ما اشترى المنتج</p></div>
-    <div class="w-8 h-8 bg-white/10 rounded-lg flex items-center justify-center text-lg">📦</div>
+<div class="sticky-cta" id="stickyCta">
+    <button class="sticky-btn" onclick="scrollToForm()">أطلب الآن (الكمية محدودة) 👇</button>
 </div>
+
+<div class="sales-popup" id="salesPopup">
+    <div class="popup-img">✓</div>
+    <span id="popupText">محمد من أكادير طلب للتو الباك الذهبي</span>
+</div>
+
+<a href="https://wa.me/212638501541?text=%D8%B3%D9%84%D8%A7%D9%85%D8%8C%20%D8%A8%D8%BA%D9%8A%D8%AA%20%D9%86%D8%B3%D9%88%D9%84%20%D8%B9%D9%84%D9%89%20%D8%A7%D9%84%D8%B9%D8%A7%D8%B2%D9%84%20%D8%A7%D9%84%D9%85%D8%A7%D8%A6%D9%8A%20Eelhoe" target="_blank" class="float-wa">
+    <svg viewBox="0 0 24 24" fill="currentColor">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+    </svg>
+</a>
+<div class="wa-tooltip">عندك سؤال؟ تواصل معانا</div>
 
 <script>
-    // --- EXACT GOOGLE SCRIPT URL ---
-    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx_mptD_sy4IwzC950Z79gaEE92XspvluImwC1IdNjeiVHVJNZVuUYaPiPwIUiUcdDQ/exec";
+    // 1. برمجة التاريخ الديناميكي باللغة العربية (اليوم)
+    const dateOptions = { weekday: 'long', month: 'long', day: 'numeric' };
+    document.getElementById('todayDate').innerText = new Date().toLocaleDateString('ar-MA', dateOptions);
 
-    // 1. SMART FOOTER
+    // 2. التمرير الناعم للأسفل
+    function scrollToForm() {
+        document.getElementById('orderForm').scrollIntoView({ behavior: 'smooth' });
+        setTimeout(() => document.querySelector('input[name="name"]').focus(), 500);
+    }
+
+    // 3. إخفاء وإظهار الزر الثابت
     const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            const footer = document.querySelector('.sticky-footer');
-            const whatsapp = document.querySelector('.whatsapp-float');
-            if (entry.isIntersecting) {
-                footer.classList.add('hidden-footer');
-                whatsapp.style.bottom = "16px"; 
-            } else {
-                footer.classList.remove('hidden-footer');
-                whatsapp.style.bottom = "100px";
-            }
-        });
+        const sticky = document.getElementById('stickyCta');
+        if(entries[0].isIntersecting) {
+            sticky.classList.add('hide-sticky');
+        } else {
+            sticky.classList.remove('hide-sticky');
+        }
     }, { threshold: 0.1 });
     observer.observe(document.getElementById('orderForm'));
 
-    // 2. FORM SUBMISSION WITH TITANIUM PIXEL (AND SHEET HEADERS FIX)
-    function handleOrder(e) {
+    // 4. نظام المبيعات الوهمي الآمن (مرتين كحد أقصى)
+    const names =['سعيد', 'فاطمة', 'ياسين', 'عادل', 'مريم', 'رشيد', 'خديجة', 'إبراهيم', 'سناء'];
+    const cities =['الدار البيضاء', 'الرباط', 'مراكش', 'طنجة', 'أكادير', 'فاس', 'وجدة', 'القنيطرة', 'سلا'];
+    const packs =['الباك الذهبي', 'الباك الذهبي', 'الباك العادي', 'باك الجملة'];
+
+    function showRandomSale() {
+        const popup = document.getElementById('salesPopup');
+        const textObj = document.getElementById('popupText');
+        const randomName = names[Math.floor(Math.random() * names.length)];
+        const randomCity = cities[Math.floor(Math.random() * cities.length)];
+        const randomPack = packs[Math.floor(Math.random() * packs.length)];
+        
+        textObj.innerText = `${randomName} من ${randomCity} طلب للتو ${randomPack}`;
+        popup.classList.add('show');
+        setTimeout(() => { popup.classList.remove('show'); }, 4000);
+    }
+
+    let popupDisplayCount = 0; 
+    const maxPopups = 2;       
+
+    function schedulePopup() {
+        if (popupDisplayCount >= maxPopups) return; 
+        showRandomSale();
+        popupDisplayCount++;
+        if (popupDisplayCount < maxPopups) {
+            setTimeout(schedulePopup, 15000);
+        }
+    }
+    setTimeout(schedulePopup, 8000);
+
+    // ==========================================
+    // 5. GOOGLE SHEETS & FB PIXEL SCRIPT (مع التحويل لصفحة الشكر)
+    // ==========================================
+    // 👇 ضع رابط Google Apps Script الخاص بك هنا 👇
+    const scriptURL = 'YOUR_GOOGLE_SCRIPT_WEB_APP_URL_HERE'; 
+    const form = document.getElementById('google-sheet-form');
+    const submitBtn = document.getElementById('submitBtn');
+
+    form.addEventListener('submit', e => {
         e.preventDefault();
-        const btn = e.target.querySelector('button[type="submit"]');
-        const originalContent = btn.innerHTML;
         
-        btn.disabled = true;
-        btn.innerHTML = '⏳ جاري التسجيل...';
-        btn.classList.remove('bg-brand');
-        btn.classList.add('bg-gray-500');
+        // تعطيل الزر لتجنب الطلبات المكررة
+        submitBtn.innerHTML = 'جاري إرسال الطلب... ⏳';
+        submitBtn.style.background = '#e63946';
+        submitBtn.disabled = true;
 
-        const fd = new FormData(e.target);
-        
-        // THE FIX: headers included so data populates Google Sheets perfectly
-        fetch(GOOGLE_SCRIPT_URL, { 
-            method: "POST", 
-            mode: "no-cors", 
-            headers: { "Content-Type": "application/x-www-form-urlencoded" },
-            body: new URLSearchParams(fd).toString() 
-        })
-        .then(() => {
-            setTimeout(() => {
-                
-                // 🔥 TITANIUM PIXEL FIRES HERE: Hardcoded to 199 DH 🔥
-                if(typeof fbq === 'function') {
-                    fbq('track', 'Purchase', { value: '199', currency: 'MAD' });
-                    console.log("Titanium Pixel Fired! Price: 199 DH");
+        const selectedPrice = document.querySelector('input[name="package_price"]:checked').value;
+        const formData = new FormData(form);
+        formData.append('package_price', selectedPrice);
+
+        fetch(scriptURL, { method: 'POST', body: formData})
+            .then(response => {
+                // تفعيل FB Pixel بجودة بيانات عالية
+                if(typeof fbq !== 'undefined') {
+                    fbq('track', 'Purchase', {
+                        content_name: 'Eelhoe Water Gel',
+                        content_type: 'product',
+                        value: selectedPrice, 
+                        currency: 'MAD'
+                    });
                 }
-
-                btn.innerHTML = '✅ تم بنجاح!';
-                btn.classList.remove('bg-gray-500');
-                btn.classList.add('bg-green-600');
-                if (navigator.vibrate) navigator.vibrate(200);
-
-                // Redirect to Thank You page
-                window.location.href = "Thankyou.html";
-                e.target.reset();
                 
-                setTimeout(() => { 
-                    btn.innerHTML = originalContent; 
-                    btn.classList.remove('bg-green-600'); 
-                    btn.classList.add('bg-brand'); 
-                    btn.disabled = false; 
-                }, 3000);
-            }, 800);
-        })
-        .catch(err => {
-            alert("خطأ في الاتصال، حاول مرة أخرى");
-            btn.disabled = false;
-            btn.innerHTML = originalContent;
-            btn.classList.remove('bg-gray-500');
-            btn.classList.add('bg-brand');
-        });
-    }
-
-    // 3. SOCIAL PROOF TOAST
-    const cities = ['الدار البيضاء', 'مراكش', 'طنجة', 'فاس', 'أكادير', 'الرباط'];
-    const toast = document.getElementById('toast'), toastText = document.getElementById('toast-text');
-    let toastCount = 0; const maxToasts = 2; 
-
-    function showToast() {
-        if (toastCount >= maxToasts) return;
-        toastCount++;
-        const city = cities[Math.floor(Math.random()*cities.length)];
-        toastText.innerText=`زبون من ${city} طلب عرض التصفية للتو`;
-        toast.classList.remove('opacity-0', 'translate-y-10'); 
-        setTimeout(()=>toast.classList.add('opacity-0','translate-y-10'), 4000);
-        if (toastCount < maxToasts) setTimeout(showToast, 45000);
-    }
-    setTimeout(showToast, 12000);
+                // توجيه الزبون فوراً إلى صفحة الشكر لتأكيد الطلب
+                window.location.href = "thank-you.html";
+            })
+            .catch(error => {
+                console.error('Error!', error.message);
+                submitBtn.innerHTML = '❌ حدث خطأ، تأكد من الأنترنت';
+                submitBtn.disabled = false;
+            });
+    });
 </script>
+
 </body>
 </html>
