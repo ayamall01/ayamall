@@ -58,7 +58,6 @@
         /* ==========================================
            2. URGENCY & HERO (ALIGNMENT FIXED)
            ========================================== */
-        /* 👇 Fixed text alignment here by removing flexbox 👇 */
         .urgency-bar { background: var(--brand); color: #fff; text-align: center; padding: 10px; font-size: 14px; font-weight: 900; white-space: nowrap; overflow: hidden; line-height: 1.4; }
         
         .stock-counter { background: #fff3f3; padding: 12px; text-align: center; color: var(--brand); font-weight: 800; font-size: 15px; border-bottom: 1px solid #ffebeb; }
@@ -104,7 +103,7 @@
         input[type="radio"]:checked + .bundle .radio-btn { border-color: var(--brand); }
         input[type="radio"]:checked + .bundle .radio-btn::after { transform: scale(1); }
         input[type="radio"]:checked + .bundle .bundle-price { color: var(--brand); }
-        .best-seller { position: absolute; top: -10px; right: 15px; background: #ffb703; color: #000; font-size: 11px; font-weight: 900; padding: 4px 10px; border-radius: 50px; }
+        .best-seller { position: absolute; top: -10px; right: 15px; background: #e63946; color: #fff; font-size: 11px; font-weight: 900; padding: 4px 10px; border-radius: 50px; }
 
         /* ==========================================
            5. CHECKOUT FORM
@@ -141,7 +140,7 @@
 <div class="container">
 
     <div class="urgency-bar">⚡ استفد من التوصيل المجاني اليوم (<span id="todayDate"></span>)</div>
-    <div class="stock-counter">⚠️ أسرع! تبقت <span class="pulse-text" style="font-size: 18px;">14</span> قطعة فقط في المخزن</div>
+    <div class="stock-counter">⚠️ أسرع! تبقت <span class="pulse-text" style="font-size: 18px;">39</span> قطعة فقط في المخزن</div>
 
     <section class="hero">
         <div class="stars">★★★★★</div>
@@ -185,44 +184,21 @@
     </section>
 
     <section class="pricing-section">
-        <h2>شحال من عبوة بغيتي؟ 👇</h2>
+        <h2>عرض التصفية النهائي 👇</h2>
 
         <label>
-            <input type="radio" name="package_price" value="199">
+            <input type="radio" name="package_price" value="99" checked>
             <div class="bundle">
+                <div class="best-seller">🔥 تصفية المخزون</div>
                 <div>
-                    <div class="bundle-title">الباك العادي (2 عبوات)</div>
-                    <div class="bundle-desc">🎁 + 2 فرشات مجاناً</div>
+                    <div class="bundle-title">عبوة واحدة (العازل المائي)</div>
+                    <div class="bundle-desc">آخر القطع المتبقية 🏃‍♂️</div>
                 </div>
-                <div class="bundle-price">199 درهم</div>
+                <div class="bundle-price">99 درهم</div>
                 <div class="radio-btn"></div>
             </div>
         </label>
 
-        <label>
-            <input type="radio" name="package_price" value="249" checked>
-            <div class="bundle">
-                <div class="best-seller">🔥 الأكثر مبيعاً</div>
-                <div>
-                    <div class="bundle-title">الباك الذهبي (3 عبوات)</div>
-                    <div class="bundle-desc">🎁 + 3 فرشات مجاناً</div>
-                </div>
-                <div class="bundle-price">249 درهم</div>
-                <div class="radio-btn"></div>
-            </div>
-        </label>
-
-        <label>
-            <input type="radio" name="package_price" value="449">
-            <div class="bundle">
-                <div>
-                    <div class="bundle-title">باك الجملة (6 عبوات)</div>
-                    <div class="bundle-desc">للمساحات الكبيرة 🏢</div>
-                </div>
-                <div class="bundle-price">449 درهم</div>
-                <div class="radio-btn"></div>
-            </div>
-        </label>
     </section>
 
     <section class="checkout" id="orderForm">
@@ -250,7 +226,7 @@
 
 <div class="sales-popup" id="salesPopup">
     <div class="popup-img">✓</div>
-    <span id="popupText">محمد من أكادير طلب للتو الباك الذهبي</span>
+    <span id="popupText">محمد من أكادير طلب للتو عبوة واحدة</span>
 </div>
 
 <a href="https://wa.me/212638501541?text=%D8%B3%D9%84%D8%A7%D9%85%D8%8C%20%D8%A8%D8%BA%D9%8A%D8%AA%20%D9%86%D8%B3%D9%88%D9%84%20%D8%B9%D9%84%D9%89%20%D8%A7%D9%84%D8%B9%D8%A7%D8%B2%D9%84%20%D8%A7%D9%84%D9%85%D8%A7%D8%A6%D9%8A%20Eelhoe" class="float-wa">
@@ -282,7 +258,7 @@
 
     const names =['سعيد', 'فاطمة', 'ياسين', 'عادل', 'مريم', 'رشيد', 'خديجة', 'إبراهيم', 'سناء'];
     const cities =['الدار البيضاء', 'الرباط', 'مراكش', 'طنجة', 'أكادير', 'فاس', 'وجدة', 'القنيطرة', 'سلا'];
-    const packs =['الباك الذهبي', 'الباك الذهبي', 'الباك العادي', 'باك الجملة'];
+    const packs =['العازل المائي (عرض 99 درهم)'];
 
     function showRandomSale() {
         const popup = document.getElementById('salesPopup');
