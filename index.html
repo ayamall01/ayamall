@@ -221,7 +221,8 @@
 
         <form id="google-sheet-form">
             <input type="text" class="input-lg" name="name" placeholder="الإسم ديالك..." required>
-            <input type="tel" class="input-lg" name="phone" placeholder="رقم الهاتف (مثال: 0612345678)" pattern="^(05|06|07)[0-9]{8}$" title="المرجو إدخال رقم هاتف صحيح يتكون من 10 أرقام ويبدأ بـ 06 أو 07" minlength="10" maxlength="10" required>
+            
+            <input type="tel" class="input-lg" name="tel" placeholder="رقم الهاتف (مثال: 0612345678)" pattern="^(05|06|07)[0-9]{8}$" title="المرجو إدخال رقم هاتف صحيح يتكون من 10 أرقام ويبدأ بـ 06 أو 07" minlength="10" maxlength="10" required>
 
             <button type="submit" class="btn-submit" id="submitBtn">
                 أطلب الآن والدفع لاحقاً 🚚
@@ -298,8 +299,8 @@
     }
     setTimeout(schedulePopup, 8000);
 
-    // 👇 BROSKI: YOUR_GOOGLE_SCRIPT_WEB_APP_URL_HERE 👇
-    const scriptURL = 'YOUR_GOOGLE_SCRIPT_WEB_APP_URL_HERE'; 
+    // 👇 BROSKI: YOUR EXACT SCRIPT URL IS LOCKED IN 👇
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbx_mptD_sy4IwzC950Z79gaEE92XspvluImwC1IdNjeiVHVJNZVuUYaPiPwIUiUcdDQ/exec'; 
     const form = document.getElementById('google-sheet-form');
     const submitBtn = document.getElementById('submitBtn');
 
@@ -310,17 +311,22 @@
         submitBtn.style.background = '#e63946';
         submitBtn.disabled = true;
 
-        const selectedPrice = document.querySelector('input[name="package_price"]:checked').value;
         const formData = new FormData(form);
-        formData.append('package_price', selectedPrice);
+        
+        // 🦅 THE CEO DATA MAPPING PROTOCOL 🦅
+        // Name and Tel are automatically handled.
+        // We inject City as empty so your script doesn't crash:
+        formData.append('city', 'لا يوجد (تصفية)'); 
+        // We inject the bundle name to match e.parameter.bundle:
+        formData.append('bundle', 'العازل المائي - 99 درهم');
 
         fetch(scriptURL, { method: 'POST', body: formData})
             .then(response => {
                 if(typeof fbq !== 'undefined') {
                     fbq('track', 'Purchase', {
-                        content_name: 'Eelhoe Water Gel',
+                        content_name: 'Eelhoe Water Gel Liquidation',
                         content_type: 'product',
-                        value: selectedPrice, 
+                        value: 99, 
                         currency: 'MAD'
                     });
                 }
