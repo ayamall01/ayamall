@@ -16,12 +16,12 @@
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
     
-    // 👇 ضع الـ PIXEL ID ديالك هنا (يجب أن يكون نفس الرقم الموجود في الصفحة الرئيسية) 👇
-    fbq('init', 'YOUR_PIXEL_ID_HERE'); 
+    // 👇 تم وضع الـ Pixel ID ديالك هنا مباشرة 👇
+    fbq('init', '2663210157367551'); 
     fbq('track', 'PageView');
     </script>
     <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID_HERE&ev=PageView&noscript=1"
+    src="https://www.facebook.com/tr?id=2663210157367551&ev=PageView&noscript=1"
     /></noscript>
 
     <style>
@@ -43,5 +43,25 @@
             المرجو إبقاء هاتفك مشغلاً، سوف نتصل بك في غضون 24 ساعة لتأكيد العنوان وإرسال الطلب. 📞
         </div>
     </div>
+
+    <script>
+        // كنتأكدو واش هاد الكليان عاد دخل أول مرة لهاد الصفحة
+        if (!sessionStorage.getItem('order_tracked')) {
+            
+            // يلا كانت أول مرة، كنصيفطو الـ Purchase لفيسبوك
+            fbq('track', 'Purchase', {
+                content_name: 'Eelhoe Water Gel',
+                content_type: 'product',
+                value: 99,
+                currency: 'MAD'
+            });
+
+            // كنسدو القفل باش يلا دار Refresh ما يعاودش يصيفط المبيعة ثانية
+            sessionStorage.setItem('order_tracked', 'true');
+            console.log("✅ Pixel Purchase Fired: 99 DH");
+        } else {
+            console.log("🛑 Duplicate Blocked: Already Tracked");
+        }
+    </script>
 </body>
 </html>
