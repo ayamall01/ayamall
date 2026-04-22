@@ -2,340 +2,512 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Eelhoe - العازل المائي النهائي</title>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@500;700;800;900&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أيامول | Ayamall - اكتشف مستقبل التسوق</title>
     
+    <!-- Google Fonts: Tajawal for modern Arabic typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Phosphor Icons for modern minimalist icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <!-- Tailwind CSS for rapid 2026 styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    
-    fbq('init', '2663210157367551'); 
-    fbq('track', 'PageView');
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        amazon: {
+                            dark: '#131A22',
+                            light: '#232F3E',
+                            orange: '#FF9900',
+                            hover: '#E38900',
+                            bg: '#F2F4F8',
+                            surface: '#FFFFFF',
+                            text: '#0F1111'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Tajawal', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.05)',
+                        'card': '0 10px 40px -10px rgba(0,0,0,0.08)',
+                        'card-hover': '0 20px 40px -10px rgba(255,153,0,0.15)'
+                    }
+                }
+            }
+        }
     </script>
-    <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=2663210157367551&ev=PageView&noscript=1"
-    /></noscript>
 
     <style>
-        /* ==========================================
-           1. CORE SETUP & COLORS
-           ========================================== */
-        :root {
-            --brand: #e63946;
-            --success: #2a9d8f;
-            --dark: #1d3557;
-            --gray-bg: #f8f9fa;
-            --text-main: #2b2d42;
-            --whatsapp-bg: #e5ddd5;
-            --whatsapp-msg: #dcf8c6;
-            --radius: 16px;
-        }
-
-        * {
-            box-sizing: border-box; margin: 0; padding: 0;
-            font-family: 'Tajawal', sans-serif;
+        /* Custom 2026 UI Enhancements */
+        body {
+            background-color: #F2F4F8;
             -webkit-tap-highlight-color: transparent;
         }
 
-        body { background-color: #e0e0e0; color: var(--text-main); padding-bottom: 80px; }
-
-        .container {
-            max-width: 480px; margin: 0 auto; background: #ffffff;
-            min-height: 100vh; box-shadow: 0 0 25px rgba(0,0,0,0.1);
-            overflow: hidden; position: relative;
+        /* Hide Scrollbar but keep functionality */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
         }
 
-        section { padding: 25px 20px; border-bottom: 6px solid var(--gray-bg); }
+        /* Glassmorphism Header */
+        .glass-header {
+            background: rgba(35, 47, 62, 0.95);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
 
-        /* ==========================================
-           2. URGENCY & HERO
-           ========================================== */
-        .urgency-bar { background: var(--brand); color: #fff; text-align: center; padding: 10px; font-size: 14px; font-weight: 900; white-space: nowrap; overflow: hidden; line-height: 1.4; }
-        
-        .stock-counter { background: #fff3f3; padding: 12px; text-align: center; color: var(--brand); font-weight: 800; font-size: 15px; border-bottom: 1px solid #ffebeb; }
-        .pulse-text { animation: pulse-opacity 1.5s infinite; }
-        @keyframes pulse-opacity { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+        /* Smooth Image Zoom on Hover */
+        .product-card .img-container img {
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .product-card:hover .img-container img {
+            transform: scale(1.08);
+        }
 
-        .hero { text-align: center; padding-top: 20px; }
-        .stars { color: #ffb703; font-size: 20px; letter-spacing: 2px; margin-bottom: 5px; }
-        .rating-text { font-size: 12px; color: #6c757d; font-weight: 700; margin-bottom: 15px; }
-        .hero h1 { font-size: 26px; font-weight: 900; line-height: 1.3; margin-bottom: 15px; color: var(--dark); }
-        .hero h1 span { color: var(--brand); background: #fff0f0; padding: 0 5px; border-radius: 4px; }
-        .trust-badges { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin-top: 15px; }
-        .badge { background: #e8f5e9; color: var(--success); padding: 6px 12px; border-radius: 50px; font-size: 13px; font-weight: 800; }
+        /* Add to cart button animation */
+        .btn-add {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .product-card:hover .btn-add {
+            transform: translateY(0);
+            opacity: 1;
+        }
 
-        /* ==========================================
-           3. SOCIAL PROOF 
-           ========================================== */
-        .reviews-section { background: var(--whatsapp-bg); }
-        .reviews-section h2 { text-align: center; font-size: 20px; margin-bottom: 20px; color: #128c7e; }
-        .wa-chat { display: flex; flex-direction: column; gap: 15px; margin-bottom: 20px; }
-        .wa-msg { max-width: 85%; padding: 10px 15px; border-radius: 12px; font-size: 15px; font-weight: 700; line-height: 1.4; position: relative; box-shadow: 0 1px 2px rgba(0,0,0,0.1); }
-        .wa-msg.client { background: var(--whatsapp-msg); align-self: flex-start; border-top-right-radius: 0; }
-        .wa-msg.us { background: #ffffff; align-self: flex-end; border-top-left-radius: 0; color: #555; font-size: 14px; }
-        .wa-time { font-size: 10px; color: #999; text-align: left; display: block; margin-top: 5px; }
-        .wa-name { font-size: 12px; font-weight: 900; color: #075e54; margin-bottom: 3px; }
-        .ba-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-        .ba-img { height: 140px; background: #fff; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 12px; color: #999; box-shadow: 0 2px 5px rgba(0,0,0,0.05); overflow: hidden; }
-        .ba-img img { width: 100%; height: 100%; object-fit: cover; }
-
-        /* ==========================================
-           4. BUNDLES (FIXED OVERLAP & SINGLE OFFER)
-           ========================================== */
-        .pricing-section { background: #fff; }
-        .pricing-section h2 { text-align: center; font-size: 22px; margin-bottom: 20px; }
-        input[type="radio"] { display: none; }
-        
-        .bundle { 
-            border: 2px solid #e9ecef; 
-            border-radius: var(--radius); 
-            padding: 45px 15px 15px 15px; 
-            margin-top: 20px; 
-            margin-bottom: 12px; 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            transition: 0.2s; 
-            background: #f8f9fa; 
-            position: relative; 
+        /* Toast Animation */
+        @keyframes slideInUp {
+            from { transform: translate(-50%, 100%); opacity: 0; }
+            to { transform: translate(-50%, 0); opacity: 1; }
+        }
+        .toast-enter {
+            animation: slideInUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
         
-        .bundle-title { font-size: 18px; font-weight: 900; margin-bottom: 4px; }
-        .bundle-desc { font-size: 13px; color: var(--success); font-weight: 800; }
-        .bundle-price { font-size: 22px; font-weight: 900; color: var(--dark); }
-        .radio-btn { width: 24px; height: 24px; border: 2px solid #ced4da; border-radius: 50%; background: #fff; display: flex; align-items: center; justify-content: center; }
-        .radio-btn::after { content: ''; width: 12px; height: 12px; background: var(--brand); border-radius: 50%; transform: scale(0); transition: 0.2s; }
-        input[type="radio"]:checked + .bundle { border-color: var(--brand); background: #fffafa; box-shadow: 0 4px 15px rgba(230, 57, 70, 0.1); transform: scale(1.02); }
-        input[type="radio"]:checked + .bundle .radio-btn { border-color: var(--brand); }
-        input[type="radio"]:checked + .bundle .radio-btn::after { transform: scale(1); }
-        input[type="radio"]:checked + .bundle .bundle-price { color: var(--brand); }
-        .best-seller { position: absolute; top: -12px; right: 15px; background: #e63946; color: #fff; font-size: 12px; font-weight: 900; padding: 4px 12px; border-radius: 50px; }
-
-        /* ==========================================
-           5. CHECKOUT FORM
-           ========================================== */
-        .checkout { background: var(--gray-bg); padding-bottom: 40px; }
-        .checkout h2 { text-align: center; font-size: 22px; margin-bottom: 5px; color: var(--brand); }
-        .checkout p { text-align: center; font-size: 14px; color: #6c757d; font-weight: 700; margin-bottom: 20px; }
-        .input-lg { width: 100%; height: 60px; background: #fff; border: 2px solid #ced4da; border-radius: 12px; padding: 0 20px; font-size: 18px; font-weight: 700; text-align: center; margin-bottom: 15px; transition: 0.3s; }
-        .input-lg:focus { outline: none; border-color: var(--brand); box-shadow: 0 0 0 4px rgba(230, 57, 70, 0.1); }
-        .btn-submit { width: 100%; height: 65px; background: var(--success); color: #fff; border: none; border-radius: 12px; font-size: 22px; font-weight: 900; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; box-shadow: 0 8px 20px rgba(42, 157, 143, 0.3); transition: 0.3s; }
-        .btn-submit:not(:disabled) { animation: pulse-btn 2s infinite; }
-        @keyframes pulse-btn { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.02); } }
-
-        /* ==========================================
-           6. FLOATING ELEMENTS
-           ========================================== */
-        .sticky-cta { position: fixed; bottom: 0; left: 0; width: 100%; background: #fff; padding: 12px 20px; box-shadow: 0 -4px 15px rgba(0,0,0,0.1); z-index: 99; display: flex; justify-content: center; transition: 0.3s; }
-        .sticky-btn { width: 100%; max-width: 440px; height: 55px; background: var(--brand); color: #fff; border: none; border-radius: 12px; font-size: 18px; font-weight: 900; box-shadow: 0 4px 10px rgba(230,57,70,0.3); }
-        .hide-sticky { transform: translateY(100%); }
-        
-        .sales-popup { position: fixed; top: 15px; left: 50%; width: max-content; max-width: 90%; background: rgba(0,0,0,0.85); color: #fff; padding: 10px 15px; border-radius: 50px; font-size: 12px; font-weight: 700; display: flex; align-items: center; gap: 8px; opacity: 0; transform: translate(-50%, -20px); transition: all 0.5s ease; z-index: 999; pointer-events: none; }
-        .sales-popup.show { opacity: 1; transform: translate(-50%, 0); }
-        .popup-img { width: 20px; height: 20px; background: var(--success); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; }
-        
-        .float-wa { position: fixed; width: 60px; height: 60px; bottom: 95px; right: 15px; background-color: #25d366; color: #FFF; border-radius: 50px; box-shadow: 0 4px 10px rgba(37, 211, 102, 0.4); z-index: 100; display: flex; align-items: center; justify-content: center; text-decoration: none; animation: pulse-wa 2s infinite; }
-        .float-wa svg { width: 35px; height: 35px; fill: white; margin-top: -1px; margin-left: 1px; }
-        .wa-tooltip { position: fixed; bottom: 110px; right: 85px; background-color: #fff; color: #333; padding: 5px 12px; border-radius: 20px; font-size: 12px; font-weight: 800; box-shadow: 0 2px 5px rgba(0,0,0,0.1); z-index: 100; border: 1px solid #eee; pointer-events: none; }
-        .wa-tooltip::after { content: ''; position: absolute; top: 50%; right: -5px; margin-top: -5px; border-width: 5px 0 5px 5px; border-style: solid; border-color: transparent transparent transparent #fff; }
-        @keyframes pulse-wa { 0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); } 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
+        /* Skeleton Loading Simulation (Pulse) */
+        .skeleton {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: .5; }
+        }
     </style>
 </head>
-<body>
+<body class="text-amazon-text antialiased pb-20 md:pb-0">
 
-<div class="container">
-
-    <div class="urgency-bar">⚡ استفد من التوصيل المجاني اليوم (<span id="todayDate"></span>)</div>
-    <div class="stock-counter">⚠️ أسرع! تبقت <span class="pulse-text" style="font-size: 18px;">39</span> قطعة فقط في المخزن</div>
-
-    <section class="hero">
-        <div class="stars">★★★★★</div>
-        <div class="rating-text">4.9/5 بناءً على +1,250 تقييم</div>
-        
-        <h1>تهنى من قطرة الشتا والغمال <span>بصفة نهائية!</span> 🌧️</h1>
-        
-        <img src="save.gif" alt="عازل مائي Eelhoe" style="width: 100%; border-radius: 16px; margin-bottom: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.15); display: block;">
-
-        <div class="trust-badges">
-            <div class="badge">🚚 توصيل مجاني</div>
-            <div class="badge">🛡️ الدفع عند الاستلام</div>
-            <div class="badge">✅ ضمان الفعالية</div>
-        </div>
-    </section>
-
-    <section class="reviews-section">
-        <h2>آراء الكليان ديالنا (سكرين شوت واتساب) 💬</h2>
-        <div class="wa-chat">
-            <div class="wa-msg client">
-                <div class="wa-name">يوسف - الدار البيضاء</div>
-                خويا تبارك الله عليكم، داك البرودوي صدق مخير. دوزتو فواحد الشق فالسقف والبارح صبات الشتا مزيان والحمد لله قطرة مادازت. الله يرحم الوالدين 🙏
-                <span class="wa-time">14:22</span>
+    <!-- Mobile Sidebar Menu (New) -->
+    <div id="mobile-menu" class="fixed inset-0 z-[100] hidden opacity-0 transition-opacity duration-300">
+        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="toggleMobileMenu()"></div>
+        <div id="mobile-menu-drawer" class="absolute top-0 right-0 bottom-0 w-4/5 max-w-[300px] bg-white shadow-2xl transform translate-x-full transition-transform duration-300 flex flex-col">
+            <div class="bg-amazon-light text-white p-5 flex justify-between items-center">
+                <div class="font-bold text-lg flex items-center gap-2"><i class="ph-fill ph-user-circle text-3xl"></i> مرحباً بك</div>
+                <button onclick="toggleMobileMenu()" class="text-white hover:text-amazon-orange"><i class="ph ph-x text-2xl"></i></button>
             </div>
-            <div class="wa-msg us">
-                بصحتك أخويا يوسف، هدا هو الهدف ديالنا. شكرا على ثقتك!
-                <span class="wa-time">14:25</span>
-            </div>
-            <div class="wa-msg client">
-                <div class="wa-name">أمينة - طنجة</div>
-                وصلني الكوموند ديالي ليوم، شكرا على التوصيل السريع. الشيتة لي عطيتوني معاه عاوناتني بزاف باش نطلي البلايص الضيقين. خدمة نقية 👍
-                <span class="wa-time">09:15</span>
+            <div class="flex-1 overflow-y-auto p-2 flex flex-col font-bold text-amazon-dark">
+                <a href="#" class="p-4 border-b border-gray-100 flex justify-between items-center hover:bg-gray-50 hover:text-amazon-orange transition-colors">عروض اليوم <i class="ph ph-caret-left"></i></a>
+                <a href="#" class="p-4 border-b border-gray-100 flex justify-between items-center hover:bg-gray-50 hover:text-amazon-orange transition-colors">الإلكترونيات <i class="ph ph-caret-left"></i></a>
+                <a href="#" class="p-4 border-b border-gray-100 flex justify-between items-center hover:bg-gray-50 hover:text-amazon-orange transition-colors">الأزياء والموضة <i class="ph ph-caret-left"></i></a>
+                <a href="#" class="p-4 flex justify-between items-center hover:bg-gray-50 hover:text-amazon-orange transition-colors">المنزل والمطبخ <i class="ph ph-caret-left"></i></a>
             </div>
         </div>
+    </div>
 
-        <h3 style="text-align:center; font-size:16px; margin: 20px 0 10px; color:#555;">صور قبل وبعد (من زبائننا):</h3>
-        <div class="ba-grid">
-            <div class="ba-img"><img src="before.png" alt="صورة قبل"></div>
-            <div class="ba-img"><img src="after.png" alt="صورة بعد"></div>
+    <!-- Toast Notification Container -->
+    <div id="toast" class="fixed bottom-24 md:bottom-10 left-1/2 -translate-x-1/2 z-50 hidden">
+        <div class="bg-amazon-dark text-white px-6 py-3 rounded-2xl shadow-2xl flex items-center gap-3">
+            <i class="ph-fill ph-check-circle text-amazon-orange text-xl"></i>
+            <span class="font-bold text-sm">تمت الإضافة إلى السلة بنجاح!</span>
         </div>
-    </section>
+    </div>
 
-    <section class="pricing-section">
-        <h2>عرض التصفية النهائي 👇</h2>
-
-        <label>
-            <input type="radio" name="package_price" value="99" checked>
-            <div class="bundle">
-                <div class="best-seller">🔥 تصفية المخزون</div>
-                <div>
-                    <div class="bundle-title">عبوة واحدة (العازل المائي)</div>
-                    <div class="bundle-desc">آخر القطع المتبقية 🏃‍♂️</div>
+    <!-- Top Navigation Bar -->
+    <header class="glass-header sticky top-0 z-40 w-full transition-all duration-300">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex items-center justify-between gap-4 md:gap-8">
+                
+                <!-- Logo & Mobile Menu Toggle -->
+                <div class="flex items-center gap-3 shrink-0">
+                    <button onclick="toggleMobileMenu()" class="md:hidden text-white hover:text-amazon-orange transition-colors">
+                        <i class="ph ph-list text-3xl"></i>
+                    </button>
+                    <a href="#" class="flex items-center gap-1 text-white">
+                        <i class="ph-fill ph-shopping-bag text-3xl text-amazon-orange"></i>
+                        <div class="flex flex-col">
+                            <span class="font-black text-2xl leading-none tracking-tight">أيامول</span>
+                            <span class="text-[10px] text-gray-400 font-bold tracking-widest uppercase" style="letter-spacing: 2px;">Ayamall</span>
+                        </div>
+                    </a>
                 </div>
-                <div class="bundle-price">99 درهم</div>
-                <div class="radio-btn"></div>
+
+                <!-- 2026 Search Bar (Desktop) -->
+                <div class="hidden md:flex flex-1 max-w-3xl relative group">
+                    <div class="absolute inset-y-0 right-0 flex items-center pr-4">
+                        <i class="ph ph-magnifying-glass text-gray-400 text-xl group-focus-within:text-amazon-orange transition-colors"></i>
+                    </div>
+                    <input type="text" class="w-full bg-white/10 text-white placeholder-gray-400 border border-white/20 rounded-full py-3 pr-12 pl-32 focus:outline-none focus:bg-white focus:text-amazon-text focus:border-amazon-orange transition-all duration-300" placeholder="ابحث عن أحدث المنتجات، الماركات، والعروض...">
+                    <button class="absolute inset-y-1 left-1 bg-amazon-orange hover:bg-amazon-hover text-white font-bold px-6 rounded-full transition-colors">
+                        بحث
+                    </button>
+                </div>
+
+                <!-- Icons & User Actions -->
+                <div class="flex items-center gap-5 text-white">
+                    <button class="hidden md:flex flex-col items-start hover:text-amazon-orange transition-colors">
+                        <span class="text-xs text-gray-300">مرحباً، تسجيل الدخول</span>
+                        <span class="font-bold text-sm flex items-center gap-1">الحساب والطلبات <i class="ph-bold ph-caret-down"></i></span>
+                    </button>
+                    
+                    <button class="relative hover:text-amazon-orange transition-colors p-2">
+                        <i class="ph ph-bell text-2xl"></i>
+                        <span class="absolute top-1 right-2 w-2.5 h-2.5 bg-red-500 rounded-full border-2 border-amazon-light"></span>
+                    </button>
+
+                    <button class="relative flex items-center gap-2 hover:text-amazon-orange transition-colors group p-2">
+                        <div class="relative">
+                            <i class="ph ph-shopping-cart text-3xl group-hover:scale-110 transition-transform"></i>
+                            <span id="cart-count" class="absolute -top-2 -right-2 bg-amazon-orange text-white text-xs font-bold w-5 h-5 flex items-center justify-center rounded-full shadow-lg">0</span>
+                        </div>
+                        <span class="font-bold hidden md:block">السلة</span>
+                    </button>
+                </div>
             </div>
-        </label>
 
-    </section>
+            <!-- Mobile Search Bar -->
+            <div class="mt-4 md:hidden relative">
+                <div class="absolute inset-y-0 right-0 flex items-center pr-4">
+                    <i class="ph ph-magnifying-glass text-gray-400 text-lg"></i>
+                </div>
+                <input type="text" class="w-full bg-white/10 text-white border border-white/20 rounded-2xl py-3 pr-12 pl-4 focus:outline-none focus:bg-white focus:text-amazon-text" placeholder="ما الذي تبحث عنه؟">
+            </div>
+        </div>
 
-    <section class="checkout" id="orderForm">
-        <h2>عمر هاد 2 خانات فقط 👇</h2>
-        <p>ماتعذبش راسك تكتب العنوان، غنعيطو ليك وناخدوه من عندك!</p>
+        <!-- Categories Nav -->
+        <div class="bg-amazon-dark text-white/90 text-sm py-2">
+            <div class="container mx-auto px-4 flex items-center gap-6 overflow-x-auto hide-scrollbar whitespace-nowrap">
+                <a href="#" class="flex items-center gap-1 hover:text-white font-bold"><i class="ph ph-list text-lg"></i> التصنيفات</a>
+                <a href="#" class="hover:text-white hover:underline decoration-amazon-orange underline-offset-4 transition-all">عروض اليوم</a>
+                <a href="#" class="hover:text-white hover:underline decoration-amazon-orange underline-offset-4 transition-all">الإلكترونيات</a>
+                <a href="#" class="hover:text-white hover:underline decoration-amazon-orange underline-offset-4 transition-all">الأزياء والموضة</a>
+                <a href="#" class="hover:text-white hover:underline decoration-amazon-orange underline-offset-4 transition-all">المنزل والمطبخ</a>
+                <a href="#" class="hover:text-white hover:underline decoration-amazon-orange underline-offset-4 transition-all">العطور والتجميل</a>
+                <a href="#" class="hover:text-white hover:underline decoration-amazon-orange underline-offset-4 transition-all">خدمة العملاء</a>
+            </div>
+        </div>
+    </header>
 
-        <form id="google-sheet-form">
-            <input type="text" class="input-lg" name="name" placeholder="الإسم ديالك..." required>
+    <main class="container mx-auto px-4 py-8">
+        
+        <!-- Hero Section 2026 -->
+        <section class="relative bg-gradient-to-l from-amazon-dark to-amazon-light rounded-[32px] overflow-hidden shadow-2xl mb-12 flex flex-col md:flex-row items-center min-h-[400px]">
+            <!-- Decorative Elements -->
+            <div class="absolute top-0 right-0 w-64 h-64 bg-amazon-orange rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
+            <div class="absolute bottom-0 left-0 w-80 h-80 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
+
+            <div class="relative z-10 w-full md:w-1/2 p-8 md:p-16 text-white">
+                <span class="inline-block py-1 px-3 rounded-full bg-white/10 border border-white/20 backdrop-blur-md text-sm font-bold text-amazon-orange mb-4">
+                    موسم التخفيضات الكبرى
+                </span>
+                <h1 class="text-4xl md:text-6xl font-black leading-tight mb-4">
+                    اكتشف مستقبل <br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-amazon-orange to-yellow-400">التسوق الذكي</span>
+                </h1>
+                <p class="text-gray-300 text-lg mb-8 max-w-md leading-relaxed">
+                    تجربة تسوق لا مثيل لها مع منتجات أصلية 100%، وتوصيل فائق السرعة خلال 24 ساعة فقط.
+                </p>
+                <div class="flex gap-4">
+                    <button class="bg-amazon-orange hover:bg-amazon-hover text-amazon-dark font-black px-8 py-4 rounded-2xl shadow-[0_8px_25px_rgba(255,153,0,0.4)] hover:shadow-[0_12px_35px_rgba(255,153,0,0.6)] hover:-translate-y-1 transition-all duration-300">
+                        تسوق العروض الآن
+                    </button>
+                    <button class="bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 text-white font-bold px-8 py-4 rounded-2xl transition-all duration-300">
+                        اكتشف برايم
+                    </button>
+                </div>
+            </div>
+            <div class="relative z-10 w-full md:w-1/2 p-8 flex justify-center items-center">
+                <!-- Using a placeholder that looks modern -->
+                <img src="https://images.unsplash.com/photo-1603351154351-5e2d0600bb77?q=80&w=800&auto=format&fit=crop" alt="Hero Product" class="w-full max-w-md rounded-[24px] shadow-2xl rotate-[-2deg] hover:rotate-0 transition-transform duration-500 border-4 border-white/10">
+            </div>
+        </section>
+
+        <!-- Quick Features -->
+        <section class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+            <div class="bg-white p-6 rounded-3xl shadow-sm flex flex-col items-center text-center gap-3 hover:shadow-md transition-shadow">
+                <div class="w-14 h-14 rounded-full bg-orange-50 text-amazon-orange flex items-center justify-center text-3xl">
+                    <i class="ph-fill ph-truck"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-amazon-dark">توصيل سريع مجاني</h3>
+                    <p class="text-xs text-gray-500 mt-1">للطلبات فوق 200 ريال</p>
+                </div>
+            </div>
+            <div class="bg-white p-6 rounded-3xl shadow-sm flex flex-col items-center text-center gap-3 hover:shadow-md transition-shadow">
+                <div class="w-14 h-14 rounded-full bg-blue-50 text-amazon-light flex items-center justify-center text-3xl">
+                    <i class="ph-fill ph-shield-check"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-amazon-dark">دفع آمن 100%</h3>
+                    <p class="text-xs text-gray-500 mt-1">تشفير كامل لبياناتك</p>
+                </div>
+            </div>
+            <div class="bg-white p-6 rounded-3xl shadow-sm flex flex-col items-center text-center gap-3 hover:shadow-md transition-shadow">
+                <div class="w-14 h-14 rounded-full bg-orange-50 text-amazon-orange flex items-center justify-center text-3xl">
+                    <i class="ph-fill ph-arrow-counter-clockwise"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-amazon-dark">إرجاع مجاني وسهل</h3>
+                    <p class="text-xs text-gray-500 mt-1">خلال 15 يوماً من الاستلام</p>
+                </div>
+            </div>
+            <div class="bg-white p-6 rounded-3xl shadow-sm flex flex-col items-center text-center gap-3 hover:shadow-md transition-shadow">
+                <div class="w-14 h-14 rounded-full bg-blue-50 text-amazon-light flex items-center justify-center text-3xl">
+                    <i class="ph-fill ph-headset"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-amazon-dark">دعم فني 24/7</h3>
+                    <p class="text-xs text-gray-500 mt-1">نحن هنا لمساعدتك دائماً</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Product Grid Section -->
+        <section class="mb-16">
+            <div class="flex justify-between items-end mb-8">
+                <div>
+                    <h2 class="text-3xl font-black text-amazon-dark mb-2">المنتج المميز</h2>
+                    <p class="text-gray-500">أفضل الحلول المبتكرة لصيانة منزلك</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+                <!-- Single Product Card - Eelhoe Waterproof -->
+                <div class="product-card bg-white rounded-3xl p-4 shadow-card hover:shadow-card-hover transition-all duration-500 relative group border border-gray-100">
+                    <div class="absolute top-4 right-4 z-10">
+                        <span class="bg-red-500 text-white text-xs font-black px-2 py-1 rounded-lg">الأكثر مبيعاً</span>
+                    </div>
+                    <button class="absolute top-4 left-4 z-10 w-8 h-8 bg-white/80 backdrop-blur rounded-full flex items-center justify-center text-gray-400 hover:text-red-500 hover:bg-white shadow-sm transition-colors">
+                        <i class="ph-fill ph-heart"></i>
+                    </button>
+                    
+                    <div class="img-container relative bg-[#F8F9FA] rounded-2xl aspect-square overflow-hidden mb-4 flex items-center justify-center p-6">
+                        <img src="product.png" alt="طلاء ايلهو الشفاف العازل للماء" class="w-full h-full object-contain mix-blend-darken">
+                    </div>
+                    
+                    <div class="space-y-2">
+                        <div class="text-xs text-amazon-orange font-bold uppercase tracking-wide">صيانة وإصلاح</div>
+                        <h3 class="font-bold text-amazon-dark leading-tight line-clamp-2">طلاء ايلهو (EELHOE) الشفاف العازل للماء ومضاد للتسرب - 300 جرام</h3>
+                        
+                        <div class="flex items-center gap-1">
+                            <div class="flex text-amazon-orange text-sm">
+                                <i class="ph-fill ph-star"></i>
+                                <i class="ph-fill ph-star"></i>
+                                <i class="ph-fill ph-star"></i>
+                                <i class="ph-fill ph-star"></i>
+                                <i class="ph-fill ph-star-half"></i>
+                            </div>
+                            <span class="text-xs text-gray-400">(4.9) 342 تقييم</span>
+                        </div>
+                        
+                        <div class="flex items-end gap-2 pt-2">
+                            <span class="text-2xl font-black text-amazon-dark">99<span class="text-sm font-bold text-gray-500 mr-1">ر.س</span></span>
+                            <span class="text-sm text-gray-400 line-through mb-1">150</span>
+                        </div>
+
+                        <!-- 2026 Hover to Reveal Add to Cart -->
+                        <div class="pt-4 md:absolute md:-bottom-4 md:left-0 md:right-0 md:p-4 md:bg-white md:rounded-b-3xl md:opacity-0 md:translate-y-4 btn-add">
+                            <button onclick="addToCart()" class="w-full bg-amazon-orange hover:bg-amazon-hover text-amazon-dark font-black py-3 rounded-xl flex items-center justify-center gap-2 transition-colors">
+                                <i class="ph-bold ph-shopping-cart-simple text-lg"></i>
+                                أضف للسلة
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Promotional Banner -->
+        <section class="rounded-[32px] overflow-hidden bg-amazon-dark text-white flex flex-col md:flex-row mb-16 relative">
+            <div class="p-10 md:p-16 flex-1 flex flex-col justify-center relative z-10">
+                <h2 class="text-3xl md:text-5xl font-black mb-4">أجهزة المنزل الذكية <br> <span class="text-amazon-orange">أصبحت أذكى</span></h2>
+                <p class="text-gray-400 mb-8 max-w-md">تحكم في منزلك بصوتك، راقب أمان منزلك من هاتفك. كل ماتحتاجه لبيت المستقبل موجود في أيامول.</p>
+                <button class="bg-white text-amazon-dark hover:bg-amazon-orange hover:text-white font-bold px-8 py-4 rounded-2xl self-start transition-colors">
+                    تسوق الأجهزة الذكية
+                </button>
+            </div>
+            <div class="flex-1 min-h-[300px] relative">
+                <div class="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-l from-transparent to-amazon-dark z-10"></div>
+                <img src="https://images.unsplash.com/photo-1558002038-1055907df827?q=80&w=800&auto=format&fit=crop" class="absolute w-full h-full object-cover" alt="Smart Home">
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-amazon-light text-white pt-16 pb-24 md:pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12 border-b border-white/10 pb-12">
+                <div>
+                    <h4 class="font-bold text-lg mb-6 text-amazon-orange">اعرف المزيد عنا</h4>
+                    <ul class="space-y-3 text-sm text-gray-300">
+                        <li><a href="#" class="hover:text-white transition-colors">نبذة عن أيامول</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">وظائف</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">بيان الاستدامة</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-lg mb-6 text-amazon-orange">التسوق معنا</h4>
+                    <ul class="space-y-3 text-sm text-gray-300">
+                        <li><a href="#" class="hover:text-white transition-colors">حسابك</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">مشترياتك</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">عناوينك</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">قوائمك</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-lg mb-6 text-amazon-orange">دعنا نساعدك</h4>
+                    <ul class="space-y-3 text-sm text-gray-300">
+                        <li><a href="#" class="hover:text-white transition-colors">مركز المساعدة</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">سياسة الإرجاع</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">تتبع شحنتك</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">اتصل بنا</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-lg mb-6 text-amazon-orange">حمل التطبيق</h4>
+                    <p class="text-sm text-gray-300 mb-4">تسوق أسرع واحصل على عروض حصرية عبر تطبيق أيامول</p>
+                    <div class="flex flex-col gap-3">
+                        <button class="bg-white/10 hover:bg-white/20 border border-white/20 rounded-xl px-4 py-2 flex items-center gap-3 transition-colors">
+                            <i class="ph-fill ph-apple-logo text-2xl"></i>
+                            <div class="text-right">
+                                <div class="text-[10px] text-gray-400">حمله من</div>
+                                <div class="font-bold text-sm">App Store</div>
+                            </div>
+                        </button>
+                        <button class="bg-white/10 hover:bg-white/20 border border-white/20 rounded-xl px-4 py-2 flex items-center gap-3 transition-colors">
+                            <i class="ph-fill ph-google-play-logo text-2xl text-green-400"></i>
+                            <div class="text-right">
+                                <div class="text-[10px] text-gray-400">احصل عليه من</div>
+                                <div class="font-bold text-sm">Google Play</div>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+            </div>
             
-            <input type="tel" class="input-lg" name="tel" placeholder="رقم الهاتف (مثال: 0612345678)" pattern="^(05|06|07)[0-9]{8}$" title="المرجو إدخال رقم هاتف صحيح يتكون من 10 أرقام ويبدأ بـ 06 أو 07" minlength="10" maxlength="10" required>
-
-            <button type="submit" class="btn-submit" id="submitBtn">
-                أطلب الآن والدفع لاحقاً 🚚
-            </button>
-            <div style="text-align:center; font-size:13px; font-weight:700; color:#2a9d8f; margin-top:12px;">
-                🔒 لن تدفع أي درهم حتى تستلم منتجك.
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-gray-400">
+                <div class="flex items-center gap-2">
+                    <i class="ph-fill ph-shopping-bag text-amazon-orange text-xl"></i>
+                    <span class="font-black text-white text-lg tracking-tight">أيامول</span>
+                    <span>© 2026 جميع الحقوق محفوظة</span>
+                </div>
+                <div class="flex gap-4">
+                    <a href="#" class="hover:text-white transition-colors">شروط الاستخدام</a>
+                    <a href="#" class="hover:text-white transition-colors">إشعار الخصوصية</a>
+                </div>
             </div>
-        </form>
-    </section>
+        </div>
+    </footer>
 
-</div>
+    <!-- Mobile Bottom Navigation (App-like 2026 UI) -->
+    <nav class="md:hidden fixed bottom-0 left-0 right-0 bg-white/90 backdrop-blur-lg border-t border-gray-200 z-50 px-6 py-3 pb-safe">
+        <div class="flex justify-between items-center text-gray-500">
+            <a href="#" class="flex flex-col items-center gap-1 text-amazon-orange">
+                <i class="ph-fill ph-house text-2xl"></i>
+                <span class="text-[10px] font-bold">الرئيسية</span>
+            </a>
+            <a href="#" class="flex flex-col items-center gap-1 hover:text-amazon-orange transition-colors">
+                <i class="ph ph-squares-four text-2xl"></i>
+                <span class="text-[10px] font-bold">الأقسام</span>
+            </a>
+            <a href="#" class="flex flex-col items-center gap-1 hover:text-amazon-orange transition-colors relative">
+                <i class="ph ph-shopping-cart text-2xl"></i>
+                <span class="absolute top-0 right-2 w-2 h-2 bg-amazon-orange rounded-full"></span>
+                <span class="text-[10px] font-bold">السلة</span>
+            </a>
+            <a href="#" class="flex flex-col items-center gap-1 hover:text-amazon-orange transition-colors">
+                <i class="ph ph-heart text-2xl"></i>
+                <span class="text-[10px] font-bold">المفضلة</span>
+            </a>
+            <a href="#" class="flex flex-col items-center gap-1 hover:text-amazon-orange transition-colors">
+                <i class="ph ph-user text-2xl"></i>
+                <span class="text-[10px] font-bold">حسابي</span>
+            </a>
+        </div>
+    </nav>
 
-<div class="sticky-cta" id="stickyCta">
-    <button class="sticky-btn" onclick="scrollToForm()">أطلب الآن (الكمية محدودة) 👇</button>
-</div>
+    <!-- Interactive JavaScript -->
+    <script>
+        let cartCount = 0;
 
-<div class="sales-popup" id="salesPopup">
-    <div class="popup-img">✓</div>
-    <span id="popupText">محمد من أكادير طلب للتو عبوة واحدة</span>
-</div>
+        function addToCart() {
+            // Update Counter
+            cartCount++;
+            const counterElement = document.getElementById('cart-count');
+            counterElement.innerText = cartCount;
+            
+            // Pulse animation on counter
+            counterElement.classList.add('scale-150');
+            setTimeout(() => {
+                counterElement.classList.remove('scale-150');
+            }, 200);
 
-<a href="https://wa.me/212638501541?text=%D8%B3%D9%84%D8%A7%D9%85%D8%8C%20%D8%A8%D8%BA%D9%8A%D8%AA%20%D9%86%D8%B3%D9%88%D9%84%20%D8%B9%D9%84%D9%89%20%D8%A7%D9%84%D8%B9%D8%A7%D8%B2%D9%84%20%D8%A7%D9%84%D9%85%D8%A7%D8%A6%D9%8A%20Eelhoe" class="float-wa">
-    <svg viewBox="0 0 24 24" fill="currentColor">
-        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
-    </svg>
-</a>
-<div class="wa-tooltip">عندك سؤال؟ تواصل معانا</div>
-
-<script>
-    const dateOptions = { month: 'long', day: 'numeric' };
-    document.getElementById('todayDate').innerText = new Date().toLocaleDateString('ar-MA', dateOptions);
-
-    function scrollToForm() {
-        document.getElementById('orderForm').scrollIntoView({ behavior: 'smooth' });
-        setTimeout(() => document.querySelector('input[name="name"]').focus(), 500);
-    }
-
-    const observer = new IntersectionObserver((entries) => {
-        const sticky = document.getElementById('stickyCta');
-        if(entries[0].isIntersecting) {
-            sticky.classList.add('hide-sticky');
-        } else {
-            sticky.classList.remove('hide-sticky');
+            // Show Toast Notification (2026 Micro-interaction)
+            const toast = document.getElementById('toast');
+            
+            // Remove animation class if it exists to restart it
+            toast.classList.remove('toast-enter', 'hidden');
+            
+            // Trigger reflow
+            void toast.offsetWidth;
+            
+            toast.classList.add('toast-enter');
+            
+            // Hide after 3 seconds
+            setTimeout(() => {
+                toast.classList.add('hidden');
+                toast.classList.remove('toast-enter');
+            }, 3000);
         }
-    }, { threshold: 0.1 });
-    observer.observe(document.getElementById('orderForm'));
 
-    const names =['سعيد', 'فاطمة', 'ياسين', 'عادل', 'مريم', 'رشيد', 'خديجة', 'إبراهيم', 'سناء'];
-    const cities =['الدار البيضاء', 'الرباط', 'مراكش', 'طنجة', 'أكادير', 'فاس', 'وجدة', 'القنيطرة', 'سلا'];
-    const packs =['العازل المائي (عرض 99 درهم)'];
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.glass-header');
+            if (window.scrollY > 20) {
+                header.classList.add('shadow-lg');
+                header.style.background = 'rgba(19, 26, 34, 0.98)'; // Darker on scroll
+            } else {
+                header.classList.remove('shadow-lg');
+                header.style.background = 'rgba(35, 47, 62, 0.95)';
+            }
+        });
 
-    function showRandomSale() {
-        const popup = document.getElementById('salesPopup');
-        const textObj = document.getElementById('popupText');
-        const randomName = names[Math.floor(Math.random() * names.length)];
-        const randomCity = cities[Math.floor(Math.random() * cities.length)];
-        const randomPack = packs[Math.floor(Math.random() * packs.length)];
-        
-        textObj.innerText = `${randomName} من ${randomCity} طلب للتو ${randomPack}`;
-        popup.classList.add('show');
-        setTimeout(() => { popup.classList.remove('show'); }, 4000);
-    }
-
-    let popupDisplayCount = 0; 
-    const maxPopups = 2;       
-
-    function schedulePopup() {
-        if (popupDisplayCount >= maxPopups) return; 
-        showRandomSale();
-        popupDisplayCount++;
-        if (popupDisplayCount < maxPopups) {
-            setTimeout(schedulePopup, 15000);
-        }
-    }
-    setTimeout(schedulePopup, 8000);
-
-    // 👇 BROSKI: YOUR EXACT SCRIPT URL IS LOCKED IN 👇
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbx_mptD_sy4IwzC950Z79gaEE92XspvluImwC1IdNjeiVHVJNZVuUYaPiPwIUiUcdDQ/exec'; 
-    const form = document.getElementById('google-sheet-form');
-    const submitBtn = document.getElementById('submitBtn');
-
-    form.addEventListener('submit', e => {
-        e.preventDefault();
-        
-        submitBtn.innerHTML = 'جاري إرسال الطلب... ⏳';
-        submitBtn.style.background = '#e63946';
-        submitBtn.disabled = true;
-
-        const formData = new FormData(form);
-        
-        // 🦅 THE CEO DATA MAPPING PROTOCOL 🦅
-        // Name and Tel are automatically handled.
-        // We inject City as empty so your script doesn't crash:
-        formData.append('city', 'لا يوجد (تصفية)'); 
-        // We inject the bundle name to match e.parameter.bundle:
-        formData.append('bundle', 'العازل المائي - 99 درهم');
-
-        fetch(scriptURL, { method: 'POST', body: formData})
-            .then(response => {
-                
-                // FBQ PURCHASE REMOVED FROM HERE! (IT FIRES ON THANK YOU PAGE NOW)
-                
+        // Mobile Sidebar Menu Logic
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const drawer = document.getElementById('mobile-menu-drawer');
+            
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                void menu.offsetWidth; // Trigger reflow
+                menu.classList.remove('opacity-0');
+                drawer.classList.remove('translate-x-full');
+                document.body.style.overflow = 'hidden'; // Stop background scroll
+            } else {
+                menu.classList.add('opacity-0');
+                drawer.classList.add('translate-x-full');
+                document.body.style.overflow = '';
                 setTimeout(() => {
-                    // MUST MATCH YOUR GITHUB FILE NAME EXACTLY!
-                    window.location.href = "thank-you.html";
-                }, 500);
-            })
-            .catch(error => {
-                console.error('Error!', error.message);
-                submitBtn.innerHTML = '❌ حدث خطأ، تأكد من الأنترنت';
-                submitBtn.disabled = false;
-            });
-    });
-</script>
-
+                    menu.classList.add('hidden');
+                }, 300);
+            }
+        }
+    </script>
 </body>
 </html>
