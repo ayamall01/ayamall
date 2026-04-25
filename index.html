@@ -3,337 +3,773 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>مظلة السيارة الذكية | أيا مول</title>
+    <meta name="theme-color" content="#FF9900">
+    <title>أيامول | الوجهة الأولى للتسوق الذكي</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
     
     <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '2663210157367551');
-    fbq('track', 'PageView');
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: '#FF9900', 
+                        brandDark: '#E68A00',
+                        brandLight: '#FFF0D4',
+                        space: '#0A0F1C',      // Deep premium navy background
+                        spaceCard: '#111827',  // Card background
+                        spaceBorder: '#1F2937' // Border color
+                    },
+                    fontFamily: {
+                        sans: ['Cairo', 'sans-serif'],
+                    },
+                    backgroundImage: {
+                        'grid-pattern': "linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px)",
+                    },
+                    boxShadow: {
+                        'glow': '0 0 30px rgba(255, 153, 0, 0.3)',
+                        'glow-blue': '0 0 30px rgba(59, 130, 246, 0.3)',
+                        'inner-light': 'inset 0 1px 0 rgba(255,255,255,0.1)'
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-glow': 'pulse-glow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0) rotate(0deg)' },
+                            '50%': { transform: 'translateY(-15px) rotate(2deg)' },
+                        },
+                        'pulse-glow': {
+                            '0%, 100%': { opacity: 1 },
+                            '50%': { opacity: .5 },
+                        }
+                    }
+                }
+            }
+        }
     </script>
-    <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=2663210157367551&ev=PageView&noscript=1"
-    /></noscript>
+    
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap');
-        
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Tajawal', sans-serif; }
-        
-        /* Premium Dark Theme */
-        body { 
-            background-color: #0f172a; 
-            background-image: 
-                linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
-            background-size: 20px 20px;
-            color: #f8fafc; 
-        }
-        
-        /* Strict Mobile Container */
-        .container { 
-            max-width: 480px; 
-            margin: 0 auto; 
-            background: rgba(15, 23, 42, 0.98);
-            min-height: 100vh; 
-            position: relative; 
-            padding-bottom: 100px; 
-            box-shadow: 0 0 20px rgba(0,0,0,0.8); 
-        }
-        
-        .header { 
-            padding: 15px 20px; 
-            border-bottom: 1px solid rgba(255,255,255,0.05); 
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .header-logo { font-size: 24px; font-weight: 900; color: #fff; }
-        .header-logo span { color: #ff5722; background: rgba(255,87,34,0.1); padding: 2px 8px; border-radius: 6px; }
-        .header-trust { font-size: 13px; font-weight: 700; color: #94a3b8; }
-
-        .content { padding: 20px; }
-        .title { font-size: 26px; font-weight: 900; line-height: 1.4; margin-bottom: 10px; text-align: center; }
-        .highlight { color: #ff5722; }
-        .description { font-size: 16px; color: #94a3b8; margin-bottom: 25px; line-height: 1.6; text-align: center; }
-        
-        /* Features Card */
-        .features { 
-            background: #1e293b; 
-            border: 1px solid rgba(255,255,255,0.05);
-            border-radius: 12px; 
-            padding: 18px; 
-            margin-bottom: 25px; 
-        }
-        .features p { margin-bottom: 12px; font-weight: 700; font-size: 15px; display: flex; align-items: center; gap: 10px; }
-        .features p:last-child { margin-bottom: 0; }
-        .features p::before { content: '🚀'; font-size: 18px; }
-
-        /* BUNDLE SELECTOR */
-        .bundle-title { font-weight: 900; margin-bottom: 15px; font-size: 18px; text-align: center; color: #fff; }
-        
-        .option { 
-            background: #1e293b;
-            border: 2px solid #334155; 
-            padding: 15px; 
-            border-radius: 12px; 
-            margin-bottom: 12px; 
-            cursor: pointer; 
-            display: flex; 
-            align-items: center;
-            transition: all 0.3s ease; 
-        }
-        .option.active { 
-            border-color: #ff5722; 
-            background: rgba(255, 87, 34, 0.05); 
-            box-shadow: 0 4px 15px rgba(255, 87, 34, 0.15);
-        }
-        
-        .radio-container { margin-left: 15px; }
-        input[type="radio"] { accent-color: #ff5722; width: 22px; height: 22px; cursor: pointer; }
-
-        .text-container { flex-grow: 1; }
-        
-        .badge { 
-            background: linear-gradient(90deg, #ff5722, #ff3d00); 
-            color: #fff; 
-            padding: 4px 10px; 
-            border-radius: 6px; 
-            font-size: 12px; 
-            font-weight: bold;
-            display: inline-block; 
-            margin-bottom: 8px; 
-        }
-        .option-title { font-size: 17px; font-weight: 900; color: #f8fafc; margin-bottom: 4px; }
-        .option-subtitle { font-size: 13px; color: #94a3b8; margin-bottom: 8px; }
-        .option-price { color: #ff5722; font-weight: 900; font-size: 22px; display: block; }
-
-        /* FORM */
-        .checkout-box { background: #1e293b; border: 1px solid #334155; padding: 20px; border-radius: 12px; margin-top: 10px; }
-        .form-header { text-align: center; margin-bottom: 20px; font-weight: 900; font-size: 20px; }
-        .input-group { margin-bottom: 15px; }
-        .input-group label { display: block; margin-bottom: 8px; font-weight: 700; font-size: 14px; color: #cbd5e1; }
-        .input-group input { 
-            width: 100%; 
-            padding: 14px; 
-            background: #0f172a;
-            border: 1px solid #334155; 
-            color: #fff;
-            border-radius: 8px; 
-            font-size: 16px; 
-            outline: none; 
-            transition: border 0.3s;
-        }
-        .input-group input:focus { border-color: #ff5722; }
-
-        /* BUTTONS */
-        .submit-btn { 
-            width: 100%; 
-            background: #ff5722; 
-            color: #fff; 
-            padding: 16px; 
-            border: none; 
-            border-radius: 8px; 
-            font-size: 20px; 
-            font-weight: 900; 
-            cursor: pointer; 
-            margin-top: 10px; 
-            box-shadow: 0 4px 15px rgba(255, 87, 34, 0.3);
-            transition: background 0.3s;
-        }
-        .submit-btn:disabled { background: #64748b; box-shadow: none; cursor: not-allowed; }
-        
-        .sticky-cta { 
-            position: fixed; 
-            bottom: 0; 
-            left: 50%; 
-            transform: translateX(-50%); 
-            width: 100%; 
-            max-width: 480px; 
-            padding: 15px 20px; 
-            background: rgba(15, 23, 42, 0.95); 
-            backdrop-filter: blur(5px);
-            border-top: 1px solid #334155;
-            z-index: 100; 
-        }
-        .sticky-btn { 
-            width: 100%; 
-            background: #ff5722; 
-            color: #fff; 
-            padding: 16px; 
-            border: none; 
-            border-radius: 8px; 
-            font-size: 20px; 
-            font-weight: 900; 
-            display: block; 
-            text-align: center; 
-            text-decoration: none; 
-            box-shadow: 0 4px 15px rgba(255, 87, 34, 0.3);
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #0A0F1C;
+            color: #F3F4F6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
         }
 
-        /* WHATSAPP */
-        .whatsapp-float { 
-            position: fixed; 
-            bottom: 95px; 
-            left: 20px; 
-            background-color: #25d366; 
-            border-radius: 50%; 
-            width: 60px; 
-            height: 60px; 
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4); 
-            z-index: 101; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            text-decoration: none;
-        }
-        .whatsapp-float svg { width: 35px; height: 35px; }
+        /* Smooth Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0A0F1C; }
+        ::-webkit-scrollbar-thumb { background: #1F2937; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #FF9900; }
 
-        /* THANK YOU PAGE */
-        #thank-you { display: none; padding: 60px 20px; text-align: center; }
-        #thank-you h2 { color: #25d366; font-size: 32px; margin-bottom: 15px; font-weight: 900; }
-        #thank-you p { font-size: 18px; color: #cbd5e1; line-height: 1.6; }
+        /* The Grid Background */
+        .bg-grid {
+            background-size: 40px 40px;
+            background-position: center top;
+        }
+
+        /* Glassmorphism Cards */
+        .glass-card {
+            background: rgba(17, 24, 39, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        /* Scroll Reveal Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-40px);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .reveal-left.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(40px);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .reveal-right.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Accordion transition */
+        .accordion-content {
+            transition: max-height 0.3s ease-out, padding 0.3s ease;
+            max-height: 0;
+            overflow: hidden;
+        }
+
+        /* Hide scrollbar for horizontal scrolling */
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
 </head>
-<body>
+<body class="relative bg-grid bg-grid-pattern">
 
-<div class="container">
-    
-    <div class="header">
-        <div class="header-logo">أيا<span>مول</span></div>
-        <div class="header-trust">الدفع عند الاستلام 📦</div>
+    <!-- Ambient Glowing Orbs in Background -->
+    <div class="fixed top-0 right-0 w-96 h-96 bg-brand/10 rounded-full blur-[100px] pointer-events-none z-0"></div>
+    <div class="fixed top-1/2 left-0 w-[500px] h-[500px] bg-blue-500/5 rounded-full blur-[120px] pointer-events-none z-0"></div>
+
+    <!-- Top Promotion Bar -->
+    <div class="bg-gradient-to-r from-brandDark to-brand text-white text-xs md:text-sm py-2 px-4 text-center z-50 relative font-bold">
+        🎉 خصومات كبرى بمناسبة الموسم + توصيل مجاني للطلبات فوق 300 درهم 🚀
     </div>
 
-    <img src="umbrella.jpg" style="width: 100%; max-height: 250px; object-fit: cover; border-bottom: 2px solid #ff5722; display: block;">
+    <!-- Header / Navbar -->
+    <header class="sticky top-0 z-40 glass-card border-b-0 border-white/5 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <a href="#" class="flex-shrink-0 flex items-center group">
+                    <div class="bg-brand text-white p-2 rounded-lg ml-2 shadow-glow">
+                        <span class="font-black text-xl leading-none">آ</span>
+                    </div>
+                    <span class="text-3xl font-black tracking-tight text-white">أيامول</span>
+                </a>
 
-    <div class="content" id="main-content">
-        <h1 class="title">تسوق بذكاء، عش بـ <span class="highlight">رفاهية.</span></h1>
-        <p class="description">مظلة السيارة الذكية للحماية المطلقة من حرارة الصيف الحارقة.</p>
+                <!-- Search -->
+                <div class="hidden md:flex flex-1 max-w-xl mx-8 relative">
+                    <input type="text" class="w-full bg-spaceCard border border-spaceBorder rounded-full py-3 px-6 pr-12 text-sm text-white placeholder-gray-400 focus:outline-none focus:border-brand transition-colors" placeholder="ابحث عن منتجات، ماركات، وأكثر...">
+                    <button class="absolute right-0 top-0 h-full w-12 text-gray-400 hover:text-brand transition-colors flex items-center justify-center">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
 
-        <div class="features">
-            <p>تبريد فوري: يحافظ على برودة سيارتك</p>
-            <p>سهولة الاستخدام: تفتح وتطوى في ثوانٍ</p>
-            <p>حماية للصالون: يمنع تشقق لوحة القيادة</p>
+                <!-- Icons -->
+                <div class="flex items-center space-x-6 space-x-reverse text-gray-300">
+                    <a href="#" class="flex flex-col items-center hover:text-brand transition-colors">
+                        <i class="far fa-user text-xl mb-1"></i>
+                        <span class="text-[10px]">حسابي</span>
+                    </a>
+                    <a href="#" class="flex flex-col items-center hover:text-brand transition-colors">
+                        <i class="far fa-heart text-xl mb-1"></i>
+                        <span class="text-[10px]">مفضلتي</span>
+                    </a>
+                    <a href="#" class="flex flex-col items-center hover:text-brand transition-colors relative">
+                        <i class="fas fa-shopping-bag text-xl mb-1"></i>
+                        <span class="absolute -top-1 -right-2 bg-brand text-white text-[10px] font-bold w-4 h-4 flex items-center justify-center rounded-full">0</span>
+                        <span class="text-[10px]">السلة</span>
+                    </a>
+                </div>
+            </div>
         </div>
-
-        <div style="margin: 15px 0 25px 0; border-radius: 12px; overflow: hidden; border: 1px solid #1e293b;">
-            <img src="umbrella.gif" style="width: 100%; display: block;">
-        </div>
-
-        <div class="bundle-box">
-            <div class="bundle-title">اختر العرض المناسب لك:</div>
-            
-            <div class="option" onclick="selectBundle(149)">
-                <div class="radio-container">
-                    <input type="radio" name="bundle_radio" value="149" id="bundle1">
-                </div>
-                <div class="text-container">
-                    <div class="option-title">قطعة واحدة</div>
-                    <span class="option-price">149 DH</span>
-                </div>
-            </div>
-
-            <div class="option active" onclick="selectBundle(249)">
-                <div class="radio-container">
-                    <input type="radio" name="bundle_radio" value="249" id="bundle2" checked>
-                </div>
-                <div class="text-container">
-                    <div class="badge">🔥 الأكثر طلباً</div>
-                    <div class="option-title">قطعتين (عرض التوفير!)</div>
-                    <div class="option-subtitle">لك ولها - حماية مزدوجة للسيارتين</div>
-                    <span class="option-price">249 DH</span>
-                </div>
-            </div>
-        </div>
-
-        <form id="order-form" class="checkout-box">
-            <div class="form-header">أدخل معلوماتك للطلب</div>
-            <input type="hidden" id="selected-bundle" name="bundle" value="249">
-
-            <div class="input-group">
-                <label>الاسم الكامل:</label>
-                <input type="text" name="name" required placeholder="الاسم الكامل">
-            </div>
-            
-            <div class="input-group">
-                <label>رقم الهاتف:</label>
-                <input type="tel" name="tel" required maxlength="10" pattern="[0-9]{10}" placeholder="0612345678">
-            </div>
-
-            <div class="input-group">
-                <label>المدينة / العنوان:</label>
-                <input type="text" name="city" required placeholder="مدينتك وعنوانك">
-            </div>
-
-            <button type="submit" class="submit-btn" id="submit-btn">تأكيد الطلب الآن</button>
-        </form>
-    </div>
-
-    <div id="thank-you">
-        <h2>✅ تم تأكيد طلبك بنجاح!</h2>
-        <p>سنتصل بك قريباً من أجل تأكيد تفاصيل التوصيل. شكراً لثقتكم في أيامول.</p>
-    </div>
-
-    <div class="sticky-cta" id="sticky-bar">
-        <a href="#order-form" class="sticky-btn">أطلب الآن 🛒</a>
-    </div>
-
-    <a href="https://wa.me/212638501541?text=Salam,%20bghit%20nswl%203la%20l'parasol%20dial%20tomobil" class="whatsapp-float" target="_blank">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="#ffffff" d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7 .9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
-    </a>
-</div>
-
-<script>
-    // EXACT APPS SCRIPT URL
-    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx_mptD_sy4IwzC950Z79gaEE92XspvluImwC1IdNjeiVHVJNZVuUYaPiPwIUiUcdDQ/exec";
-
-    function selectBundle(price) {
-        document.querySelectorAll('.option').forEach(opt => opt.classList.remove('active'));
-        const selectedInput = document.querySelector('input[value="'+price+'"]');
-        selectedInput.closest('.option').classList.add('active');
-        selectedInput.checked = true;
-        document.getElementById('selected-bundle').value = price;
-    }
-
-    document.getElementById('order-form').addEventListener('submit', function(e) {
-        e.preventDefault();
         
-        const btn = document.getElementById('submit-btn');
-        btn.disabled = true;
-        btn.innerText = "جاري تأكيد الطلب... ⏳";
+        <!-- Categories Navigation -->
+        <nav class="border-t border-white/5 bg-spaceCard/30 hidden md:block">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <ul class="flex justify-center space-x-8 space-x-reverse py-3 text-sm font-semibold text-gray-300">
+                    <li class="hover:text-brand transition-colors cursor-pointer text-brand"><i class="fas fa-fire mr-1"></i> عروض اليوم</li>
+                    <li class="hover:text-white transition-colors cursor-pointer">📱 الإلكترونيات</li>
+                    <li class="hover:text-white transition-colors cursor-pointer">👗 الأزياء</li>
+                    <li class="hover:text-white transition-colors cursor-pointer">🏠 المنزل والمطبخ</li>
+                    <li class="hover:text-white transition-colors cursor-pointer">💄 الجمال والعناية</li>
+                    <li class="hover:text-white transition-colors cursor-pointer">⚽ الرياضة</li>
+                </ul>
+            </div>
+        </nav>
+    </header>
 
-        const formData = new FormData(this);
-        const data = new URLSearchParams(formData);
-        const bundleValue = document.getElementById('selected-bundle').value;
+    <!-- MAIN HOMEPAGE HERO -->
+    <section class="relative pt-12 pb-20 md:pt-20 md:pb-32 overflow-hidden z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                
+                <!-- Right Text Content -->
+                <div class="text-right reveal-right">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand/10 border border-brand/20 text-brand mb-6 text-sm font-bold">
+                        <span class="w-2 h-2 rounded-full bg-brand animate-pulse-glow"></span>
+                        الوجهة الأولى للتسوق في المغرب
+                    </div>
+                    
+                    <h1 class="text-5xl md:text-7xl font-black text-white leading-tight mb-4 tracking-tight">
+                        تسوق بذكاء،<br>
+                        عش بـ <span class="text-brand">رفاهية.</span>
+                    </h1>
+                    
+                    <p class="text-gray-400 text-lg md:text-xl mb-8 leading-relaxed max-w-lg">
+                        اكتشف آلاف المنتجات الحصرية من أفضل العلامات التجارية بأسعار لا تقبل المنافسة. استمتع بتجربة تسوق آمنة مع الدفع عند الاستلام وإرجاع مجاني 100%.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#trending" class="bg-brand hover:bg-brandDark text-white font-bold py-4 px-8 rounded-xl shadow-glow transition-all flex items-center justify-center gap-3 text-lg transform hover:-translate-y-1">
+                            <i class="fas fa-shopping-bag"></i> تسوق العروض الآن
+                        </a>
+                        <a href="#categories" class="bg-spaceCard hover:bg-spaceBorder border border-white/10 text-white font-bold py-4 px-8 rounded-xl transition-all flex items-center justify-center gap-3 text-lg">
+                            <i class="fas fa-th-large"></i> تصفح الفئات
+                        </a>
+                    </div>
+                </div>
 
-        fetch(SCRIPT_URL, {
-            method: 'POST',
-            body: data
-        })
-        .then(res => res.text())
-        .then(response => {
-            document.getElementById('main-content').style.display = 'none';
-            document.getElementById('sticky-bar').style.display = 'none';
-            document.getElementById('thank-you').style.display = 'block';
-            window.scrollTo(0,0);
+                <!-- Left Collage Image (Floating) -->
+                <div class="relative h-[400px] md:h-[600px] reveal-left flex justify-center items-center">
+                    <!-- Glowing backplate -->
+                    <div class="absolute inset-0 bg-gradient-to-tr from-brand/20 to-blue-500/20 rounded-full blur-[80px]"></div>
+                    
+                    <!-- Floating Store Elements -->
+                    <div class="absolute top-10 right-10 glass-card px-4 py-2 rounded-xl border border-white/10 flex items-center gap-3 animate-float" style="animation-delay: 0s;">
+                        <div class="text-right">
+                            <p class="font-bold text-white text-sm">أزياء الموضة</p>
+                            <p class="text-xs text-gray-400">تشكيلة 2026</p>
+                        </div>
+                        <div class="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center text-pink-400"><i class="fas fa-tshirt"></i></div>
+                    </div>
 
-            if (!sessionStorage.getItem('orderPlaced')) {
-                fbq('track', 'Purchase', {currency: 'MAD', value: bundleValue});
-                sessionStorage.setItem('orderPlaced', 'true');
+                    <div class="absolute bottom-20 left-0 glass-card px-4 py-2 rounded-xl border border-white/10 flex items-center gap-3 animate-float" style="animation-delay: 1.5s;">
+                        <div class="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center text-blue-400"><i class="fas fa-laptop"></i></div>
+                        <div class="text-right">
+                            <p class="font-bold text-white text-sm">أحدث التقنيات</p>
+                            <p class="text-xs text-gray-400">ضمان أصالة</p>
+                        </div>
+                    </div>
+
+                    <div class="absolute top-1/2 left-10 glass-card px-4 py-2 rounded-xl border border-white/10 flex items-center gap-3 animate-float" style="animation-delay: 3s;">
+                        <div class="text-right">
+                            <p class="font-bold text-white text-sm">شحن سريع</p>
+                            <p class="text-xs text-gray-400">لجميع المدن</p>
+                        </div>
+                        <div class="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center text-brand"><i class="fas fa-shipping-fast"></i></div>
+                    </div>
+
+                    <!-- Main Composition Image -->
+                    <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Ayamall Shopping" class="relative z-10 w-4/5 h-[400px] object-cover rounded-2xl shadow-2xl animate-float border border-white/10">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Secret Weapon: Trust Bar (Zero Risk Focus) -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20 -mt-10 reveal">
+        <div class="glass-card rounded-2xl p-4 md:p-6 grid grid-cols-2 md:grid-cols-4 gap-4 divide-x-0 md:divide-x md:divide-x-reverse divide-white/10">
+            <div class="flex items-center gap-3 justify-center md:justify-start px-4">
+                <i class="fas fa-shield-check text-3xl text-gray-300"></i>
+                <div>
+                    <h4 class="font-bold text-white text-sm">جودة مضمونة</h4>
+                    <p class="text-xs text-gray-400 hidden lg:block">نحن نختار الأفضل لك</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-3 justify-center md:justify-start px-4">
+                <i class="fas fa-truck-fast text-3xl text-brand"></i>
+                <div>
+                    <h4 class="font-bold text-white text-sm">توصيل مجاني للطلبات +300</h4>
+                    <p class="text-xs text-brandLight hidden lg:block">لجميع مدن المغرب</p>
+                </div>
+            </div>
+            <!-- The Killer Feature Personalized for this User -->
+            <div class="flex items-center gap-3 justify-center md:justify-start px-4 bg-brand/5 rounded-xl border border-brand/20 p-2 relative overflow-hidden group cursor-help" title="لا توجد رسوم إرجاع، مندوبنا يتكفل بكل شيء!">
+                <div class="absolute inset-0 bg-brand/10 translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
+                <i class="fas fa-undo text-3xl text-green-400 relative z-10 animate-pulse-glow"></i>
+                <div class="relative z-10">
+                    <h4 class="font-black text-white text-sm">إرجاع مجاني 100%</h4>
+                    <p class="text-[10px] text-green-400">المندوب يأخذ المرتجع مجاناً!</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-3 justify-center md:justify-start px-4">
+                <i class="fas fa-credit-card text-3xl text-gray-300"></i>
+                <div>
+                    <h4 class="font-bold text-white text-sm">الدفع عند الاستلام</h4>
+                    <p class="text-xs text-gray-400 hidden lg:block">لا تدفع حتى تتوصل بالمنتج</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Shop by Categories -->
+    <section id="categories" class="py-20 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-end mb-10 reveal">
+                <div>
+                    <span class="text-brand font-bold text-sm tracking-widest uppercase">تصفح متجرنا</span>
+                    <h2 class="text-3xl md:text-5xl font-black text-white mt-2">تسوق حسب <span class="text-brand">الفئة</span></h2>
+                </div>
+            </div>
+
+            <div class="flex space-x-4 space-x-reverse overflow-x-auto hide-scrollbar pb-6 reveal-left">
+                <!-- Category 1 -->
+                <a href="#" class="flex-none w-32 md:w-48 group">
+                    <div class="glass-card aspect-square rounded-2xl p-4 flex flex-col items-center justify-center border border-white/5 group-hover:border-brand transition-colors mb-3 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1498049794561-7780e7231661?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-60 group-hover:scale-110 transition-all duration-500">
+                        <i class="fas fa-laptop text-3xl text-white relative z-10 mb-2 drop-shadow-md"></i>
+                        <span class="text-white font-bold relative z-10 drop-shadow-md text-sm md:text-base">إلكترونيات</span>
+                    </div>
+                </a>
+                <!-- Category 2 -->
+                <a href="#" class="flex-none w-32 md:w-48 group">
+                    <div class="glass-card aspect-square rounded-2xl p-4 flex flex-col items-center justify-center border border-white/5 group-hover:border-brand transition-colors mb-3 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-60 group-hover:scale-110 transition-all duration-500">
+                        <i class="fas fa-shoe-prints text-3xl text-white relative z-10 mb-2 drop-shadow-md"></i>
+                        <span class="text-white font-bold relative z-10 drop-shadow-md text-sm md:text-base">أحذية الموضة</span>
+                    </div>
+                </a>
+                <!-- Category 3 -->
+                <a href="#" class="flex-none w-32 md:w-48 group">
+                    <div class="glass-card aspect-square rounded-2xl p-4 flex flex-col items-center justify-center border border-white/5 group-hover:border-brand transition-colors mb-3 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-60 group-hover:scale-110 transition-all duration-500">
+                        <i class="fas fa-clock text-3xl text-white relative z-10 mb-2 drop-shadow-md"></i>
+                        <span class="text-white font-bold relative z-10 drop-shadow-md text-sm md:text-base">ساعات ذكية</span>
+                    </div>
+                </a>
+                <!-- Category 4 -->
+                <a href="#" class="flex-none w-32 md:w-48 group">
+                    <div class="glass-card aspect-square rounded-2xl p-4 flex flex-col items-center justify-center border border-white/5 group-hover:border-brand transition-colors mb-3 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-60 group-hover:scale-110 transition-all duration-500">
+                        <i class="fas fa-headphones text-3xl text-white relative z-10 mb-2 drop-shadow-md"></i>
+                        <span class="text-white font-bold relative z-10 drop-shadow-md text-sm md:text-base">صوتيات</span>
+                    </div>
+                </a>
+                <!-- Category 5 -->
+                <a href="#" class="flex-none w-32 md:w-48 group">
+                    <div class="glass-card aspect-square rounded-2xl p-4 flex flex-col items-center justify-center border border-white/5 group-hover:border-brand transition-colors mb-3 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1585386959984-a4155224a1ad?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-60 group-hover:scale-110 transition-all duration-500">
+                        <i class="fas fa-spray-can text-3xl text-white relative z-10 mb-2 drop-shadow-md"></i>
+                        <span class="text-white font-bold relative z-10 drop-shadow-md text-sm md:text-base">عطور وعناية</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trending Products Grid -->
+    <section id="trending" class="py-16 bg-spaceCard/30 border-y border-white/5 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-end mb-12 reveal">
+                <div>
+                    <h2 class="text-3xl md:text-5xl font-black text-white mt-2">وصل <span class="text-brand">حديثاً</span></h2>
+                    <p class="text-gray-400 mt-2">المنتجات الأكثر طلباً في متجرنا هذا الأسبوع</p>
+                </div>
+                <a href="#" class="text-brand hover:text-white font-bold transition-colors hidden sm:block">
+                    عرض الكل <i class="fas fa-arrow-left mr-2"></i>
+                </a>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+                <!-- Product Card 1 -->
+                <div class="glass-card rounded-2xl p-4 border border-white/5 hover:border-brand/50 transition-all group reveal">
+                    <div class="relative rounded-xl overflow-hidden mb-4 aspect-[4/5] bg-white/5">
+                        <div class="absolute top-2 right-2 bg-red-500 text-white text-[10px] font-bold px-2 py-1 rounded z-10">-37%</div>
+                        <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Headphones" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <!-- Add to cart overlay -->
+                        <div class="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                            <button class="bg-brand text-white font-bold py-2 px-4 rounded-full shadow-glow transform translate-y-4 group-hover:translate-y-0 transition-all flex items-center gap-2 text-sm">
+                                <i class="fas fa-cart-plus"></i> إضافة سريعة
+                            </button>
+                        </div>
+                    </div>
+                    <h3 class="text-white font-bold text-sm md:text-base mb-1 truncate">سماعات SonicPro X1</h3>
+                    <div class="flex items-center text-brand text-xs mb-2">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <div class="flex items-end gap-2">
+                        <span class="text-xl font-black text-white">2,199 د.م</span>
+                        <span class="text-xs text-gray-500 line-through mb-1">3,500 د.م</span>
+                    </div>
+                </div>
+
+                <!-- Product Card 2 -->
+                <div class="glass-card rounded-2xl p-4 border border-white/5 hover:border-brand/50 transition-all group reveal" style="transition-delay: 100ms;">
+                    <div class="relative rounded-xl overflow-hidden mb-4 aspect-[4/5] bg-white/5">
+                        <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Smartwatch" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                            <button class="bg-brand text-white font-bold py-2 px-4 rounded-full shadow-glow transform translate-y-4 group-hover:translate-y-0 transition-all flex items-center gap-2 text-sm">
+                                <i class="fas fa-cart-plus"></i> إضافة سريعة
+                            </button>
+                        </div>
+                    </div>
+                    <h3 class="text-white font-bold text-sm md:text-base mb-1 truncate">ساعة رياضية Ultra</h3>
+                    <div class="flex items-center text-brand text-xs mb-2">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <div class="flex items-end gap-2">
+                        <span class="text-xl font-black text-white">1,450 د.م</span>
+                    </div>
+                </div>
+
+                <!-- Product Card 3 -->
+                <div class="glass-card rounded-2xl p-4 border border-white/5 hover:border-brand/50 transition-all group reveal" style="transition-delay: 200ms;">
+                    <div class="relative rounded-xl overflow-hidden mb-4 aspect-[4/5] bg-white/5">
+                        <div class="absolute top-2 right-2 bg-brand text-white text-[10px] font-bold px-2 py-1 rounded z-10">جديد</div>
+                        <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Shoes" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                            <button class="bg-brand text-white font-bold py-2 px-4 rounded-full shadow-glow transform translate-y-4 group-hover:translate-y-0 transition-all flex items-center gap-2 text-sm">
+                                <i class="fas fa-cart-plus"></i> إضافة سريعة
+                            </button>
+                        </div>
+                    </div>
+                    <h3 class="text-white font-bold text-sm md:text-base mb-1 truncate">حذاء رياضي Air Max</h3>
+                    <div class="flex items-center text-brand text-xs mb-2">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+                    </div>
+                    <div class="flex items-end gap-2">
+                        <span class="text-xl font-black text-white">890 د.م</span>
+                    </div>
+                </div>
+
+                <!-- Product Card 4 -->
+                <div class="glass-card rounded-2xl p-4 border border-white/5 hover:border-brand/50 transition-all group reveal" style="transition-delay: 300ms;">
+                    <div class="relative rounded-xl overflow-hidden mb-4 aspect-[4/5] bg-white/5">
+                        <img src="https://images.unsplash.com/photo-1585386959984-a4155224a1ad?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Perfume" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                            <button class="bg-brand text-white font-bold py-2 px-4 rounded-full shadow-glow transform translate-y-4 group-hover:translate-y-0 transition-all flex items-center gap-2 text-sm">
+                                <i class="fas fa-cart-plus"></i> إضافة سريعة
+                            </button>
+                        </div>
+                    </div>
+                    <h3 class="text-white font-bold text-sm md:text-base mb-1 truncate">عطر فرنسي فاخر</h3>
+                    <div class="flex items-center text-brand text-xs mb-2">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <div class="flex items-end gap-2">
+                        <span class="text-xl font-black text-white">450 د.م</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-8 text-center sm:hidden reveal">
+                <a href="#" class="border border-brand text-brand hover:bg-brand hover:text-white transition-colors font-bold py-3 px-8 rounded-full inline-block w-full">
+                    عرض كل المنتجات
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ayamall Features (Bento Box) -->
+    <section id="features" class="py-16 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 reveal">
+                <span class="text-brand font-bold text-sm tracking-widest uppercase">لماذا نحن؟</span>
+                <h2 class="text-3xl md:text-5xl font-black text-white mt-2">مميزات التسوق من <span class="text-brand">أيامول</span></h2>
+                <div class="w-20 h-1 bg-brand mx-auto mt-6 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Feature 1 -->
+                <div class="glass-card p-8 rounded-2xl text-center group hover:bg-spaceBorder transition-colors duration-300 reveal">
+                    <div class="w-16 h-16 bg-space rounded-full flex items-center justify-center mx-auto mb-6 border border-white/10 group-hover:border-brand transition-colors shadow-[inset_0_0_20px_rgba(0,0,0,0.5)]">
+                        <i class="fas fa-rocket text-2xl text-gray-300 group-hover:text-brand transition-colors"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">توصيل صاروخي</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">شراكات مع أفضل شركات الشحن لضمان وصول طلبك لباب بيتك في غضون 24 إلى 48 ساعة أينما كنت في المغرب.</p>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="glass-card p-8 rounded-2xl text-center group hover:bg-spaceBorder transition-colors duration-300 reveal" style="transition-delay: 100ms;">
+                    <div class="w-16 h-16 bg-space rounded-full flex items-center justify-center mx-auto mb-6 border border-white/10 group-hover:border-brand transition-colors shadow-[inset_0_0_20px_rgba(0,0,0,0.5)]">
+                        <i class="fas fa-handshake text-2xl text-brand"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">الدفع عند الاستلام</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">تسوق براحة بال تامة. لا نطالبك بأي مدفوعات مسبقة، ادفع نقداً لمندوب التوصيل فقط عند استلام منتجك والتأكد منه.</p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="glass-card p-8 rounded-2xl text-center group border-brand/50 hover:bg-spaceBorder transition-colors duration-300 reveal relative overflow-hidden" style="transition-delay: 200ms;">
+                    <div class="absolute inset-0 bg-brand/5"></div>
+                    <div class="w-16 h-16 bg-space rounded-full flex items-center justify-center mx-auto mb-6 border border-brand/50 group-hover:border-brand transition-colors shadow-[inset_0_0_20px_rgba(255,153,0,0.3)] relative z-10">
+                        <i class="fas fa-undo text-2xl text-green-400"></i>
+                    </div>
+                    <h3 class="text-xl font-black text-white mb-3 relative z-10">إرجاع مجاني 100%</h3>
+                    <p class="text-gray-300 text-sm leading-relaxed relative z-10">الميزة الأقوى: لم يعجبك المنتج؟ لا مشكلة! مندوبنا سيأتي لاستلام المرتجع من بيتك <span class="text-brand font-bold">مجاناً وبدون أي رسوم خفية</span>.</p>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="glass-card p-8 rounded-2xl text-center group hover:bg-spaceBorder transition-colors duration-300 reveal" style="transition-delay: 300ms;">
+                    <div class="w-16 h-16 bg-space rounded-full flex items-center justify-center mx-auto mb-6 border border-white/10 group-hover:border-brand transition-colors shadow-[inset_0_0_20px_rgba(0,0,0,0.5)]">
+                        <i class="fas fa-certificate text-2xl text-gray-300 group-hover:text-brand transition-colors"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">جودة أصلية مضمونة</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">جميع منتجاتنا تخضع لفحص جودة صارم. نحن نتعامل مع الموردين المعتمدين فقط لنضمن لك أفضل جودة متوفرة في السوق.</p>
+                </div>
+
+                <!-- Feature 5 -->
+                <div class="glass-card p-8 rounded-2xl text-center group hover:bg-spaceBorder transition-colors duration-300 reveal" style="transition-delay: 400ms;">
+                    <div class="w-16 h-16 bg-space rounded-full flex items-center justify-center mx-auto mb-6 border border-white/10 group-hover:border-brand transition-colors shadow-[inset_0_0_20px_rgba(0,0,0,0.5)]">
+                        <i class="fas fa-headset text-2xl text-gray-300 group-hover:text-brand transition-colors"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">دعم فني 24/7</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">فريق خدمة العملاء لدينا جاهز دائماً للإجابة على استفساراتك، متابعة طلبك، ومساعدتك عبر الواتساب أو الهاتف في أي وقت.</p>
+                </div>
+
+                <!-- Feature 6 -->
+                <div class="glass-card p-8 rounded-2xl text-center group hover:bg-spaceBorder transition-colors duration-300 reveal" style="transition-delay: 500ms;">
+                    <div class="w-16 h-16 bg-space rounded-full flex items-center justify-center mx-auto mb-6 border border-white/10 group-hover:border-brand transition-colors shadow-[inset_0_0_20px_rgba(0,0,0,0.5)]">
+                        <i class="fas fa-lock text-2xl text-gray-300 group-hover:text-brand transition-colors"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">خصوصية تامة</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">بياناتك ومعلوماتك الشخصية محمية بأعلى تقنيات التشفير. نحن نحترم خصوصيتك ولا نشارك بياناتك مع أي أطراف خارجية.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Accordion (Store Level) -->
+    <section class="py-16 relative z-10">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 reveal">
+            <div class="text-center mb-12">
+                <span class="text-brand font-bold text-sm tracking-widest uppercase">الأسئلة الشائعة</span>
+                <h2 class="text-3xl font-black text-white mt-2">دليل التسوق من <span class="text-brand">أيامول</span></h2>
+            </div>
+
+            <div class="space-y-4">
+                <!-- FAQ Item 1 -->
+                <div class="glass-card rounded-xl border border-white/10 overflow-hidden">
+                    <button class="w-full px-6 py-5 text-right flex justify-between items-center text-white font-bold hover:bg-white/5 transition-colors focus:outline-none" onclick="toggleAccordion('faq1')">
+                        كم من الوقت يستغرق توصيل الطلب؟
+                        <i class="fas fa-chevron-down text-gray-400 transition-transform" id="icon-faq1"></i>
+                    </button>
+                    <div id="faq1" class="accordion-content bg-black/20">
+                        <p class="px-6 pb-5 text-gray-400 text-sm leading-relaxed">
+                            نحن نفخر بسرعتنا! عادةً ما يتم تجهيز وشحن الطلبات في نفس اليوم. التوصيل للمدن الرئيسية يستغرق 24 ساعة، وباقي المدن يستغرق من 48 إلى 72 ساعة كحد أقصى.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="glass-card rounded-xl border border-brand/30 overflow-hidden">
+                    <button class="w-full px-6 py-5 text-right flex justify-between items-center text-white font-bold hover:bg-white/5 transition-colors focus:outline-none" onclick="toggleAccordion('faq2')">
+                        كيف تعمل ميزة الإرجاع المجاني بدون رسوم؟
+                        <i class="fas fa-chevron-down text-brand transition-transform" id="icon-faq2"></i>
+                    </button>
+                    <div id="faq2" class="accordion-content bg-black/20">
+                        <p class="px-6 pb-5 text-green-400 font-bold text-sm leading-relaxed">
+                            هذه الميزة حصرية في أيامول. نظراً لشراكاتنا القوية مع شركات التوصيل، إذا قررت إرجاع المنتج لأي سبب، فنحن لا نفرض عليك أي رسوم. سيتصل بك المندوب ويأتي لاستلام المنتج من باب منزلك <span class="text-white underline">مجاناً</span> بالكامل. تسوق وأنت مطمئن 100%!
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="glass-card rounded-xl border border-white/10 overflow-hidden">
+                    <button class="w-full px-6 py-5 text-right flex justify-between items-center text-white font-bold hover:bg-white/5 transition-colors focus:outline-none" onclick="toggleAccordion('faq3')">
+                        هل المنتجات المعروضة أصلية ومطابقة للصور؟
+                        <i class="fas fa-chevron-down text-gray-400 transition-transform" id="icon-faq3"></i>
+                    </button>
+                    <div id="faq3" class="accordion-content bg-black/20">
+                        <p class="px-6 pb-5 text-gray-400 text-sm leading-relaxed">
+                            بالتأكيد. جميع الصور ملتقطة بعناية للمنتجات الحقيقية التي نبيعها. نحن نضمن أصالة وجودة كل قطعة تخرج من مستودعاتنا، ويمكنك معاينة المنتج مع المندوب قبل الدفع.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section (Store Level) -->
+    <section class="py-16 bg-spaceCard/30 border-y border-white/5 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 reveal">
+                <h2 class="text-3xl font-black text-white mt-2">ماذا يقول عملاء <span class="text-brand">أيامول</span>؟</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Review 1 -->
+                <div class="glass-card p-6 rounded-2xl border border-white/10 reveal">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 bg-brand rounded-full flex items-center justify-center text-white font-bold text-xl">ي.م</div>
+                        <div>
+                            <h4 class="text-white font-bold">ياسين المنصوري</h4>
+                            <div class="text-brand text-xs"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        </div>
+                    </div>
+                    <h5 class="font-bold text-white mb-2 text-sm">أفضل متجر تعاملت معه في المغرب</h5>
+                    <p class="text-gray-400 text-sm leading-relaxed">الصدق والمصداقية عالية جداً. طلبت حذاء ووصلني في اليوم الموالي. المقاس كان غير مناسب وتواصلت معهم، فأرسلوا المندوب لاستبداله مجاناً بدون أي تعقيدات.</p>
+                    <p class="text-[10px] text-gray-500 mt-4"><i class="fas fa-check-circle text-green-500"></i> عميل موثوق</p>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="glass-card p-6 rounded-2xl border border-white/10 reveal" style="transition-delay: 150ms;">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-xl">ل.ع</div>
+                        <div>
+                            <h4 class="text-white font-bold">ليلى العلمي</h4>
+                            <div class="text-brand text-xs"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+                        </div>
+                    </div>
+                    <h5 class="font-bold text-white mb-2 text-sm">تغليف ممتاز وسرعة في الرد</h5>
+                    <p class="text-gray-400 text-sm leading-relaxed">اشتريت مجموعة عطور كهدية. التغليف كان فخماً جداً يحمي المنتجات بشكل ممتاز. خدمة العملاء على الواتساب سريعة ومحترمة. سأكون زبونة دائمة.</p>
+                    <p class="text-[10px] text-gray-500 mt-4"><i class="fas fa-check-circle text-green-500"></i> عميل موثوق</p>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="glass-card p-6 rounded-2xl border border-white/10 reveal" style="transition-delay: 300ms;">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold text-xl">م.ب</div>
+                        <div>
+                            <h4 class="text-white font-bold">محمد بنعلي</h4>
+                            <div class="text-brand text-xs"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        </div>
+                    </div>
+                    <h5 class="font-bold text-white mb-2 text-sm">الإرجاع المجاني حقيقي!</h5>
+                    <p class="text-gray-400 text-sm leading-relaxed">كنت متردداً في الشراء أونلاين، لكن ميزة الدفع عند الاستلام والإرجاع المجاني شجعتني. فعلاً منتجاتهم مطابقة للصور وممتازة. شكراً أيامول.</p>
+                    <p class="text-[10px] text-gray-500 mt-4"><i class="fas fa-check-circle text-green-500"></i> عميل موثوق</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black pt-16 pb-8 border-t-[4px] border-brand relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <!-- Brand Info -->
+                <div class="lg:col-span-1">
+                    <span class="text-3xl font-black tracking-tight text-white mb-6 block">أيامول<span class="text-brand">.</span></span>
+                    <p class="text-sm text-gray-400 leading-relaxed mb-6">
+                        منصة التسوق الإلكتروني الأولى في المغرب. نوفر لك أفضل المنتجات بأسعار تنافسية مع ضمان الجودة الأصالة، وتوصيل سريع لجميع مدن المملكة.
+                    </p>
+                    <div class="flex space-x-3 space-x-reverse">
+                        <a href="#" class="w-10 h-10 rounded-full bg-spaceCard border border-white/10 flex items-center justify-center text-gray-400 hover:bg-brand hover:text-white transition-colors"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-spaceCard border border-white/10 flex items-center justify-center text-gray-400 hover:bg-brand hover:text-white transition-colors"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-spaceCard border border-white/10 flex items-center justify-center text-gray-400 hover:bg-brand hover:text-white transition-colors"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+
+                <!-- Links 1 -->
+                <div>
+                    <h4 class="text-white font-bold text-lg mb-4">روابط سريعة</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-brand transition-colors">الصفحة الرئيسية</a></li>
+                        <li><a href="#" class="hover:text-brand transition-colors">عروض اليوم</a></li>
+                        <li><a href="#" class="hover:text-brand transition-colors">أفضل المبيعات</a></li>
+                        <li><a href="#" class="hover:text-brand transition-colors">المنتجات الجديدة</a></li>
+                    </ul>
+                </div>
+
+                <!-- Links 2 -->
+                <div>
+                    <h4 class="text-white font-bold text-lg mb-4">خدمة العملاء</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-brand transition-colors">تتبع طلبي</a></li>
+                        <li><a href="#" class="text-brand font-bold">سياسة الإرجاع المجاني</a></li>
+                        <li><a href="#" class="hover:text-brand transition-colors">تواصل معنا</a></li>
+                        <li><a href="#" class="hover:text-brand transition-colors">الأسئلة الشائعة</a></li>
+                    </ul>
+                </div>
+
+                <!-- Newsletter -->
+                <div>
+                    <h4 class="text-white font-bold text-lg mb-4">اشترك واحصل على خصم 15%</h4>
+                    <p class="text-xs text-gray-400 mb-4">ابقَ على اطلاع بأحدث العروض والمنتجات الحصرية. لا بريد مزعج، وعدنا!</p>
+                    <div class="flex">
+                        <input type="email" placeholder="أدخل بريدك الإلكتروني..." class="w-full bg-spaceCard border border-white/10 rounded-r-lg py-3 px-4 text-sm text-white focus:outline-none focus:border-brand">
+                        <button class="bg-brand hover:bg-brandDark text-white px-4 rounded-l-lg font-bold transition-colors">اشترك</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
+                <p>&copy; 2026 أيامول. جميع الحقوق محفوظة.</p>
+                <div class="flex gap-2 mt-4 md:mt-0">
+                    <span class="bg-white/5 border border-white/10 px-3 py-1 rounded text-xs">الدفع عند الاستلام</span>
+                    <span class="bg-white/5 border border-white/10 px-3 py-1 rounded text-xs text-brand font-bold">إرجاع مجاني 100%</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- STICKY MOBILE BOTTOM BAR (General Store Nav) -->
+    <div id="sticky-cart" class="fixed bottom-0 left-0 w-full glass-card border-t border-white/10 p-2 z-50 flex items-center justify-around md:hidden">
+        <a href="#" class="flex flex-col items-center text-brand p-2">
+            <i class="fas fa-home text-xl mb-1"></i>
+            <span class="text-[10px] font-bold">الرئيسية</span>
+        </a>
+        <a href="#categories" class="flex flex-col items-center text-gray-400 hover:text-white p-2 transition-colors">
+            <i class="fas fa-th-large text-xl mb-1"></i>
+            <span class="text-[10px] font-bold">الفئات</span>
+        </a>
+        <a href="#trending" class="relative -top-6 bg-brand text-white w-14 h-14 rounded-full flex items-center justify-center shadow-glow border-4 border-spaceCard">
+            <i class="fas fa-search text-xl"></i>
+        </a>
+        <a href="#" class="flex flex-col items-center text-gray-400 hover:text-white p-2 transition-colors relative">
+            <i class="fas fa-shopping-bag text-xl mb-1"></i>
+            <span class="absolute top-1 right-2 bg-red-500 text-white text-[8px] font-bold w-3 h-3 flex items-center justify-center rounded-full">0</span>
+            <span class="text-[10px] font-bold">السلة</span>
+        </a>
+        <a href="#" class="flex flex-col items-center text-gray-400 hover:text-white p-2 transition-colors">
+            <i class="far fa-user text-xl mb-1"></i>
+            <span class="text-[10px] font-bold">حسابي</span>
+        </a>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Smooth Reveal Animations
+        const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15, rootMargin: "0px 0px -50px 0px" });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // Accordion Logic
+        function toggleAccordion(id) {
+            const content = document.getElementById(id);
+            const icon = document.getElementById('icon-' + id);
+            
+            if (content.style.maxHeight && content.style.maxHeight !== '0px') {
+                content.style.maxHeight = '0px';
+                icon.style.transform = 'rotate(0deg)';
+                content.style.paddingTop = '0px';
+                content.style.paddingBottom = '0px';
+            } else {
+                content.style.maxHeight = content.scrollHeight + 40 + "px"; // added extra space for padding
+                icon.style.transform = 'rotate(180deg)';
+                content.style.paddingTop = '0px';
+                content.style.paddingBottom = '20px';
             }
-        })
-        .catch(error => {
-            btn.disabled = false;
-            btn.innerText = "تأكيد الطلب الآن";
-            alert("حدث خطأ في الشبكة، المرجو المحاولة مرة أخرى.");
-        });
-    });
-</script>
+        }
 
+        // Sticky Mobile Nav Logic
+        const stickyNav = document.getElementById('sticky-cart');
+        
+        // Show/hide mobile nav based on scroll direction for better UX
+        let lastScrollTop = 0;
+        window.addEventListener('scroll', () => {
+            if (window.innerWidth < 768) { // Mobile only
+                let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                if (scrollTop > lastScrollTop && scrollTop > 100) {
+                    // Scrolling down - hide
+                    stickyNav.classList.remove('visible');
+                    stickyNav.style.transform = 'translateY(100%)';
+                } else {
+                    // Scrolling up - show
+                    stickyNav.classList.add('visible');
+                    stickyNav.style.transform = 'translateY(0)';
+                }
+                lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+            }
+        });
+        
+        // Initial state for mobile nav
+        if (window.innerWidth < 768) {
+            stickyNav.classList.add('visible');
+            stickyNav.style.transform = 'translateY(0)';
+        }
+    </script>
 </body>
 </html>
