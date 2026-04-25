@@ -57,37 +57,6 @@
         .header-logo span { color: #ff5722; background: rgba(255,87,34,0.1); padding: 2px 8px; border-radius: 6px; }
         .header-trust { font-size: 13px; font-weight: 700; color: #94a3b8; }
 
-        /* Professional Image Placeholders (No English Alt Glitch) */
-        .image-placeholder {
-            width: 100%;
-            height: 250px;
-            background: #1e293b;
-            border-bottom: 2px solid #ff5722;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #64748b;
-            font-weight: 700;
-            font-size: 16px;
-        }
-        .gif-placeholder {
-            width: 100%;
-            height: 220px;
-            background: #1e293b;
-            border: 1px dashed #334155;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #64748b;
-            font-weight: 700;
-            font-size: 16px;
-            margin: 15px 0 25px 0;
-        }
-        
-        /* Hidden class for when you add real images */
-        .real-image { width: 100%; height: auto; display: none; }
-
         .content { padding: 20px; }
         .title { font-size: 26px; font-weight: 900; line-height: 1.4; margin-bottom: 10px; text-align: center; }
         .highlight { color: #ff5722; }
@@ -105,7 +74,7 @@
         .features p:last-child { margin-bottom: 0; }
         .features p::before { content: '🚀'; font-size: 18px; }
 
-        /* BUNDLE SELECTOR - RTL FIXED */
+        /* BUNDLE SELECTOR */
         .bundle-title { font-weight: 900; margin-bottom: 15px; font-size: 18px; text-align: center; color: #fff; }
         
         .option { 
@@ -125,9 +94,7 @@
             box-shadow: 0 4px 15px rgba(255, 87, 34, 0.15);
         }
         
-        .radio-container {
-            margin-left: 15px;
-        }
+        .radio-container { margin-left: 15px; }
         input[type="radio"] { accent-color: #ff5722; width: 22px; height: 22px; cursor: pointer; }
 
         .text-container { flex-grow: 1; }
@@ -209,7 +176,7 @@
             box-shadow: 0 4px 15px rgba(255, 87, 34, 0.3);
         }
 
-        /* WHATSAPP - FIXED ICON & POSITION */
+        /* WHATSAPP */
         .whatsapp-float { 
             position: fixed; 
             bottom: 95px; 
@@ -242,8 +209,7 @@
         <div class="header-trust">الدفع عند الاستلام 📦</div>
     </div>
 
-    <div class="image-placeholder">[صورة المنتج ستظهر هنا]</div>
-    <img src="" class="real-image" id="hero-image">
+    <img src="umbrella.jpg" style="width: 100%; max-height: 250px; object-fit: cover; border-bottom: 2px solid #ff5722; display: block;">
 
     <div class="content" id="main-content">
         <h1 class="title">تسوق بذكاء، عش بـ <span class="highlight">رفاهية.</span></h1>
@@ -255,8 +221,9 @@
             <p>حماية للصالون: يمنع تشقق لوحة القيادة</p>
         </div>
 
-        <div class="gif-placeholder">[صورة متحركة توضح الاستخدام هنا]</div>
-        <img src="" class="real-image" id="gif-image">
+        <div style="margin: 15px 0 25px 0; border-radius: 12px; overflow: hidden; border: 1px solid #1e293b;">
+            <img src="umbrella.gif" style="width: 100%; display: block;">
+        </div>
 
         <div class="bundle-box">
             <div class="bundle-title">اختر العرض المناسب لك:</div>
@@ -313,7 +280,7 @@
     </div>
 
     <div class="sticky-cta" id="sticky-bar">
-        <a href="#order-form" class="sticky-btn">تسوق العروض الآن 🛒</a>
+        <a href="#order-form" class="sticky-btn">أطلب الآن 🛒</a>
     </div>
 
     <a href="https://wa.me/212638501541?text=Salam,%20bghit%20nswl%203la%20l'parasol%20dial%20tomobil" class="whatsapp-float" target="_blank">
