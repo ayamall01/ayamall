@@ -39,6 +39,7 @@
                     animation: {
                         'float': 'float 6s ease-in-out infinite',
                         'pulse-glow': 'pulse-glow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'pulse-fast': 'pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite',
                     },
                     keyframes: {
                         float: {
@@ -62,6 +63,12 @@
             color: #F3F4F6;
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
+        }
+
+        /* Prevent scrolling while loading */
+        body.loading-state {
+            overflow: hidden;
+            height: 100vh;
         }
 
         /* Smooth Scrollbar */
@@ -126,9 +133,47 @@
         /* Hide scrollbar for horizontal scrolling */
         .hide-scrollbar::-webkit-scrollbar { display: none; }
         .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        /* APP LOADER STYLES */
+        #app-loader {
+            transition: opacity 0.5s ease-in-out, transform 0.6s cubic-bezier(0.8, 0, 0.2, 1);
+        }
+        .progress-bar-container {
+            width: 250px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+        }
+        .progress-bar-fill {
+            height: 100%;
+            width: 0%;
+            background: #FF9900;
+            border-radius: 4px;
+            box-shadow: 0 0 15px #FF9900;
+            transition: width 0.3s ease-out;
+        }
     </style>
 </head>
-<body class="relative bg-grid bg-grid-pattern">
+<body class="relative bg-grid bg-grid-pattern loading-state">
+
+    <!-- ================= APP LOADER SPLASH SCREEN ================= -->
+    <div id="app-loader" class="fixed inset-0 z-[9999] bg-[#0A0F1C] flex flex-col items-center justify-center">
+        <!-- Logo Icon -->
+        <div class="bg-brand text-white w-20 h-20 rounded-2xl shadow-glow flex items-center justify-center mb-6 animate-bounce">
+            <span class="font-black text-5xl leading-none pt-2">آ</span>
+        </div>
+        <!-- Logo Text -->
+        <h1 class="text-4xl font-black text-white mb-2 tracking-tight">أيامول<span class="text-brand">.</span></h1>
+        <p class="text-gray-400 text-sm mb-10 tracking-widest font-bold animate-pulse">جاري تجهيز تجربة التسوق الفاخرة...</p>
+        
+        <!-- Progress Bar -->
+        <div class="progress-bar-container">
+            <div id="loader-progress" class="progress-bar-fill"></div>
+        </div>
+    </div>
+    <!-- ============================================================= -->
 
     <!-- Ambient Glowing Orbs in Background -->
     <div class="fixed top-0 right-0 w-96 h-96 bg-brand/10 rounded-full blur-[100px] pointer-events-none z-0"></div>
@@ -146,7 +191,7 @@
                 <!-- Logo -->
                 <a href="#" class="flex-shrink-0 flex items-center group">
                     <div class="bg-brand text-white p-2 rounded-lg ml-2 shadow-glow">
-                        <span class="font-black text-xl leading-none">آ</span>
+                        <span class="font-black text-xl leading-none pt-1">آ</span>
                     </div>
                     <span class="text-3xl font-black tracking-tight text-white">أيامول</span>
                 </a>
@@ -254,8 +299,8 @@
                         <div class="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center text-brand"><i class="fas fa-shipping-fast"></i></div>
                     </div>
 
-                    <!-- Main Composition Image -->
-                    <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Ayamall Shopping" class="relative z-10 w-4/5 h-[400px] object-cover rounded-2xl shadow-2xl animate-float border border-white/10">
+                    <!-- Main Composition Image Updated to your new creative image -->
+                    <img src="https://images.unsplash.com/photo-1607082349566-187342175e2f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Ayamall Shopping" class="relative z-10 w-4/5 h-[400px] object-cover rounded-2xl shadow-2xl animate-float border border-white/10">
                 </div>
             </div>
         </div>
@@ -369,7 +414,7 @@
                 <!-- Product Card 1 (مظلة السيارة الذكية) -->
                 <a href="https://ayamall.com/umbrella/" class="glass-card rounded-2xl p-4 border border-white/5 hover:border-brand/50 transition-all group reveal block cursor-pointer">
                     <div class="relative rounded-xl overflow-hidden mb-4 aspect-[4/5] bg-white/5">
-                        <img src="./smart-car-umbrella.png" alt="مظلة السيارة الذكية" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <img src="smart-car-umbrella.png" alt="مظلة السيارة الذكية" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                         <div class="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
                             <button class="bg-brand text-white font-bold py-2 px-4 rounded-full shadow-glow transform translate-y-4 group-hover:translate-y-0 transition-all flex items-center gap-2 text-sm">
                                 <i class="fas fa-eye"></i> عرض التفاصيل
@@ -714,7 +759,50 @@
 
     <!-- Scripts -->
     <script>
-        // Smooth Reveal Animations
+        // --- 1. App Loader Logic (Super Fast Perceived Performance) ---
+        document.addEventListener("DOMContentLoaded", () => {
+            const progressBar = document.getElementById('loader-progress');
+            const loader = document.getElementById('app-loader');
+            const body = document.body;
+            
+            // Fast simulated progress to keep user engaged
+            let progress = 0;
+            const progressInterval = setInterval(() => {
+                progress += Math.random() * 20; // Jump by random amounts
+                if (progress > 90) progress = 90; // Hold at 90% until actual load finishes
+                progressBar.style.width = progress + '%';
+            }, 100);
+
+            // Function to dismiss loader
+            const dismissLoader = () => {
+                clearInterval(progressInterval);
+                progressBar.style.width = '100%'; // Snap to 100%
+                
+                // Add a tiny delay so user registers the 100%
+                setTimeout(() => {
+                    loader.style.opacity = '0';
+                    loader.style.transform = 'scale(1.05)';
+                    body.classList.remove('loading-state'); // Re-enable scrolling
+                    
+                    // Remove from DOM after fade out
+                    setTimeout(() => {
+                        if(loader.parentNode) loader.remove();
+                        
+                        // Trigger scroll animations now that body is visible
+                        const scrollEvent = new Event('scroll');
+                        window.dispatchEvent(scrollEvent);
+                    }, 600);
+                }, 300);
+            };
+
+            // Dismiss when window fully loads
+            window.addEventListener('load', dismissLoader);
+
+            // Fail-safe: Always dismiss after 3.5 seconds even if connection is super slow (prevents getting stuck)
+            setTimeout(dismissLoader, 3500); 
+        });
+
+        // --- 2. Smooth Reveal Animations ---
         const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
         const revealObserver = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
@@ -727,7 +815,7 @@
 
         revealElements.forEach(el => revealObserver.observe(el));
 
-        // Accordion Logic
+        // --- 3. Accordion Logic ---
         function toggleAccordion(id) {
             const content = document.getElementById(id);
             const icon = document.getElementById('icon-' + id);
@@ -745,7 +833,7 @@
             }
         }
 
-        // Sticky Mobile Nav Logic
+        // --- 4. Sticky Mobile Nav Logic ---
         const stickyNav = document.getElementById('sticky-cart');
         
         // Show/hide mobile nav based on scroll direction for better UX
