@@ -236,9 +236,9 @@
         <div class="bundle-box">
             <div class="bundle-title">اختر العرض المناسب لك:</div>
             
-            <div class="option" onclick="selectBundle(149)">
+            <div class="option active" onclick="selectBundle(149)">
                 <div class="radio-container">
-                    <input type="radio" name="bundle_radio" value="149" id="bundle1">
+                    <input type="radio" name="bundle_radio" value="149" id="bundle1" checked>
                 </div>
                 <div class="text-container">
                     <div class="option-title">قطعة واحدة</div>
@@ -246,9 +246,9 @@
                 </div>
             </div>
 
-            <div class="option active" onclick="selectBundle(249)">
+            <div class="option" onclick="selectBundle(249)">
                 <div class="radio-container">
-                    <input type="radio" name="bundle_radio" value="249" id="bundle2" checked>
+                    <input type="radio" name="bundle_radio" value="249" id="bundle2">
                 </div>
                 <div class="text-container">
                     <div class="badge">🔥 الأكثر طلباً</div>
@@ -261,7 +261,7 @@
 
         <form id="order-form" class="checkout-box">
             <div class="form-header">أدخل معلوماتك للطلب</div>
-            <input type="hidden" id="selected-bundle" name="bundle" value="249">
+            <input type="hidden" id="selected-bundle" name="bundle" value="149">
 
             <div class="input-group">
                 <label>الاسم الكامل:</label>
