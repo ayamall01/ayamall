@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Ayamall Cockpit - V3.0</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #050505; color: white; margin: 0; padding: 0; }
+        .glass { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1); backdrop-filter: blur(12px); }
+        .brand-text { color: #ff4d00; }
+        .bg-brand { background-color: #ff4d00; }
+        input, textarea { background-color: #111 !important; color: white !important; }
+        
+        /* Modal & Overlays */
+        #login-overlay { position: fixed; inset: 0; background: #000; z-index: 50; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 2rem; }
+        #tips-modal { position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 40; display: none; padding: 2rem; flex-direction: column; justify-content: center; }
+        
+        /* Timer Animation */
+        .timer-warning { color: #ef4444; animation: pulse 1s infinite; }
+        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center pb-20">
+
+    <div id="login-overlay">
+        <div class="glass p-10 rounded-3xl text-center max-w-sm mx-auto w-full border border-orange-500/30">
+            <h1 class="text-3xl font-black italic mb-2">AYAMALL</h1>
+            <p class="text-gray-500 font-bold mb-8 text-sm">ACCÈS SÉCURISÉ</p>
+            <input type="password" id="pin-input" placeholder="Code PIN" class="w-full text-center text-3xl tracking-widest border border-white/10 p-4 rounded-xl font-black outline-none focus:border-orange-600 mb-4" pattern="[0-9]*" inputmode="numeric">
+            <button onclick="checkLogin()" class="bg-brand w-full py-4 rounded-xl font-black text-xl text-white active:scale-95 transition-transform">ENTRER</button>
+            <p id="login-error" class="text-red-500 mt-4 font-bold hidden">Code incorrect.</p>
+        </div>
+    </div>
+
+    <div id="tips-modal">
+        <div class="glass p-6 rounded-3xl max-w-md mx-auto w-full border-2 border-yellow-500 text-right overflow-y-auto max-h-[85vh] relative" dir="rtl">
+            <button onclick="closeTips()" class="absolute top-4 left-4 text-2xl bg-black/50 rounded-full w-10 h-10 flex items-center justify-center">❌</button>
+            <h2 class="text-2xl font-black text-yellow-500 mb-6 border-b border-yellow-500/30 pb-4">📜 تعليمات التأكيد (مهم جداً)</h2>
+            <div class="space-y-4 text-sm font-bold text-gray-200 leading-relaxed">
+                <p>مرحباً هاجر،<br>هذه التعليمات الجديدة والمهمة جداً لرفع نسبة التأكيد ونسبة الاستلام النهائي (Livrée) إلى أقصى حد ممكن. يرجى قراءتها بعناية وتطبيقها مع كل طلب ابتداءً من اليوم:</p>
+                
+                <div class="bg-white/5 p-4 rounded-xl border-r-4 border-red-500">
+                    <span class="text-red-400 font-black text-lg">1. السرعة هي كل شيء (قاعدة الـ 15 دقيقة):</span><br>
+                    يجب الاتصال بالزبون في غضون 5 إلى 15 دقيقة كحد أقصى من وقت تسجيل الطلب، لأن حماس الزبون للشراء يكون في أعلى مستوياته. إذا لم يرد، أعيدي الاتصال بعد ساعة، ثم بعد 4 ساعات.
+                </div>
+
+                <div class="bg-white/5 p-4 rounded-xl border-r-4 border-orange-500">
+                    <span class="text-orange-400 font-black text-lg">2. طريقة الكلام (الدارجة بثقة):</span><br>
+                    لا تسألي الزبون أبداً: "واش مازال بغيتي الكوموند؟". بل قولي بثقة: "السلام عليكم، توصلنا بطلبك لـ [اسم المنتج]، وكنتصلو بيك باش نأكدو معاك وقت ومكان التوصيل".<br><br>
+                    <span class="text-yellow-400">مهم جداً:</span> لا تكتفي بالعنوان العادي، اطلبي منه معالم دقيقة جداً (صيدلية، مسجد، أو مقهى معروف بجانب منزله) لكي لا يضيع الموزع ويتم التسليم بسرعة.
+                </div>
+
+                <div class="bg-white/5 p-4 rounded-xl border-r-4 border-blue-500">
+                    <span class="text-blue-400 font-black text-lg">3. تحديد موعد التوصيل بوضوح:</span><br>
+                    لا تتركي وقت التوصيل عشوائياً. اتفقي معه على وقت محدد: "الموزع غادي يتواصل معاك غداً بين الـ 2 والـ 5 عشية، واش غتكون فالدار؟".<br><br>
+                    <span class="text-yellow-400">تنبيه ضروري:</span> أخبريه بوضوح أن الموزع سيتصل به من رقم جديد (غير مسجل عنده)، ويجب عليه الرد ليستلم طرده.
+                </div>
+
+                <div class="bg-white/5 p-4 rounded-xl border-r-4 border-green-500">
+                    <span class="text-green-400 font-black text-lg">4. لا تلغي الطلبات المترددة:</span><br>
+                    كما تعلمين، نحن لا ندفع رسوم على المرتجعات وشركات التوصيل تعيد لنا المنتجات إلى المنزل مجاناً. لذلك، إذا أكد الزبون طلبه عبر الواتساب ولم يرد على المكالمة، أو كان يبدو متردداً قليلاً ولكنه وافق في النهاية، قومي بتأكيد الطلب وشحنه. قومي بإلغاء الطلبات الوهمية الواضحة فقط.
+                </div>
+
+                <div class="bg-white/5 p-4 rounded-xl border-r-4 border-purple-500">
+                    <span class="text-purple-400 font-black text-lg">5. الواتساب هو الحل البديل القوي:</span><br>
+                    الكثير من الناس لا يردون على الأرقام المجهولة. إذا لم يرد الزبون على اتصالك، أرسلي له رسالة صوتية (Vocal) على الواتساب فوراً؛ الصوت يبني ثقة كبيرة. أرسلي له أيضاً صورة للمنتج.
+                </div>
+
+                <div class="bg-white/5 p-4 rounded-xl border-r-4 border-yellow-500">
+                    <span class="text-yellow-400 font-black text-lg">6. هدفنا هو "Livrée":</span><br>
+                    تذكري دائماً أن دورك لا ينتهي بمجرد تغيير حالة الطلب إلى "مؤكد"، بل هدفنا الحقيقي وراء كل هذه الخطوات هو أن يصل الطلب لحالة "Livrée".
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="dashboard" class="w-full max-w-md p-4 hidden">
+        
+        <div class="flex justify-between items-center mb-4 mt-2">
+            <div>
+                <h1 class="text-xl font-black italic tracking-tighter">AYAMALL</h1>
+                <div class="flex gap-2 mt-1">
+                    <button onclick="loadNextPending()" class="text-[10px] bg-white/10 px-2 py-1 rounded font-bold hover:bg-white/20">🟢 NOUVEAUX</button>
+                    <button onclick="loadHistory()" class="text-[10px] bg-white/10 px-2 py-1 rounded font-bold hover:bg-white/20">🕒 HISTORIQUE</button>
+                </div>
+            </div>
+            <div class="text-right">
+                <button onclick="openTips()" class="bg-yellow-500 text-black text-[10px] font-black px-3 py-1 rounded-full mb-1 animate-pulse shadow-[0_0_10px_rgba(234,179,8,0.5)]">💡 INSTRUCTIONS</button>
+                <div id="countdown" class="text-lg font-black font-mono tracking-widest text-orange-500 block">15:00</div>
+            </div>
+        </div>
+
+        <div id="main-container"></div>
+    </div>
+
+    <datalist id="city-list">
+        <option value="ADISS- TATA"><option value="AFOURER"><option value="AGADIR"><option value="AGAFAY"><option value="AGDZ"><option value="AGHBAL- BERKANE"><option value="Aghbalou-Boumia"><option value="AGHMAT"><option value="AGLOU"><option value="AGOUIM"><option value="Agourai"><option value="aguelmouss"><option value="AGUERD TAMANART-TATA"><option value="Ahfir"><option value="AIN AICHA- TAOUNATE-"><option value="AIN ALLAH"><option value="Aïn Attiq"><option value="AIN BEIDA"><option value="Aïn-Béni-Mathar"><option value="AIN CHEBAK"><option value="Ain Cheggag"><option value="AIN CHKEF"><option value="AIN DEFALI"><option value="AIN DORIJ"><option value="Ain El Aouda"><option value="Ain El Orma-meknes-"><option value="AIN ERREGGADA"><option value="Ain Harrouda"><option value="Ain Jirri"><option value="Ain Kansara"><option value="Aïn Karma-MEKNES REGION"><option value="Ain Mediouna"><option value="AIN SBIT-KHMISSET"><option value="Ain Taoujtate"><option value="AIN TEKKI MOHAMMADIA"><option value="Ain Tizghi"><option value="AIN ZZABDA"><option value="AIT AMIRA"><option value="Ait Atab"><option value="Ait Belkacem-fes region"><option value="AIT BEN HADDOU"><option value="Aït Hamza-MISSOUR"><option value="AIT IAZZA"><option value="ait ishaq"><option value="Ait kamra"><option value="AIT MELLOUL"><option value="AIT MOUSSA"><option value="AIT OURIR"><option value="Ait Yaazem-meknes-reg"><option value="Ajdir-Alhoceima"><option value="AJDIR-TAZA"><option value="AKCHOUR"><option value="Akka"><option value="AKKA IGHANE"><option value="AKKA IGUIRENE"><option value="Aklim"><option value="AKNOUL-TAZA"><option value="Al Aaroui"><option value="Al hoceima"><option value="AL ISMAILIA"><option value="ALMINA"><option value="Al Ouidane"><option value="AMAZRAOU"><option value="amerzgane"><option value="AMIZMIZ"><option value="AMSA"><option value="AMSKROUD-AGADIR"><option value="AMTAR"><option value="ANIF"><option value="ANZA"><option value="AOULOUZ"><option value="AOURIR"><option value="ARBAOUA"><option value="Asilah"><option value="ASJEN"><option value="ASNI"><option value="Azemmour"><option value="Azilal"><option value="Azla"><option value="Azrou"><option value="Azzaba - Sefrou"><option value="BAB BERRED"><option value="BAB MARZOUKA-TAZA"><option value="BAB TAZA"><option value="BAHIA SMIR"><option value="Barrio Chino"><option value="Bedouza"><option value="Bejaad"><option value="BELAAGID"><option value="BELFAA"><option value="BEN AHMED"><option value="BEN GUERIR"><option value="Beni Ansar"><option value="Beni Chiker"><option value="Beni Drar"><option value="BENI MELLAL"><option value="BENI OUAL"><option value="Beni Oulid"><option value="Beni Tadjit-Oujda"><option value="Beni yakhlef"><option value="BENI ZOLI"><option value="BEN KHLIL"><option value="Benslimane"><option value="Ben Taieb"><option value="Berkane"><option value="Berrechid"><option value="Bhalil"><option value="bin el ouidane"><option value="BIOUGRA"><option value="Bir Jdid"><option value="BNI AHMED GHARBIA- CHEFCHAOUEN"><option value="BNI AMART"><option value="bni ansar"><option value="BNI ASSEM"><option value="BNI AYAT"><option value="Bni Bouayach"><option value="BNI BOUFRAH"><option value="BNI HDIFA"><option value="BNI KHLOUG"><option value="BOUADEL"><option value="Bou Ahmed-CHEFCHAOUAN-"><option value="Bouârfa"><option value="BOUARG-nador-"><option value="BOUCHANE"><option value="Bouderbala-Meknes"><option value="BOUDEROUA"><option value="BOUDNIB"><option value="Boufekrane"><option value="Bouhouda-chefchaoun-"><option value="Bouizakarne"><option value="BOUJDOUR"><option value="BOUJNIBA"><option value="Boukidarne-Al hoceima-"><option value="BOUKNADIL"><option value="BOULANOUARE"><option value="BOULAOUANE"><option value="Boulemane-Missour"><option value="BOUMALNE DADES-OUARZAZATE"><option value="BOUMIA"><option value="BOUNAAMANE"><option value="BOUNOUAR KHOURIBGA"><option value="Bouskoura"><option value="Bouznika"><option value="BOUZOUG"><option value="BRADIA"><option value="Bridia"><option value="Briech-Asilah"><option value="BRIKCHA-CHEFCHAOUEN"><option value="Cabo Negro"><option value="CAFEMAURE"><option value="CASABLANCA"><option value="CHEFCHAOUEN"><option value="CHELLALAT"><option value="CHEMAIA"><option value="CHERAFAT"><option value="CHICHAOUA"><option value="CHRIFIA"><option value="CHTOUKA AIT BAHA"><option value="CHWITER"><option value="CODIA SMIR"><option value="DAKHLA"><option value="DarBouazza"><option value="Dar Chaffai"><option value="Dar El Kebdani"><option value="Dar Gueddari-SIDI KACEM"><option value="Dar Oum Soltane"><option value="DCHIRA"><option value="Demnate"><option value="DERDARA"><option value="Deroua"><option value="DIABAT"><option value="Dkhissa"><option value="Dlalha"><option value="DOUAR CHLOUH"><option value="DOUAR GHRABA"><option value="DOUAR LAKHTATBA"><option value="DOUAR LAQSIR-FES"><option value="Douiyat"><option value="DRARGA"><option value="Driouch"><option value="Echemmaia"><option value="El Aarjate"><option value="El Aïoun Sidi Mellouk"><option value="EL AMINE"><option value="EL ASSA"><option value="ELATTAOUIA"><option value="EL BARAKA"><option value="EL BORJ-KHENIFRA-"><option value="EL BOROUJ"><option value="EL BROUJ-settat-"><option value="El gara"><option value="El Hajeb"><option value="El Haj Kaddour"><option value="El Harhoura"><option value="Eljadida"><option value="EL JEBHA"><option value="EL KBAB"><option value="El Khemis des Aït Ouahi-fes RG-"><option value="EL KHEMIS EL METOUH"><option value="El Ksiba"><option value="El Maader El Kabir"><option value="EL MANSOURIA"><option value="El menzeh"><option value="El Menzel"><option value="El Ouatia"><option value="ERFOUD"><option value="ERRACHIDIA"><option value="ERRAHMA"><option value="ESSAOUIRA"><option value="Essehoul-Salé"><option value="Fam EL Hsin"><option value="Farkhana"><option value="Fes"><option value="FEZOUANE"><option value="Fezwan"><option value="Figuig"><option value="Fnideq"><option value="FOUM EL OUED"><option value="FOUM JEMAA"><option value="Foum Oudi- BENI MELLAL-"><option value="FOUM ZGUID"><option value="FQUIH BEN SALAH"><option value="Fricha"><option value="Galaz"><option value="Gfifat"><option value="Ghafsai"><option value="GHAZOUA-ESSAOUIRA"><option value="GOULMIMA"><option value="Gourrama-Midelt"><option value="GUELMIM"><option value="Guenfouda"><option value="Guercif"><option value="Guigo"><option value="GUISSER"><option value="HAD HRARA"><option value="HAD KOURT"><option value="Had soualem"><option value="HATTANE - KHOURIBGA"><option value="IBN YAAKOUB"><option value="Ifrane"><option value="Ighil N'Oumgoun-ouarzazat"><option value="Ighram Laalam"><option value="ighrem nougdal"><option value="IMINTANOUTE"><option value="Imi ouaddar"><option value="Imouzzer Kandar-Fes région"><option value="Imouzzer Marmoucha-missour"><option value="IMSOUANE-AGADIR"><option value="Imzouren"><option value="INTERNATIONAL"><option value="INZEGANE"><option value="IRHERM-TAROUDANT"><option value="IRHERM-TATA"><option value="Issafen"><option value="Issaguen"><option value="Itzer"><option value="JAADAR-NADOR"><option value="Jamaa Houderrane"><option value="JEMAAT SHAIM"><option value="Jerada"><option value="JERF-AGADIR"><option value="JMAAT FDALATE"><option value="jorf El Melha"><option value="Jorf Lasfar"><option value="KAA ASRAS"><option value="KABILA"><option value="KAHF NSOUR"><option value="KALAAT M'GOUNA"><option value="Kantra El Ascar"><option value="Kariat Arkmane"><option value="Kariat Ba Mohammed- Fes région-"><option value="KASBAH MOULAY ISMAIL"><option value="KASBAT SIDI ABDELLAH BEN MBAREK"><option value="KASBAT TADLA"><option value="KASSITA"><option value="KELAA DES SRAGHNA"><option value="Kenitra"><option value="KETTARA"><option value="Khemis zemamra"><option value="khenichet"><option value="KHENIFRA"><option value="khlalfa"><option value="Khmisset"><option value="KHMISS M'DIQ"><option value="KHOURIBGA"><option value="KOUDIA AL BAIDA"><option value="Ksar L'kbir"><option value="KSAR SGHIR"><option value="LAAROUMIATE"><option value="LAATAMNA"><option value="LAAYAYDA-SALE"><option value="LAAYOUNE"><option value="LAAYOUNE-PORT"><option value="Lagouassem"><option value="Lahri"><option value="LAKSSIBA-TAROUDANT"><option value="Lalla Fatna"><option value="Lalla Mimouna"><option value="LALLA TAKERKOUST"><option value="LAMNABEHA"><option value="Larache"><option value="LEQLIAA"><option value="LOUDAYA-MARRAKECH"><option value="Louizia"><option value="LOULAD FINI"><option value="Maaziz"><option value="madagh"><option value="MARINA BEACH"><option value="MARINA SMIR"><option value="MARRAKECH"><option value="Martil"><option value="MASMOUDA"><option value="MASSA"><option value="MAZAGAN"><option value="Mdiq"><option value="Mechraa belksiri"><option value="Mediouna"><option value="MEHDIA"><option value="Mejjate Meknes"><option value="MEJJAT-Marrakech"><option value="Meknes"><option value="Mernissa"><option value="Mers El Kheir"><option value="MERZOUGA"><option value="Mghila- BENI MELLAL REG"><option value="M'HAMID EL GHIZLANE"><option value="Mhaya"><option value="Midar"><option value="MIDELT"><option value="Mirleft"><option value="Missour"><option value="Mohammadia"><option value="MOHA OU CHERIF"><option value="MOQRISSET"><option value="Moulay Abdellah"><option value="Moulay bousselham"><option value="Moulay Brahim"><option value="Moulay Idriss Zerhoun"><option value="MOULAY YAACOUB"><option value="Mqam Tolba"><option value="MRIRT"><option value="MZOUDIA"><option value="Nador"><option value="NKOB"><option value="NOUACEUR"><option value="Nzalat Laadam"><option value="OUAHAT SIDI BRAHIM"><option value="OUALIDIA"><option value="OUAOUIZEGH-AZILAL"><option value="OUARGUI"><option value="OUARZAZATE"><option value="OUASSANE- ESSAOUIRA"><option value="Ouazzane"><option value="Oued Amlil"><option value="OUED JDIDA"><option value="OUED LAOU"><option value="OUED ZEM"><option value="OUFELIOUNE"><option value="Ouislane-Meknes"><option value="OUISSLAN"><option value="OUJDA"><option value="Oulad Abbou-settat RG"><option value="Oulad Dahou"><option value="Oulad Frej"><option value="Oulad Ghadbane"><option value="Oulad Ghanem"><option value="Oulad Hamdane-El Jadida Région"><option value="OULAD JERRAR"><option value="OULAD MBAREK"><option value="OULAD SAID"><option value="OULAD SALAH"><option value="OULAD SETTOUT"><option value="OULAD SGHIR"><option value="OULAD TAIMA"><option value="Oulad tayeb"><option value="OULAD YAICH"><option value="Oulad Youssef"><option value="OULAD ZMAM"><option value="OULED AYAD"><option value="OULED BELKHIR"><option value="OULED BENRAHMOUN"><option value="OULED BERHIL"><option value="Ouled Daoud"><option value="Ouled Hassoune-Marrakech Région"><option value="OULED JELLOUL"><option value="Ouled Said El Oued"><option value="OULED TAIMA"><option value="OULED ZIDOUH"><option value="Oulmas"><option value="Oum guerdan"><option value="OUNAGHA"><option value="OUNNANA"><option value="OURIKA"><option value="Ourtzagh"><option value="Outat El Haj"><option value="Ouzoud"><option value="Rabat"><option value="RAS EL AIN-SETTAT R"><option value="Ras lma"><option value="Regada"><option value="RESTINGA"><option value="Ribate El Kheir-Fes Région"><option value="RICH"><option value="RIFIYINE"><option value="RISSANI"><option value="Rommani"><option value="SAFI"><option value="Sahel Boutaher"><option value="Saidia"><option value="Sala Al Jadida"><option value="Salé"><option value="SANIA PLAGE"><option value="SANIA TORRES"><option value="Sbaa ayoune"><option value="SEBT BEN SASSI"><option value="SEBT GZOULA"><option value="Sebt Jahjouhe"><option value="SEBT LGERDAN"><option value="sebt mtiwa"><option value="Sefrou"><option value="Selouane"><option value="Senhaja"><option value="Settat"><option value="Sidi Aadi-Fes R"><option value="SIDI ABBAD-marrakech-"><option value="Sidi Abdellah Ghiat"><option value="Sidi Abderrazzak Khzazna-fes RG"><option value="Sidi abed"><option value="SIDI AISSA"><option value="Sidi Allal El Bahraoui"><option value="Sidi Allal Tazi"><option value="Sidi Ayache -KENITRA RG -"><option value="Sidi Bennour"><option value="SIDI BIBI"><option value="Sidi Boukhalkhal"><option value="SIDI BOU OTHMANE"><option value="SIDI BOUSBER"><option value="Sidi bou zid-chichaoua"><option value="Sidi Bouzid eljadida"><option value="SIDI BOUZID SAFI"><option value="SIDI EL AIDI-SETTAT R"><option value="Sidi Hajjaj-BERRECHID R"><option value="Sidi Hajjaj-ouad hassar casa-"><option value="Sidi Harazem"><option value="SIDI IFNI"><option value="SIDI JABER"><option value="Sidi Kacem"><option value="Sidi rahal"><option value="SIDI REDOUANE"><option value="Sidi slimane"><option value="Sidi Smaïl"><option value="SIDI TAIBI"><option value="Sidi Yahya Lgharb"><option value="Sidi Yahya Zaer"><option value="SIDI ZOUINE"><option value="SID L'MOKHTAR"><option value="Skhirat"><option value="SKHOUR REHAMNA"><option value="SKOURA"><option value="Smara"><option value="SMIMO"><option value="SOUIHLA"><option value="SOUIRIA"><option value="Souk Elarbaa Du Gharb"><option value="SOUK EL GOUR"><option value="SOUK SEBT OULED NEMMA"><option value="Souk Tnine Moghane"><option value="STIHAT"><option value="TADDART-TAZA"><option value="TAFERSIT-NADOR"><option value="TAFRAOUT"><option value="Tagadirt"><option value="TAGHAZOUT"><option value="TAGHBALT"><option value="TAGMOUTE"><option value="TAGZIRT"><option value="TAHANNAOUT"><option value="Tahla"><option value="Talayoussef"><option value="Taliouin"><option value="Talmest-SAFI RG-"><option value="Tamait Izder"><option value="TAMALLALT"><option value="TAMANSOURT"><option value="Tamaris"><option value="TAMEGROUTE"><option value="TAMESLOUHTE"><option value="TAMESLUHT"><option value="Tamesna"><option value="TAMEZMOUTE"><option value="TAMRAGHT"><option value="TANANTE-AZILAL"><option value="Tanger"><option value="TANSIKHTE"><option value="TANTAN"><option value="Taounate"><option value="Taourirt"><option value="Targuist"><option value="TAROUDANTE"><option value="TASSOULTANTE"><option value="Tata"><option value="Taza"><option value="TAZARINE"><option value="TAZENAKHT-OUARZAZATE"><option value="TAZNAKHT"><option value="Temara"><option value="TEMSIA"><option value="TENDRARA-Oujda R"><option value="TEROUAL"><option value="Tetouan"><option value="Thar Es-Souk-TAOUNATE-"><option value="Tidas"><option value="Tifelt"><option value="Tigami Ljdid-ouarzazat"><option value="TIGHASSALINE"><option value="TIGNITE"><option value="Timoulilt-BENI MELLAL-"><option value="TINDIT"><option value="TINEJDAD"><option value="TINFOU"><option value="TINGHIR"><option value="TIN MANSOUR"><option value="TINZOULINE"><option value="Tissa"><option value="Tissint"><option value="TiTMellil"><option value="TIZI OUASLI-TAZA"><option value="TIZNIT"><option value="Tiztoutine"><option value="TLAT BOUGEDRA"><option value="Tnine Chtouka"><option value="TNINE GHARBIA"><option value="Toundoute Imghrane -Ouarzazate-"><option value="YOUSSOUFIA"><option value="Zag"><option value="ZAGORA"><option value="Zaida"><option value="Zaio"><option value="Zaouiat Bougrine"><option value="zaouiat sheikh"><option value="Zenata"><option value="zghanghan"><option value="ZOUMI"><option value="ZRAYEB"><option value="Zrizer">
+        <option value="POINT DE RELAIS DC CS AL AZHAR BERNOUSSI"><option value="POINT DE RELAIS DC CS ALLIANCE RIAD SIDI MOUMEN"><option value="POINT DE RELAIS DC CS BEN MSIK"><option value="Point de relais DC CS BERNOUSSI HAY AL QODS"><option value="POINT DE RELAIS DC CS CITY AIN SEBAA"><option value="POINT DE RELAIS DC CS DERB GNAOUA"><option value="POINT DE RELAIS DC CS HAY HASSANI DAR AL HAMRA"><option value="POINT DE RELAIS DC CS HAY HASSANI IBNOU SINA"><option value="POINT DE RELAIS DC CS HAY HASSANI MARJANE"><option value="POINT DE RELAISDC CS HAY MLY ABDELLAH 2"><option value="POINT DE RELAIS DC CS HAY MOHAMMADI EL KODIA"><option value="POINT DE RELAIS DC CS HAY SEDRI BD FORCES AUXILIAIRES"><option value="POINT DE RELAIS DC CS HY HASSANI AFGHANISTANE"><option value="POINT DE RELAIS DC CS IBN TACHFINE HAY HAKAM"><option value="POINT DE RELAIS DC CS INARA 2"><option value="POINT DE RELAIS DC CS LISSASFA CENTRE"><option value="POINT DE RELAIS DC CS MAARIF AL FOURAT"><option value="Point de relais DC CS MARCHE CENTRAL"><option value="Point de relais DC CS MED V"><option value="Point de relais DC CS OUED EDDAHAB 2"><option value="POINT DE RELAIS DC CS RAHMA 2 EL AMAL"><option value="POINT DE RELAIS DC CS SIDI MAAROUF LOT HAFID EL KHEIR"><option value="POINT DE RELAIS DC CS SIDI MAAROUF LT OURROUD"><option value="POINT DE RELAIS DC CS SIDI MOUMEN ALHOUDA"><option value="Point de relais DC DERB GHALEF CS"><option value="Point de relais Errahma 1 Casablanca"><option value="Point de relais Hay Mohammadi- Chouhada Casablanca"><option value="Point de relais Hay Mohammadi- Qoudia Casablanca"><option value="Point de relais Idriss Harty Casablanca"><option value="Point de relais Manjra Casablanca"><option value="Point de relais Mohammedia Med 6 Casablanca"><option value="Point de relais Oulfa 2 Casablanca"><option value="Point de relais Oum Rabii Extension Casablanca"><option value="Point de relais Saad Elkheir Casablanca"><option value="Point de relais Sbata Casablanca"><option value="Point de relais Sidi Moumen Casablanca"><option value="Point de relais WAFACASH TEST"><option value="Point de relais WFC AGADIR HASSANIA"><option value="Point de relais WFC CASA DRISS LAHRIZI"><option value="Point de relais WFC FES MOHAMED V"><option value="Point de relais WFC MARRAKECH ALLAL EL FASSI"><option value="Point de relais WFC RABAT EL KIFAH"><option value="Point de relais WFC TANGER BRANES">
+    </datalist>
+
+    <script>
+        const API_URL = "https://sheetdb.io/api/v1/e5uumm5045wqs";
+        let currentOrder = null;
+        let allData = [];
+        let timeRemaining = 900; // 15 minutes
+        let timerInterval;
+
+        // --- SECURITY & TIMER LOGIC ---
+        function checkLogin() {
+            const pin = document.getElementById('pin-input').value;
+            if (pin === "2026") {
+                document.getElementById('login-overlay').style.display = 'none';
+                document.getElementById('dashboard').style.display = 'block';
+                startTimer();
+                loadNextPending();
+            } else {
+                document.getElementById('login-error').style.display = 'block';
+                document.getElementById('pin-input').value = '';
+            }
+        }
+
+        function startTimer() {
+            timerInterval = setInterval(() => {
+                timeRemaining--;
+                let m = Math.floor(timeRemaining / 60);
+                let s = timeRemaining % 60;
+                let display = `${m < 10 ? '0' : ''}${m}:${s < 10 ? '0' : ''}${s}`;
+                let counterEl = document.getElementById('countdown');
+                counterEl.innerText = display;
+                
+                if (timeRemaining <= 180) { counterEl.classList.add('timer-warning'); } 
+                if (timeRemaining <= 0) { clearInterval(timerInterval); alert("⏱️ TEMPS ÉCOULÉ ! Rafraîchissez la page."); }
+            }, 1000);
+        }
+
+        // --- TIPS MODAL LOGIC ---
+        function openTips() { document.getElementById('tips-modal').style.display = 'flex'; }
+        function closeTips() { document.getElementById('tips-modal').style.display = 'none'; }
+
+        // --- DATA & TIME LOGIC ---
+        function calculateHoldTime(timestampStr) {
+            if (!timestampStr) return { text: "Temps inconnu", isLate: false };
+            
+            let orderDate;
+            // Parse Sheet Date (Usually DD/MM/YYYY HH:MM:SS or similar)
+            if (timestampStr.includes('/')) {
+                let parts = timestampStr.split(/[\s/:]+/);
+                if (parts.length >= 3 && parts[0].length === 2) {
+                    orderDate = new Date(parts[2], parts[1]-1, parts[0], parts[3]||0, parts[4]||0, parts[5]||0);
+                } else {
+                    orderDate = new Date(timestampStr);
+                }
+            } else {
+                orderDate = new Date(timestampStr);
+            }
+
+            if(isNaN(orderDate)) return { text: "Date invalide", isLate: false };
+            
+            let diffMs = new Date() - orderDate;
+            let diffMins = Math.floor(diffMs / 60000);
+            
+            if (diffMins < 0) return { text: "À l'instant", isLate: false };
+            if (diffMins > 1440) return { text: `+${Math.floor(diffMins/1440)} jours`, isLate: true };
+            if (diffMins > 60) return { text: `${Math.floor(diffMins/60)}h ${diffMins%60}m`, isLate: true };
+            
+            return { text: `${diffMins} min`, isLate: diffMins > 15 };
+        }
+
+        async function fetchAllData() {
+            document.getElementById('main-container').innerHTML = `<div class="glass p-12 text-center rounded-3xl"><p class="text-orange-500 animate-pulse font-bold">Chargement de la base de données...</p></div>`;
+            const response = await fetch(API_URL);
+            allData = await response.json();
+        }
+
+        async function loadNextPending() {
+            await fetchAllData();
+            currentOrder = allData.find(o => !o.Status || o.Status.trim() === "" || o.Status === "Sans réponse");
+            if (currentOrder) renderOrderForm(currentOrder, "NOUVELLE COMMANDE");
+            else renderEmptyState();
+        }
+
+        async function loadHistory() {
+            await fetchAllData();
+            const history = allData.filter(o => o.Status === "Confirmée" || o.Status === "Annulée").reverse().slice(0, 20); 
+            
+            let html = `<h2 class="font-black text-xl mb-4">🕒 Historique Récent</h2><div class="space-y-3">`;
+            history.forEach(o => {
+                let color = o.Status === "Confirmée" ? "text-green-400" : "text-red-400";
+                html += `
+                    <div onclick="editOldOrder('${o["Order ID"]}')" class="glass p-4 rounded-xl flex justify-between items-center active:scale-95 cursor-pointer">
+                        <div>
+                            <p class="font-bold text-sm">${o.Name}</p>
+                            <p class="text-xs ${color} font-black">${o.Status}</p>
+                        </div>
+                        <div class="text-xs bg-white/10 px-3 py-2 rounded-lg">✍️ Modifier</div>
+                    </div>`;
+            });
+            html += `</div>`;
+            document.getElementById('main-container').innerHTML = html;
+        }
+
+        function editOldOrder(orderId) {
+            currentOrder = allData.find(o => o["Order ID"] === orderId);
+            renderOrderForm(currentOrder, "MODE ÉDITION (MODIFICATION)");
+        }
+
+        // --- RENDER & SUBMIT LOGIC ---
+        function renderOrderForm(order, bannerText) {
+            let bannerColor = bannerText.includes("ÉDITION") ? "bg-red-600" : "bg-blue-600";
+            let holdTimeInfo = calculateHoldTime(order.Timestamp || order.Date); // Try both common header names
+            let holdColor = holdTimeInfo.isLate ? "text-red-500 animate-pulse" : "text-green-500";
+            let warningText = holdTimeInfo.isLate ? `<p class="text-xs text-red-500 font-bold mb-4 text-center">⚠️ CLIENT EN ATTENTE DEPUIS TROP LONGTEMPS</p>` : "";
+
+            document.getElementById('main-container').innerHTML = `
+                <div class="glass p-6 rounded-[2xl] border-t-4 border-orange-500 relative">
+                    <div class="absolute -top-3 left-1/2 -translate-x-1/2 ${bannerColor} text-white text-[10px] font-black tracking-widest px-4 py-1 rounded-full uppercase shadow-lg">${bannerText}</div>
+                    
+                    <div class="flex justify-between items-start mt-4 mb-4">
+                        <span class="bg-white/5 text-gray-400 text-[10px] px-3 py-1 rounded-lg font-bold">#${order["Order ID"] || 'NEW'}</span>
+                        <span class="text-orange-500 font-black text-xl">${order.Price || order.Bundle || '--'} DH</span>
+                    </div>
+
+                    <h2 class="text-2xl font-black mb-1">${order.Name}</h2>
+                    <p class="text-gray-500 font-bold mb-4 text-xs italic">Produit: ${order.Produit || order.Marchandise || 'Standard'}</p>
+
+                    <div class="mb-6 bg-white/5 border border-white/10 rounded-xl p-3 flex justify-between items-center">
+                        <span class="text-xs text-gray-400 font-bold uppercase tracking-widest">Temps d'attente:</span>
+                        <span class="font-black text-lg ${holdColor}">${holdTimeInfo.text}</span>
+                    </div>
+                    ${warningText}
+
+                    <a href="tel:${order.Phone || order.Number || order.Téléphone}" class="bg-green-600 w-full py-4 rounded-xl flex items-center justify-center gap-3 text-lg font-black shadow-lg mb-6 active:scale-95 transition-transform">
+                        <span>📞 APPELER LE CLIENT</span>
+                    </a>
+
+                    <div class="space-y-4">
+                        <div>
+                            <label class="text-[10px] text-gray-500 font-black uppercase mb-1 block">Ville exacte (Menu Déroulant)</label>
+                            <input list="city-list" id="city-input" value="${order.City || order.Ville || ''}" class="w-full border border-white/10 p-4 rounded-xl font-bold outline-none focus:border-orange-500" placeholder="Sélectionner la ville...">
+                        </div>
+                        <div>
+                            <label class="text-[10px] text-gray-500 font-black uppercase mb-1 block">Adresse Détaillée (Repère exact)</label>
+                            <textarea id="addr-input" class="w-full border border-white/10 p-4 rounded-xl font-bold outline-none focus:border-orange-500 h-24" placeholder="Ex: À côté de la pharmacie X...">${order.Adresse || ''}</textarea>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 gap-3 mt-6">
+                        <button onclick="submitUpdate('Confirmée')" class="bg-green-600/20 border border-green-500 text-green-500 p-4 rounded-xl font-black hover:bg-green-600 hover:text-white transition-colors">✅ SAUVEGARDER COMME CONFIRMÉE</button>
+                        <button onclick="submitUpdate('Sans réponse')" class="bg-yellow-600/20 border border-yellow-500 text-yellow-500 p-3 rounded-xl font-bold hover:bg-yellow-600 hover:text-black transition-colors">⏳ PAS DE RÉPONSE (RAPPELER)</button>
+                        <button onclick="submitUpdate('Annulée')" class="bg-red-900/30 border border-red-500 text-red-500 p-3 rounded-xl font-bold hover:bg-red-600 hover:text-white transition-colors">❌ ANNULER</button>
+                    </div>
+                </div>
+            `;
+        }
+
+        async function submitUpdate(status) {
+            const city = document.getElementById('city-input').value;
+            const addr = document.getElementById('addr-input').value;
+            const orderId = currentOrder["Order ID"];
+
+            if (!city && status === 'Confirmée') {
+                alert("⚠️ ATTENTION : La ville est obligatoire pour confirmer.");
+                return;
+            }
+
+            document.getElementById('main-container').innerHTML = `
+                <div class="glass p-12 rounded-[2rem] text-center">
+                    <p class="text-orange-500 animate-pulse font-black italic">Mise à jour en cours...</p>
+                </div>`;
+
+            try {
+                await fetch(`${API_URL}/Order ID/${orderId}`, {
+                    method: 'PATCH',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        "Status": status,
+                        "City": city,
+                        "Adresse": addr,
+                        // Updating Timestamp is disabled here so you keep the original order time to calculate hold time, 
+                        // but you can enable a 'Confirmed Time' column later if needed.
+                    })
+                });
+                
+                loadNextPending();
+            } catch (error) {
+                alert("Erreur réseau. Vérifiez la connexion.");
+                renderOrderForm(currentOrder, "ERREUR - RÉESSAYER");
+            }
+        }
+
+        function renderEmptyState() {
+            document.getElementById('main-container').innerHTML = `
+                <div class="glass p-12 text-center border-2 border-green-500/20 rounded-3xl">
+                    <div class="text-5xl mb-4 text-green-500">🏆</div>
+                    <h2 class="text-2xl font-black mb-2">ZONE NETTOYÉE</h2>
+                    <p class="text-gray-500 font-bold mb-6 text-sm">Tous les clients ont été traités.</p>
+                    <button onclick="loadNextPending()" class="bg-white/10 px-6 py-3 rounded-full font-bold text-xs uppercase tracking-widest active:scale-95">Rafraîchir</button>
+                </div>`;
+        }
+    </script>
+</body>
+</html>
