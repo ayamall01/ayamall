@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>جهاز تفريغ الهواء الذكي | أيا مول</title>
+    
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '2663210157367551');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=2663210157367551&ev=PageView&noscript=1"
+    /></noscript>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap');
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Tajawal', sans-serif; }
+        
+        body { 
+            background-color: #111827; 
+            background-image: 
+                linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+            background-size: 20px 20px;
+            color: #f8fafc; 
+        }
+        
+        .container { 
+            max-width: 480px; 
+            margin: 0 auto; 
+            background: #0f172a;
+            min-height: 100vh; 
+            position: relative; 
+            box-shadow: 0 0 20px rgba(0,0,0,0.8); 
+        }
+        
+        .header { 
+            padding: 15px 20px; 
+            background: #111827;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #1f2937;
+        }
+        .header-logo { font-size: 22px; font-weight: 900; color: #fff; }
+        .header-logo span { color: #ff5722; background: rgba(255,87,34,0.1); padding: 2px 6px; border-radius: 6px; }
+        .header-trust { font-size: 13px; font-weight: 700; color: #9ca3af; display: flex; align-items: center; gap: 5px; }
+
+        .content { padding: 20px; }
+        
+        .title { font-size: 24px; font-weight: 900; line-height: 1.4; margin-bottom: 15px; text-align: center; color: #fff; }
+        .title span { color: #ff5722; }
+        .subtitle { font-size: 14px; color: #9ca3af; text-align: center; margin-bottom: 20px; }
+        
+        .features { 
+            background: #1f2937; 
+            border-radius: 8px; 
+            padding: 15px; 
+            margin-bottom: 20px; 
+        }
+        .features p { margin-bottom: 12px; font-weight: 700; font-size: 14px; display: flex; align-items: center; gap: 10px; color: #e5e7eb; }
+        .features p:last-child { margin-bottom: 0; }
+        .features p::before { content: '🚀'; font-size: 16px; }
+
+        .image-box { margin-bottom: 20px; border-radius: 8px; overflow: hidden; }
+        .image-box img { width: 100%; display: block; }
+
+        .real-photos-box {
+            background: #1f2937;
+            padding: 20px 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .real-photos-title { text-align: center; color: #e5e7eb; font-size: 16px; font-weight: 900; margin-bottom: 15px; }
+        .real-photos-grid { display: flex; flex-direction: column; gap: 15px; }
+        .real-photos-grid img { width: 100%; border-radius: 8px; object-fit: cover; display: block; border: 1px solid #374151; }
+
+        .reviews-section {
+            margin-bottom: 25px;
+        }
+        .reviews-title { text-align: center; color: #fff; font-size: 18px; font-weight: 900; margin-bottom: 15px; }
+        .review-card {
+            background: #1f2937;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            border-right: 3px solid #ff5722;
+        }
+        .review-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; }
+        .reviewer-name { font-weight: 700; font-size: 14px; color: #e5e7eb; }
+        .verified-badge { color: #25d366; font-size: 11px; display: flex; align-items: center; gap: 3px; font-weight: 700; }
+        .stars { color: #fbbf24; font-size: 14px; margin-bottom: 5px; letter-spacing: 2px; }
+        .review-text { font-size: 13px; color: #9ca3af; line-height: 1.6; }
+
+        .cta-btn { 
+            display: block;
+            width: 100%; 
+            background: #ff5722; 
+            color: #fff; 
+            padding: 15px; 
+            border: none; 
+            border-radius: 8px; 
+            font-size: 18px; 
+            font-weight: 900; 
+            cursor: pointer; 
+            text-align: center;
+            text-decoration: none;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(255, 87, 34, 0.2);
+        }
+
+        .bundle-box { margin-bottom: 20px; }
+        
+        .option { 
+            background: #1f2937;
+            border: 2px solid transparent; 
+            padding: 15px; 
+            border-radius: 8px; 
+            margin-bottom: 10px; 
+            cursor: pointer; 
+            display: flex; 
+            align-items: center; 
+            gap: 15px; 
+            transition: all 0.3s ease; 
+        }
+        .option.active { 
+            border-color: #ff5722; 
+            background: rgba(255, 87, 34, 0.05); 
+        }
+        
+        .text-container { 
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start; 
+            gap: 5px; 
+        }
+        
+        .badge { 
+            background: #ff5722; 
+            color: #fff; 
+            padding: 4px 10px; 
+            border-radius: 4px; 
+            font-size: 12px; 
+            font-weight: 900;
+        }
+
+        .option-title { font-size: 16px; font-weight: 900; color: #fff; line-height: 1.3; }
+        .option-price { color: #ff5722; font-weight: 900; font-size: 18px; }
+        
+        input[type="radio"] { accent-color: #ff5722; width: 22px; height: 22px; cursor: pointer; flex-shrink: 0; }
+
+        .checkout-box { background: #1f2937; padding: 20px; border-radius: 8px; margin-bottom: 40px; }
+        .form-header { text-align: center; margin-bottom: 20px; font-weight: 900; font-size: 18px; color: #fff; }
+        
+        .input-group { margin-bottom: 15px; }
+        .input-group label { display: block; margin-bottom: 8px; font-weight: 700; font-size: 13px; color: #e5e7eb; }
+        .input-group input { 
+            width: 100%; 
+            padding: 14px; 
+            background: #111827;
+            border: 1px solid #374151; 
+            color: #fff;
+            border-radius: 6px; 
+            font-size: 15px; 
+            outline: none; 
+        }
+        .input-group input:focus { border-color: #ff5722; }
+
+        .trust-text { text-align: center; color: #9ca3af; font-size: 12px; margin-top: 15px; font-weight: 700; }
+        .trust-text span { color: #25d366; }
+
+        .whatsapp-float { 
+            position: fixed; 
+            bottom: 20px; 
+            left: 20px; 
+            background-color: #25d366; 
+            border-radius: 50%; 
+            width: 55px; 
+            height: 55px; 
+            z-index: 101; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        #thank-you { display: none; padding: 60px 20px; text-align: center; min-height: 50vh; }
+        #thank-you h2 { color: #25d366; font-size: 28px; margin-bottom: 15px; font-weight: 900; }
+        #thank-you p { color: #9ca3af; font-size: 16px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    
+    <div class="header">
+        <div class="header-logo">أيا<span>مول</span></div>
+        <div class="header-trust">📦 الدفع عند الاستلام</div>
+    </div>
+
+    <div class="image-box" style="margin-bottom: 0; border-radius: 0;">
+        <img src="vacuum-main.jpg" alt="Vacuum Sealer">
+    </div>
+
+    <div class="content" id="main-content">
+        <h1 class="title">حافظي على لذة لحم العيد <span>طري ومنظم.</span></h1>
+        <p class="subtitle">جهاز تفريغ الهواء الذكي للحماية المطلقة من البكتيريا والروائح.</p>
+
+        <div class="features">
+            <p>شفط هواء احترافي: كيمنع فساد اللحم</p>
+            <p>توفير المساحة: كينظم الثلاجة مزيان</p>
+            <p>سهل الاستخدام: كيسد الميكا بضغطة واحدة</p>
+        </div>
+
+        <a href="#order-form" class="cta-btn">أطلب الآن 🛒</a>
+
+        <div class="image-box">
+            <img src="vacuum.gif" alt="How it works">
+        </div>
+
+        <div class="real-photos-box">
+            <div class="real-photos-title">📸 صور حقيقية للمنتج من مخازننا:</div>
+            <div class="real-photos-grid">
+                <img src="real1.jpg" alt="Real photo 1">
+                <img src="real2.jpg" alt="Real photo 2">
+            </div>
+        </div>
+
+        <a href="#order-form" class="cta-btn">أطلب الآن 🛒</a>
+
+        <div class="reviews-section">
+            <div class="reviews-title">أراء زبنائنا ⭐⭐⭐⭐⭐</div>
+            
+            <div class="review-card">
+                <div class="review-header">
+                    <span class="reviewer-name">مريم. أ (سلا)</span>
+                    <span class="verified-badge">✔ مشتري مؤكد</span>
+                </div>
+                <div class="stars">★★★★★</div>
+                <p class="review-text">"والله حتى نفعني بزاف، اللحم كيبقى طري والريحة مكاتبقاش فالمجمد. شكرا أيامول."</p>
+            </div>
+
+            <div class="review-card">
+                <div class="review-header">
+                    <span class="reviewer-name">عبد الله. ح (الرباط)</span>
+                    <span class="verified-badge">✔ مشتري مؤكد</span>
+                </div>
+                <div class="stars">★★★★★</div>
+                <p class="review-text">"جودة واعرة، جربتها حتى فالحوت وصدقات ممتازة. التوصيل كان سريع."</p>
+            </div>
+
+            <div class="review-card">
+                <div class="review-header">
+                    <span class="reviewer-name">فاطمة الزهراء (البيضاء)</span>
+                    <span class="verified-badge">✔ مشتري مؤكد</span>
+                </div>
+                <div class="stars">★★★★★</div>
+                <p class="review-text">"هناني من الروينة فالثلاجة، دبا كلشي منظم و نقي. كنصح به العيالات فهاد العيد."</p>
+            </div>
+
+            <div class="review-card">
+                <div class="review-header">
+                    <span class="reviewer-name">ياسين. ف (تمارة)</span>
+                    <span class="verified-badge">✔ مشتري مؤكد</span>
+                </div>
+                <div class="stars">★★★★★</div>
+                <p class="review-text">"خديت العرض ديال 50 ميكا، فعلا كيهني. الخدمة ديالكم نقية."</p>
+            </div>
+        </div>
+
+        <form id="order-form">
+            <div class="bundle-box">
+                <div class="option active" onclick="selectBundle(249)">
+                    <input type="radio" name="bundle_radio" value="249" id="bundle1" checked>
+                    <div class="text-container">
+                        <div class="option-title">جهاز واحد + 10 أكياس مجانية</div>
+                        <span class="option-price">DH 249</span>
+                    </div>
+                </div>
+
+                <div class="option" onclick="selectBundle(349)">
+                    <input type="radio" name="bundle_radio" value="349" id="bundle2">
+                    <div class="text-container">
+                        <span class="badge">🔥 عرض العيد</span>
+                        <div class="option-title">جهاز واحد + 50 كيس ممتاز</div>
+                        <span class="option-price">DH 349</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="checkout-box">
+                <div class="form-header">أدخل معلوماتك للطلب</div>
+                <input type="hidden" id="selected-bundle" name="bundle" value="249">
+
+                <div class="input-group">
+                    <label>الاسم الكامل:</label>
+                    <input type="text" name="name" required placeholder="الاسم الكامل">
+                </div>
+                
+                <div class="input-group">
+                    <label>رقم الهاتف:</label>
+                    <input type="tel" name="tel" required maxlength="10" pattern="[0-9]{10}" placeholder="0612345678">
+                </div>
+
+                <div class="input-group" style="margin-bottom: 25px;">
+                    <label>المدينة / العنوان:</label>
+                    <input type="text" name="address" required placeholder="مدينتك وعنوانك">
+                </div>
+
+                <button type="submit" class="cta-btn" id="submit-btn" style="margin-bottom: 0;">أطلب الآن 🛒</button>
+                <div class="trust-text"><span>✔</span> ضمان الإرجاع مجاناً عند باب المنزل إن لم يعجبك المنتج. تسوق بدون مخاطرة.</div>
+            </div>
+        </form>
+    </div>
+
+    <div id="thank-you">
+        <h2>✅ تم الطلب بنجاح!</h2>
+        <p>سنتصل بك قريباً من أجل تأكيد تفاصيل التوصيل. شكراً لثقتكم في أيامول.</p>
+    </div>
+
+    <a href="https://wa.me/212638501541?text=Salam,%20bghit%20nswl%203la%20machine%20vaccum" class="whatsapp-float" target="_blank">
+        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 448 512" fill="#fff"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7 .9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
+    </a>
+</div>
+
+<script>
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx_mptD_sy4IwzC950Z79gaEE92XspvluImwC1IdNjeiVHVJNZVuUYaPiPwIUiUcdDQ/exec";
+
+    function selectBundle(price) {
+        document.querySelectorAll('.option').forEach(opt => opt.classList.remove('active'));
+        const selectedInput = document.querySelector('input[value="'+price+'"]');
+        selectedInput.closest('.option').classList.add('active');
+        selectedInput.checked = true;
+        document.getElementById('selected-bundle').value = price;
+    }
+
+    document.getElementById('order-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const btn = document.getElementById('submit-btn');
+        btn.disabled = true;
+        btn.innerText = "جاري تأكيد الطلب... ⏳";
+
+        const formData = new FormData(this);
+        const data = new URLSearchParams(formData);
+        const bundleValue = document.getElementById('selected-bundle').value;
+
+        fetch(SCRIPT_URL, { method: 'POST', body: data })
+        .then(() => {
+            document.getElementById('main-content').style.display = 'none';
+            document.getElementById('thank-you').style.display = 'block';
+            window.scrollTo(0,0);
+            if (!sessionStorage.getItem('orderPlaced')) {
+                fbq('track', 'Purchase', {currency: 'MAD', value: bundleValue});
+                sessionStorage.setItem('orderPlaced', 'true');
+            }
+        })
+        .catch(() => {
+            btn.disabled = false;
+            btn.innerText = "أطلب الآن 🛒";
+            alert("حدث خطأ في الشبكة، المرجو المحاولة مرة أخرى.");
+        });
+    });
+</script>
+</body>
+</html>
