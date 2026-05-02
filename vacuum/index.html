@@ -42,6 +42,7 @@
             min-height: 100vh; 
             position: relative; 
             box-shadow: 0 0 20px rgba(0,0,0,0.8); 
+            padding-bottom: 90px; /* Space for the sticky button */
         }
         
         .header { 
@@ -86,7 +87,7 @@
         .real-photos-grid img { width: 100%; border-radius: 8px; object-fit: cover; display: block; border: 1px solid #374151; }
 
         .reviews-section {
-            margin-bottom: 25px;
+            margin-bottom: 30px;
         }
         .reviews-title { text-align: center; color: #fff; font-size: 18px; font-weight: 900; margin-bottom: 15px; }
         .review-card {
@@ -179,9 +180,10 @@
         .trust-text { text-align: center; color: #9ca3af; font-size: 12px; margin-top: 15px; font-weight: 700; }
         .trust-text span { color: #25d366; }
 
+        /* WHATSAPP FLOAT - Adjusted to sit above sticky button */
         .whatsapp-float { 
             position: fixed; 
-            bottom: 20px; 
+            bottom: 95px; 
             left: 20px; 
             background-color: #25d366; 
             border-radius: 50%; 
@@ -193,6 +195,40 @@
             justify-content: center; 
             text-decoration: none;
             box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        /* STICKY BUY BUTTON */
+        .sticky-cta { 
+            position: fixed; 
+            bottom: 0; 
+            left: 50%; 
+            transform: translateX(-50%); 
+            width: 100%; 
+            max-width: 480px; 
+            padding: 12px 20px; 
+            background: #111827; 
+            border-top: 1px solid #1f2937;
+            z-index: 100; 
+        }
+        .sticky-btn { 
+            display: block;
+            width: 100%; 
+            background: #ff5722; 
+            color: #fff; 
+            padding: 16px; 
+            border-radius: 8px; 
+            font-size: 20px; 
+            font-weight: 900; 
+            text-align: center; 
+            text-decoration: none; 
+            box-shadow: 0 4px 15px rgba(255, 87, 34, 0.3);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
         }
 
         #thank-you { display: none; padding: 60px 20px; text-align: center; min-height: 50vh; }
@@ -223,8 +259,6 @@
             <p>سهل الاستخدام: كيسد الميكا بضغطة واحدة</p>
         </div>
 
-        <a href="#order-form" class="cta-btn">أطلب الآن 🛒</a>
-
         <div class="image-box">
             <img src="vacuum.gif" alt="How it works">
         </div>
@@ -236,8 +270,6 @@
                 <img src="real2.jpg" alt="Real photo 2">
             </div>
         </div>
-
-        <a href="#order-form" class="cta-btn">أطلب الآن 🛒</a>
 
         <div class="reviews-section">
             <div class="reviews-title">أراء زبنائنا ⭐⭐⭐⭐⭐</div>
@@ -279,7 +311,14 @@
             </div>
         </div>
 
+        <hr style="border: none; border-top: 1px dashed #374151; margin: 35px 0;">
+
         <form id="order-form">
+            <div style="text-align: center; margin-bottom: 20px;">
+                <h2 style="font-size: 20px; font-weight: 900; color: #fff;">📦 مرحلة الطلب والدفع</h2>
+                <p style="color: #9ca3af; font-size: 13px; margin-top: 5px;">اختر العرض المناسب وأدخل معلوماتك للتوصل بالمنتج</p>
+            </div>
+
             <div class="bundle-box">
                 <div class="option active" onclick="selectBundle(249)">
                     <input type="radio" name="bundle_radio" value="249" id="bundle1" checked>
@@ -300,7 +339,6 @@
             </div>
 
             <div class="checkout-box">
-                <div class="form-header">أدخل معلوماتك للطلب</div>
                 <input type="hidden" id="selected-bundle" name="bundle" value="249">
 
                 <div class="input-group">
@@ -318,7 +356,7 @@
                     <input type="text" name="address" required placeholder="مدينتك وعنوانك">
                 </div>
 
-                <button type="submit" class="cta-btn" id="submit-btn" style="margin-bottom: 0;">أطلب الآن 🛒</button>
+                <button type="submit" class="cta-btn" id="submit-btn" style="margin-bottom: 0;">تأكيد الطلب الآن</button>
                 <div class="trust-text"><span>✔</span> ضمان الإرجاع مجاناً عند باب المنزل إن لم يعجبك المنتج. تسوق بدون مخاطرة.</div>
             </div>
         </form>
@@ -327,6 +365,10 @@
     <div id="thank-you">
         <h2>✅ تم الطلب بنجاح!</h2>
         <p>سنتصل بك قريباً من أجل تأكيد تفاصيل التوصيل. شكراً لثقتكم في أيامول.</p>
+    </div>
+
+    <div class="sticky-cta" id="sticky-bar">
+        <a href="#order-form" class="sticky-btn">أطلب الآن 🛒</a>
     </div>
 
     <a href="https://wa.me/212638501541?text=Salam,%20bghit%20nswl%203la%20machine%20vaccum" class="whatsapp-float" target="_blank">
@@ -358,8 +400,14 @@
         fetch(SCRIPT_URL, { method: 'POST', body: data })
         .then(() => {
             document.getElementById('main-content').style.display = 'none';
+            
+            // Hide the sticky button when the order is complete
+            const stickyBar = document.getElementById('sticky-bar');
+            if (stickyBar) stickyBar.style.display = 'none';
+
             document.getElementById('thank-you').style.display = 'block';
             window.scrollTo(0,0);
+            
             if (!sessionStorage.getItem('orderPlaced')) {
                 fbq('track', 'Purchase', {currency: 'MAD', value: bundleValue});
                 sessionStorage.setItem('orderPlaced', 'true');
@@ -367,7 +415,7 @@
         })
         .catch(() => {
             btn.disabled = false;
-            btn.innerText = "أطلب الآن 🛒";
+            btn.innerText = "تأكيد الطلب الآن";
             alert("حدث خطأ في الشبكة، المرجو المحاولة مرة أخرى.");
         });
     });
