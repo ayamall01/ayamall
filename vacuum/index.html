@@ -419,6 +419,28 @@
             alert("حدث خطأ في الشبكة، المرجو المحاولة مرة أخرى.");
         });
     });
+
+    // --- SMART STICKY BUTTON HIDER ---
+    const stickyBar = document.getElementById('sticky-bar');
+    const orderForm = document.getElementById('order-form');
+
+    // Add a smooth animation
+    stickyBar.style.transition = "bottom 0.3s ease-in-out";
+
+    // Watch the screen to see if the form is visible
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Form is on screen -> Hide the button by pushing it down
+                stickyBar.style.bottom = "-100px";
+            } else {
+                // Form is off screen -> Bring the button back
+                stickyBar.style.bottom = "0";
+            }
+        });
+    }, { threshold: 0.1 }); // Triggers when 10% of the form is visible
+
+    observer.observe(orderForm);
 </script>
 </body>
 </html>
