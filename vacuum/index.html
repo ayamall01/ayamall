@@ -551,23 +551,17 @@
 
             let score = 0;
             
-            // 1. HIGHEST PRIORITY: Exact match or Starts With (e.g., "Rab" -> Rabat)
             if (normCity.startsWith(normTerm)) {
                 score = 3;
-            } 
-            // 2. HIGH PRIORITY: Matches the Arabic Translation (e.g., "الربا" -> Rabat)
-            else if (arabicTags.includes(lowerTerm) && lowerTerm !== "") {
+            } else if (arabicTags.includes(lowerTerm) && lowerTerm !== "") {
                 score = 2;
-            } 
-            // 3. LOW PRIORITY: Just contains the letters inside (e.g., "Rab" -> Douar Ghraba)
-            else if (normCity.includes(normTerm)) {
+            } else if (normCity.includes(normTerm)) {
                 score = 1;
             }
 
             return { city: city, score: score };
         }).filter(item => item.score > 0);
 
-        // Sort by Score (3 goes first), then alphabetize
         results.sort((a, b) => {
             if (b.score !== a.score) return b.score - a.score;
             return a.city.localeCompare(b.city);
