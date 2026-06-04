@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>مظلة السيارة الذكية ضد حرارة الشمس - Ayamall</title>
+    <meta name="description" content="احمي سيارتك من أشعة الشمس الحارقة مع المظلة الذكية. سهلة الاستخدام وتطوى بثواني. التوصيل مجاني والدفع عند الاستلام في المغرب.">
+    
+    <!-- Meta Pixel Tracking -->
+    <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '2663210157367551');
+    fbq('track', 'PageView');</script>
+    <noscript>
+        <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2663210157367551&ev=PageView&noscript=1"/>
+    </noscript>
+    <!-- End Meta Pixel Tracking -->
+
+    <style>
+        /* Base Reset & Typography */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, Cantarell, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        :root {
+            --bg-color: #121214;
+            --surface-color: #1a1a1e;
+            --surface-card: #222227;
+            --primary-color: #ff9f00;
+            --primary-hover: #e68f00;
+            --text-color: #ffffff;
+            --text-muted: #a0a0ab;
+            --success-color: #2ec4b6;
+            --border-color: #2d2d34;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding-bottom: 90px;
+        }
+
+        /* Layout Container */
+        .container {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--surface-color);
+            border-bottom: 1px solid var(--border-color);
+            padding: 12px 0;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            color: var(--text-color);
+        }
+
+        .logo span {
+            color: var(--primary-color);
+        }
+
+        /* Utility Styles */
+        .text-center { text-align: center; }
+        .mt-1 { margin-top: 4px; }
+        .mt-3 { margin-top: 16px; }
+        
+        /* Fixed, Fallback-safe Media Block with Maximum Mobile Height Limit */
+        .hero-media {
+            width: 100%;
+            max-height: 380px;
+            border-radius: 12px;
+            overflow: hidden;
+            background-color: var(--surface-color);
+            margin: 16px 0;
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-media img {
+            width: 100%;
+            height: auto;
+            max-height: 380px;
+            object-fit: contain;
+            display: block;
+        }
+
+        /* Typography */
+        h1 {
+            font-size: 24px;
+            font-weight: 800;
+            line-height: 1.3;
+            margin-top: 12px;
+            margin-bottom: 12px;
+        }
+
+        .subheadline {
+            font-size: 15px;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+        }
+
+        /* Offer Box */
+        .offer-box {
+            background: linear-gradient(135deg, #222227 0%, #1a1a1e 100%);
+            border: 2px dashed var(--primary-color);
+            border-radius: 12px;
+            padding: 16px;
+            margin: 16px 0 8px 0;
+        }
+
+        .offer-badge {
+            background-color: var(--primary-color);
+            color: #000;
+            font-weight: 700;
+            font-size: 13px;
+            padding: 2px 8px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-bottom: 12px;
+        }
+
+        .price-tier {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .price-tier:last-of-type {
+            border-bottom: none;
+        }
+
+        .offer-features {
+            margin-top: 12px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* Clean Real Stock Urgency Line */
+        .urgency-stock-line {
+            color: #ff4d4d;
+            font-weight: 700;
+            font-size: 14px;
+            text-align: center;
+            margin: 8px 0 12px 0;
+            display: block;
+        }
+
+        /* Form Controls */
+        .form-card {
+            background-color: var(--surface-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+        }
+
+        .form-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: var(--text-color);
+        }
+
+        .form-control {
+            width: 100%;
+            background-color: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 12px;
+            color: var(--text-color);
+            font-size: 15px;
+            transition: border-color 0.2s;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        /* Custom Radio Buttons for Bundle Selection */
+        .bundle-selector {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 8px;
+        }
+
+        .bundle-option {
+            background-color: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.2s;
+        }
+
+        .bundle-option.active {
+            border-color: var(--primary-color);
+            background-color: rgba(255, 159, 0, 0.05);
+        }
+
+        .bundle-option input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+        }
+
+        .bundle-details {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .radio-dot {
+            width: 18px;
+            height: 18px;
+            border: 2px solid var(--border-color);
+            border-radius: 50%;
+            display: inline-block;
+            position: relative;
+        }
+
+        .bundle-option.active .radio-dot {
+            border-color: var(--primary-color);
+        }
+
+        .bundle-option.active .radio-dot::after {
+            content: '';
+            width: 10px;
+            height: 10px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .bundle-label {
+            font-weight: 600;
+            font-size: 15px;
+        }
+
+        .bundle-price {
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .best-value-tag {
+            background-color: #e63946;
+            color: white;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin-right: 8px;
+        }
+
+        /* Buttons Styling Hierarchy */
+        .btn {
+            width: 100%;
+            background-color: var(--primary-color);
+            color: #000000;
+            border: none;
+            border-radius: 8px;
+            padding: 16px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.2s, transform 0.1s, opacity 0.2s ease-in-out;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 12px rgba(255, 159, 0, 0.3);
+        }
+
+        .btn:active {
+            transform: scale(0.98);
+        }
+
+        .btn:disabled {
+            background-color: var(--text-muted);
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+
+        .btn-subtext {
+            font-size: 12px;
+            color: var(--text-muted);
+            text-align: center;
+            margin-top: 8px;
+        }
+
+        /* Benefits & Content Sections */
+        section {
+            padding: 24px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            position: relative;
+            padding-right: 12px;
+        }
+
+        .section-title::before {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 4px;
+            bottom: 4px;
+            width: 4px;
+            background-color: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        .bullet-list {
+            list-style: none;
+        }
+
+        .bullet-list li {
+            position: relative;
+            padding-right: 24px;
+            margin-bottom: 12px;
+            font-size: 15px;
+        }
+
+        .bullet-list li::before {
+            content: "✓";
+            position: absolute;
+            right: 0;
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        /* Steps Block */
+        .step-item {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 16px;
+            background-color: var(--surface-color);
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .step-number {
+            background-color: var(--primary-color);
+            color: #000;
+            font-weight: 700;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 14px;
+        }
+
+        .step-text {
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        /* Badges Component */
+        .badges-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin: 16px 0;
+        }
+
+        .badge-card {
+            background-color: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 12px;
+            text-align: center;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .badge-icon {
+            font-size: 20px;
+            margin-bottom: 4px;
+            display: block;
+        }
+
+        .trust-note {
+            background-color: rgba(46, 196, 182, 0.1);
+            border: 1px solid var(--success-color);
+            color: #d1f2ef;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 14px;
+            margin-top: 12px;
+        }
+
+        /* FAQ */
+        .faq-item {
+            background-color: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 14px;
+            font-weight: 600;
+            font-size: 15px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+        }
+
+        .faq-question::after {
+            content: '+';
+            color: var(--primary-color);
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .faq-item.open .faq-question::after {
+            content: '−';
+        }
+
+        .faq-answer {
+            padding: 0 14px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.2s ease-out, padding 0.2s ease-out;
+            color: var(--text-muted);
+            font-size: 14px;
+            border-top: 0 solid var(--border-color);
+        }
+
+        .faq-item.open .faq-answer {
+            padding: 12px 14px;
+            max-height: 150px;
+            border-top-width: 1px;
+        }
+
+        /* Sticky CTA Bar Base styling */
+        .sticky-cta {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: var(--surface-color);
+            border-top: 1px solid var(--border-color);
+            padding: 12px 16px;
+            z-index: 99;
+            box-shadow: 0 -4px 16px rgba(0,0,0,0.4);
+            transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .cta-hidden {
+            transform: translateY(100%);
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        /* Form Feedback Alerts */
+        .alert {
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 16px;
+            font-size: 14px;
+            font-weight: 600;
+            display: none;
+        }
+
+        .alert-error {
+            background-color: rgba(230, 57, 70, 0.15);
+            border: 1px solid #e63946;
+            color: #ffccd5;
+        }
+
+        .alert-success {
+            background-color: rgba(46, 196, 182, 0.15);
+            border: 1px solid var(--success-color);
+            color: #cbf3f0;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Simple Header -->
+    <header>
+        <div class="container">
+            <div class="logo">Aya<span>mall</span></div>
+        </div>
+    </header>
+
+    <main class="container">
+        
+        <!-- High-Converting Hero Layout Structuring -->
+        <section style="border-bottom: none; padding-bottom: 0;">
+            <h1>مظلة السيارة الذكية ضد حرارة الشمس</h1>
+            
+            <p class="subheadline">
+                الطوموبيل كتولي بحال الفران فالصيف؟ هاد المظلة كتعاونك تحمي الطابلو والمقود من أشعة الشمس، وكتفتح فثواني وكتطوى بسهولة.
+            </p>
+
+            <!-- Price Offer block positioned early BEFORE the media visual -->
+            <div class="offer-box">
+                <div class="offer-badge">🔥 عرض الصيف</div>
+                <div class="price-tier" style="font-weight: 700; color: var(--primary-color);">
+                    <span>1 قطعة</span>
+                    <span>149 درهم</span>
+                </div>
+                <div class="price-tier">
+                    <span>2 قطع</span>
+                    <span>249 درهم فقط</span>
+                </div>
+                <div class="offer-features">
+                    <div class="feature-item">🚚 <span>توصيل مجاني</span></div>
+                    <div class="feature-item">💵 <span>الدفع عند الاستلام</span></div>
+                </div>
+            </div>
+
+            <!-- Truthful urgency line metrics -->
+            <span class="urgency-stock-line">باقي غير 5 قطع فهاد الدفعة</span>
+
+            <!-- Compact Product Media Container with responsive fallback hooks -->
+            <div class="hero-media">
+                <img src="sunshade-hero.gif" onerror="this.onerror=null; this.src='sunshade-hero.jpg';" alt="مظلة السيارة الذكية">
+            </div>
+        </section>
+
+        <!-- Direct Order Form Section brought much closer to the fold -->
+        <section id="order-form-section" style="padding-top: 0;">
+            <div class="form-card">
+                <div class="form-title">إملأ معلوماتك للطلب بسرعة</div>
+                
+                <div id="form-error" class="alert alert-error"></div>
+                <div id="form-success" class="alert alert-success"></div>
+
+                <form id="cod-order-form">
+                    <div class="form-group">
+                        <label for="name">الاسم الكامل *</label>
+                        <input type="text" id="name" name="name" class="form-control" placeholder="الاسم والنسب" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="tel">رقم الهاتف *</label>
+                        <input type="tel" id="tel" name="tel" class="form-control" placeholder="مثال: 0612345678" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="city">المدينة *</label>
+                        <input type="text" id="city" name="city" class="form-control" placeholder="المدينة ديالك" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="address">العنوان الكامل *</label>
+                        <input type="text" id="address" name="address" class="form-control" placeholder="الحي، الشارع، أو رقم المنزل" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>اختر العرض المناسب *</label>
+                        <div class="bundle-selector">
+                            
+                            <!-- Bundle 1 (149 DH Default Selection Strategy) -->
+                            <div class="bundle-option active" onclick="selectBundle(this, '1', 149)">
+                                <input type="radio" name="bundle" value="1 قطعة = 149 درهم" checked>
+                                <div class="bundle-details">
+                                    <span class="radio-dot"></span>
+                                    <span class="bundle-label">1 قطعة</span>
+                                </div>
+                                <span class="bundle-price">149 درهم</span>
+                            </div>
+
+                            <!-- Bundle 2 -->
+                            <div class="bundle-option" onclick="selectBundle(this, '2', 249)">
+                                <input type="radio" name="bundle" value="2 قطع = 249 درهم">
+                                <div class="bundle-details">
+                                    <span class="radio-dot"></span>
+                                    <span class="bundle-label">2 قطع</span>
+                                    <span class="best-value-tag">أحسن قيمة</span>
+                                </div>
+                                <span class="bundle-price">249 درهم</span>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Optimized Form Action button trigger element -->
+                    <button type="submit" id="submit-btn" class="btn">
+                        <span>أكد طلبي الآن</span>
+                    </button>
+                    
+                    <p class="btn-subtext">لن تدفع أي شيء الآن. الدفع فقط عند الاستلام.</p>
+                </form>
+            </div>
+        </section>
+
+        <!-- Believable Claims Benefits Section -->
+        <section>
+            <h2 class="section-title">علاش هاد المظلة ضرورية لسيارتك؟</h2>
+            <ul class="bullet-list">
+                <li>☀️ كتعاون تحمي الطابلو والمقود من الشمس</li>
+                <li>🚗 كتعاون تنقص السخونية داخل السيارة</li>
+                <li>⚡ كتفتح فثواني وكتطوى بسهولة</li>
+                <li>🎒 كتجي مع بوشيط للتخزين</li>
+                <li>💵 طلب بلا تسبيق — خلص حتى توصلك السلعة</li>
+            </ul>
+        </section>
+
+        <!-- How To Use Section -->
+        <section>
+            <h2 class="section-title">طريقة الاستعمال</h2>
+            
+            <div class="step-item">
+                <div class="step-number">1</div>
+                <div class="step-text">فتح المظلة</div>
+            </div>
+
+            <div class="step-item">
+                <div class="step-number">2</div>
+                <div class="step-text">حطها من الداخل على الزجاج الأمامي</div>
+            </div>
+
+            <div class="step-item">
+                <div class="step-number">3</div>
+                <div class="step-text">خليها تحمي الطابلو والمقود من الشمس</div>
+            </div>
+
+            <div class="step-item">
+                <div class="step-number">4</div>
+                <div class="step-text">جمعها ورجعها للبوشيط ملي تسالي</div>
+            </div>
+        </section>
+
+        <!-- Trust Section -->
+        <section>
+            <h2 class="section-title">ضمانات وتجربة تسوق آمنة</h2>
+            <div class="badges-grid">
+                <div class="badge-card">
+                    <span class="badge-icon">💵</span>
+                    الدفع عند الاستلام
+                </div>
+                <div class="badge-card">
+                    <span class="badge-icon">📞</span>
+                    تأكيد عبر الهاتف
+                </div>
+                <div class="badge-card">
+                    <span class="badge-icon">🚚</span>
+                    توصيل مجاني
+                </div>
+                <div class="badge-card">
+                    <span class="badge-icon">❌</span>
+                    بدون تسبيق
+                </div>
+            </div>
+            <div class="trust-note">
+                بعد ما تعمر الطلب، غادي تتاصل بك هاجر لتأكيد المعلومات قبل الإرسال.
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section>
+            <h2 class="section-title">الأسئلة الشائعة (FAQ)</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">واش كاين الدفع عند الاستلام؟</div>
+                <div class="faq-answer">نعم، كتخلص حتى توصلك السلعة.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">واش خاصني نخلص شي حاجة قبل؟</div>
+                <div class="faq-answer">لا، ما كاين حتى تسبيق.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">شحال مدة التوصيل؟</div>
+                <div class="faq-answer">غالباً بين 24 و72 ساعة حسب المدينة.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">واش المظلة كتدخل لأي سيارة؟</div>
+                <div class="faq-answer">مناسبة لمعظم السيارات، وكتستعمل فالزجاج الأمامي من الداخل.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">واش كتطوى؟</div>
+                <div class="faq-answer">نعم، كتطوى وكتخزن بسهولة فالبوشيط ديالها.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">كيفاش غادي يتأكد الطلب؟</div>
+                <div class="faq-answer">من بعد ما تعمر المعلومات، غادي نعيطو ليك لتأكيد الاسم، المدينة، العنوان، والكمية.</div>
+            </div>
+        </section>
+
+        <!-- Final CTA Section -->
+        <section class="text-center" style="border-bottom: none; padding-bottom: 24px;">
+            <h3>باقي كتخلي سيارتك تسخن فالشمس؟</h3>
+            <p class="text-muted mt-1" style="font-size: 14px;">طلبها دابا، وخلص حتى توصلك.</p>
+            <div class="mt-3">
+                <button type="button" class="btn" onclick="scrollToForm()">
+                    <span>نعم، بغيت نطلب دابا</span>
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Mobile Sticky CTA View (Auto-hides inside form to clear interface paralysis) -->
+    <div id="mobile-sticky-bar" class="sticky-cta">
+        <button type="button" class="btn" onclick="scrollToForm()">
+            <span>أطلب الآن</span>
+        </button>
+    </div>
+
+    <!-- Scripting Infrastructure -->
+    <script>
+        // Track running price selection context (149 DH Default selection matrix init)
+        let selectedPrice = 149; 
+
+        // Bundle Element Selector Configurations
+        function selectBundle(element, quantity, price) {
+            document.querySelectorAll('.bundle-option').forEach(opt => {
+                opt.classList.remove('active');
+                opt.querySelector('input[type="radio"]').checked = false;
+            });
+            element.classList.add('active');
+            const radio = element.querySelector('input[type="radio"]');
+            radio.checked = true;
+            selectedPrice = price;
+        }
+
+        // Core Layout Scroll Navigation Mechanics
+        function scrollToForm() {
+            const target = document.getElementById('order-form-section');
+            if(target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        // Active Visibility Handler preventing button decision friction overlaps inside Form Card boundaries
+        const stickyBar = document.getElementById('mobile-sticky-bar');
+        const orderFormSection = document.getElementById('order-form-section');
+
+        if ('IntersectionObserver' in window) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        stickyBar.classList.add('cta-hidden');
+                    } else {
+                        stickyBar.classList.remove('cta-hidden');
+                    }
+                });
+            }, {
+                root: null,
+                threshold: 0.15
+            });
+            observer.observe(orderFormSection);
+        } else {
+            window.addEventListener('scroll', () => {
+                const rect = orderFormSection.getBoundingClientRect();
+                if (rect.top < window.innerHeight && rect.bottom >= 0) {
+                    stickyBar.classList.add('cta-hidden');
+                } else {
+                    stickyBar.classList.remove('cta-hidden');
+                }
+            });
+        }
+
+        // Accordion Interactions Mechanic for FAQ Layouts
+        document.querySelectorAll('.faq-question').forEach(q => {
+            q.addEventListener('click', () => {
+                const parent = q.parentElement;
+                const isOpen = parent.classList.contains('open');
+                document.querySelectorAll('.faq-item').forEach(item => item.classList.remove('open'));
+                if (!isOpen) {
+                    parent.classList.add('open');
+                }
+            });
+        });
+
+        // Async Form Transmission & Meta Tracking Logic Elements
+        const form = document.getElementById('cod-order-form');
+        const submitBtn = document.getElementById('submit-btn');
+        const errBox = document.getElementById('form-error');
+        const succBox = document.getElementById('form-success');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            errBox.style.display = 'none';
+            succBox.style.display = 'none';
+            errBox.innerText = '';
+
+            const name = document.getElementById('name').value.trim();
+            const tel = document.getElementById('tel').value.trim();
+            const city = document.getElementById('city').value.trim();
+            const address = document.getElementById('address').value.trim();
+            const checkedRadio = document.querySelector('input[name="bundle"]:checked');
+            const bundle = checkedRadio ? checkedRadio.value : '';
+
+            if(!name || !tel || !city || !address || !bundle) {
+                errBox.innerText = 'المرجو ملء جميع الخانات المطلوبة بشكل صحيح.';
+                errBox.style.display = 'block';
+                return;
+            }
+
+            const phoneCleaned = tel.replace(/\s+/g, '');
+            if(phoneCleaned.length < 9) {
+                errBox.innerText = 'المرجو إدخال رقم هاتف صحيح لنتمكن من الاتصال بكم.';
+                errBox.style.display = 'block';
+                return;
+            }
+
+            submitBtn.disabled = true;
+            const originalBtnText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<span>جاري تسجيل الطلب...</span>';
+
+            // Fixed Integration Routing Metrics Mapping
+            const endpoint = "https://script.google.com/macros/s/AKfycbx_mptD_sy4IwzC950Z79gaEE92XspvluImwC1IdNjeiVHVJNZVuUYaPiPwIUiUcdDQ/exec";
+
+            const formData = new URLSearchParams();
+            formData.append('name', name);
+            formData.append('tel', tel);
+            formData.append('city', city);
+            formData.append('address', address);
+            formData.append('bundle', bundle);
+
+            fetch(endpoint, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: formData.toString()
+            })
+            .then(response => {
+                // Post-Purchase Pixel Fire Integration Routine
+                if(typeof fbq === 'function') {
+                    fbq('track', 'Purchase', {currency: 'MAD', value: parseInt(selectedPrice)});
+                }
+                
+                succBox.innerText = 'تم تسجيل طلبك بنجاح ✅ غادي نعيطو ليك باش نأكدو المعلومات قبل الإرسال.';
+                succBox.style.display = 'block';
+                form.reset();
+                submitBtn.style.display = 'none';
+                
+                document.querySelectorAll('.bundle-option').forEach((opt, index) => {
+                    if(index === 0) {
+                        opt.classList.add('active');
+                        opt.querySelector('input[type="radio"]').checked = true;
+                    } else {
+                        opt.classList.remove('active');
+                        opt.querySelector('input[type="radio"]').checked = false;
+                    }
+                });
+                selectedPrice = 149;
+            })
+            .catch(error => {
+                console.error('Submission tracking execution issue:', error);
+                errBox.innerText = 'وقع مشكل أثناء إرسال الطلب، المرجو المحاولة مجدداً.';
+                errBox.style.display = 'block';
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalBtnText;
+            });
+        });
+    </script>
+</body>
+</html>
