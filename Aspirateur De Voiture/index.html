@@ -1,0 +1,848 @@
+ <!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>المكنسة الكهربائية 3 في 1 - العرض المحدود</title>
+    
+    <!-- كود تتبع ميتا بيكسل الأساسي (Meta Pixel Base Code) -->
+    <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '2663210157367551');
+    fbq('track', 'PageView');
+    </script>
+    <noscript>
+        <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2663210157367551&ev=PageView&noscript=1"/>
+    </noscript>
+    <!-- نهاية كود تتبع ميتا بيكسل الأساسي -->
+
+    <!-- تحسين وتفعيل التحميل المسبق لخط القاهرة لتفادي تأخر النص -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- تحميل مكتبة Tailwind المعتمدة والآمنة للتجاوب الكامل في بيئة المعاينة -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#FFFBEB',
+                            100: '#FEF3C7',
+                            500: '#F59E0B',
+                            600: '#D97706',
+                            700: '#B45309',
+                        }
+                    },
+                    fontFamily: {
+                        cairo: ['Cairo', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #f9fafb;
+            scroll-behavior: smooth;
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        @keyframes pulse-btn {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+        .pulse-animation {
+            animation: pulse-btn 2s infinite ease-in-out;
+        }
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-6px); }
+            75% { transform: translateX(6px); }
+        }
+        .shake-animation {
+            animation: shake 0.4s ease-in-out 2;
+        }
+        @keyframes flash {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        .flash-animation {
+            animation: flash 1.5s infinite;
+        }
+        
+        .striped-progress-bar {
+            background-image: linear-gradient(
+                45deg, 
+                #F59E0B 25%, 
+                #fbbf24 25%, 
+                #fbbf24 50%, 
+                #F59E0B 50%, 
+                #F59E0B 75%, 
+                #fbbf24 75%, 
+                #fbbf24
+            );
+            background-size: 20px 20px;
+            animation: move-stripes 1.2s linear infinite;
+        }
+        @keyframes move-stripes {
+            0% { background-position: 0 0; }
+            100% { background-position: 40px 0; }
+        }
+    </style>
+</head>
+<body class="text-gray-900 antialiased selection:bg-brand-500 selection:text-white">
+
+    <!-- الحاوية الرئيسية لمحاكاة الهاتف المحمول بشكل احترافي على أجهزة الـ Desktop ومثالية جداً على الهواتف -->
+    <main class="max-w-[480px] mx-auto bg-white min-h-screen shadow-2xl pb-32 relative border-x border-gray-100">
+        
+        <!-- صفحة شكرًا لك المنفصلة والنظيفة (تظهر تلقائياً بعد نجاح الإرسال لـ Google Sheets) -->
+        <div id="thank-you" class="hidden p-6 text-center" style="display: none;">
+            <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6 animate-bounce mt-12" aria-hidden="true">
+                <svg class="w-12 h-12 text-green-500" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
+                </svg>
+            </div>
+            
+            <h3 class="text-2xl font-black text-black mb-3">تم استلام طلبكم بنجاح! 🎉</h3>
+            <p class="text-gray-500 text-sm mb-6 leading-relaxed">شكراً لثقتكم بمتجر أيامول، سنتصل بكم هاتفياً لتأكيد العنوان وتنسيق عملية الشحن المجاني السريع.</p>
+            
+            <!-- ملخص الفاتورة الفعلي والمسجل في جدول البيانات -->
+            <div class="bg-gray-50 rounded-2xl p-5 text-right text-sm space-y-3 mb-8 border border-gray-100 shadow-sm">
+                <div class="flex justify-between border-b border-gray-100 pb-2.5">
+                    <span class="text-gray-500 font-semibold">اسم المستلم:</span>
+                    <span id="summary-name" class="font-bold text-gray-800">-</span>
+                </div>
+                <div class="flex justify-between border-b border-gray-100 pb-2.5">
+                    <span class="text-gray-500 font-semibold">رقم الهاتف:</span>
+                    <span id="summary-phone" class="font-bold text-gray-800" dir="ltr">-</span>
+                </div>
+                <div class="flex justify-between border-b border-gray-100 pb-2.5">
+                    <span class="text-gray-500 font-semibold">المدينة الحالية:</span>
+                    <span id="summary-city" class="font-bold text-gray-800">-</span>
+                </div>
+                <div class="flex justify-between border-b border-gray-100 pb-2.5">
+                    <span class="text-gray-500 font-semibold">الكمية المطلوبة:</span>
+                    <span id="summary-qty" class="font-bold text-gray-800">-</span>
+                </div>
+                <div class="flex justify-between font-bold pt-1.5">
+                    <span class="text-gray-800">المجموع النهائي (الدفع عند الاستلام):</span>
+                    <span id="summary-total" class="text-brand-600 font-extrabold text-base">-</span>
+                </div>
+            </div>
+
+            <p class="text-xs text-gray-400">© 2026 متجر أيامول الإلكتروني. جميع الحقوق محفوظة.</p>
+        </div>
+
+        <!-- محتوى صفحة الهبوط الرئيسي بالكامل -->
+        <div id="main-content">
+            <!-- بار الطوارئ والإعلان العلوي البنفسجي المتناسق مع لقطة الشاشة الجديدة -->
+            <header class="bg-[#8B5CF6] text-white text-center py-2.5 px-4 text-xs font-bold leading-relaxed">
+                🔥 خصم 50% ينتظرك! لمدة 3 أيام فقط - سارع بالطلب الآن ولا تفوت الفرصة! 🎉
+            </header>
+
+            <!-- هيدر المتجر الاحترافي المحدث مع شعار "أيامول" ممركز بالكامل وحذف الخطوط الثلاثة -->
+            <div class="flex items-center justify-between px-4 py-3 border-b border-gray-100 bg-white relative">
+                <!-- مساحات متوازنة لضمان تمركز الشعار بشكل هندسي مطلق في المنتصف -->
+                <div class="flex items-center justify-start gap-3 w-1/4" aria-hidden="true"></div>
+                
+                <div class="flex items-center justify-center gap-2 w-2/4">
+                    <!-- الصندوق البرتقالي مع حرف "آ" (يظهر على اليمين أولاً) -->
+                    <div class="w-10 h-10 bg-[#F59E0B] text-white rounded-xl flex items-center justify-center text-2xl font-black select-none shrink-0" aria-label="أيامول شعار">
+                        آ
+                    </div>
+                    <!-- الكلمة "أيامول" باللغة العربية -->
+                    <span class="text-2xl font-black text-gray-900 tracking-tight select-none whitespace-nowrap">أيامول</span>
+                </div>
+
+                <!-- اليسار: أيقونة السلة والبحث متراصة لليسار -->
+                <div class="flex items-center justify-end gap-3 w-1/4">
+                    <button class="text-gray-700 hover:text-black p-1" aria-label="البحث عن منتج">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        </svg>
+                    </button>
+                    <button class="text-gray-700 hover:text-black p-1 relative" aria-label="سلة المشتريات">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <section class="p-4 pt-5 text-center">
+                <span class="inline-block bg-brand-100 text-brand-700 text-xs px-3 py-1 rounded-full font-bold mb-2">الأكثر طلباً في المغرب 🏆</span>
+                <h1 class="text-2xl font-black text-black leading-tight mb-1">المكنسة الكهربائية 3 في 1</h1>
+                <p class="text-gray-500 text-xs">محمولة، لاسلكية وقوية جداً لتنظيف السيارة والمنزل بالكامل</p>
+            </section>
+
+            <!-- معرض الصور الرئيسي المبسط - صورة واحدة رئيسية فقط وبدون سلايدر -->
+            <section class="px-4">
+                <div class="relative overflow-hidden rounded-3xl shadow-lg bg-gray-50 aspect-square border border-gray-100">
+                    <div id="main-image-container" class="w-full h-full flex items-center justify-center">
+                        <svg id="displayed-svg" class="w-full h-full" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="صورة المكنسة الكهربائية">
+                            <rect width="400" height="400" fill="#F3F4F6"/>
+                            <!-- رسم مكنسة كهربائية أيقونية برتقالية متناسقة مع الهوية -->
+                            <path d="M120 280 L280 120" stroke="#F59E0B" stroke-width="24" stroke-linecap="round"/>
+                            <path d="M260 140 L310 90" stroke="#374151" stroke-width="12" stroke-linecap="round"/>
+                            <rect x="90" y="250" width="60" height="60" rx="15" fill="#F59E0B" transform="rotate(45 90 250)"/>
+                            <circle cx="150" cy="250" r="15" fill="#374151"/>
+                            <path d="M70 330 Q40 360 80 360 Q120 360 90 330" fill="#D1D5DB"/>
+                            <!-- خلفية شبكية مميزة -->
+                            <circle cx="200" cy="200" r="140" stroke="#F59E0B" stroke-opacity="0.1" stroke-width="2" stroke-dasharray="10 10"/>
+                            <text x="50%" y="85%" font-family="Cairo" font-weight="black" font-size="22" fill="#1F2937" text-anchor="middle">IMAGE_1</text>
+                            <text x="50%" y="92%" font-family="Cairo" font-size="14" fill="#6B7280" text-anchor="middle">المكنسة اللاسلكية الأصلية 3 في 1</text>
+                        </svg>
+                    </div>
+                    <span class="absolute top-3 left-3 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow">خصم 60%</span>
+                </div>
+            </section>
+
+            <!-- قسم السعر المتناسق تماماً مع لقطة الشاشة المرفقة 16.42.02 (السعر الجديد يمين والسعر الأصلي يسار) -->
+            <section class="flex items-center justify-between px-6 mt-6">
+                <!-- السعر الجديد الأكبر على اليمين باللون البرتقالي المطابق للهوية -->
+                <span id="total-price-text" class="text-3xl font-extrabold text-[#F59E0B]">199 درهم مغربي</span>
+                <!-- السعر القديم المشطوب على اليسار -->
+                <span class="text-xl text-gray-400 line-through font-bold">400 درهم مغربي</span>
+            </section>
+
+            <!-- استمارة معلومات الزبون (COD Form) المبسطة جداً بدون رسائل الخطأ الحمراء الإضافية ومحاطة بإطار منقط رائع -->
+            <section id="checkout-section" class="p-5 mx-4 mt-4 bg-white rounded-[32px] border-[3px] border-dotted border-[#F59E0B] relative transition-all duration-300">
+                <!-- عنوان ممركز على الإطار العلوي للاستمارة -->
+                <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-white px-4">
+                    <span class="text-lg font-black text-[#F59E0B]">معلومات الزبون</span>
+                </div>
+                
+                <form id="order-form" class="space-y-4 mt-2" novalidate>
+                    <!-- حقل الاسم الكامل -->
+                    <div>
+                        <input type="text" id="customer-name" name="name" required placeholder="الإسم الكامل-Nom complet" 
+                            oninput="validateNameInput()"
+                            class="w-full px-4 py-3 border border-gray-300 rounded-2xl focus:border-brand-500 focus:outline-none transition text-base font-semibold text-center placeholder-gray-400">
+                        <div id="error-name" class="text-red-600 text-xs mt-1.5 text-center font-semibold hidden">
+                            يجب أن يكون طول النص الاسم الأول على الأقل 3 حروف/حرفًا.
+                        </div>
+                    </div>
+
+                    <!-- حقل رقم الهاتف -->
+                    <div>
+                        <input type="tel" id="customer-phone" name="phone" required placeholder="الهاتف-Telephone" 
+                            oninput="validatePhoneInput()"
+                            class="w-full px-4 py-3 border border-gray-300 rounded-2xl focus:border-brand-500 focus:outline-none transition text-base font-semibold text-center placeholder-gray-400" dir="ltr">
+                        <div id="error-phone" class="text-red-600 text-xs mt-1.5 text-center font-semibold hidden">
+                            رقم الهاتف غير صالح
+                        </div>
+                    </div>
+
+                    <!-- حقل المدينة -->
+                    <div>
+                        <input type="text" id="customer-city" name="city" required placeholder="المدينة-Ville" 
+                            oninput="validateCityInput()"
+                            class="w-full px-4 py-3 border border-gray-300 rounded-2xl focus:border-brand-500 focus:outline-none transition text-base font-semibold text-center placeholder-gray-400">
+                        <div id="error-city" class="text-red-600 text-xs mt-1.5 text-center font-semibold hidden">
+                            الرجاء إدخال مدينة صالحة (3 حروف على الأقل)
+                        </div>
+                    </div>
+
+                    <!-- مدخلات حسابية مخفية لإرسالها بالكامل كجزء من الاستمارة لـ Google Sheet -->
+                    <input type="hidden" id="hidden-quantity" name="quantity" value="1">
+                    <input type="hidden" id="hidden-total" name="total_price" value="199">
+                    
+                    <!-- زر إرسال خفي مبرمج داخلياً ليتم استدعاؤه بنقرة الأزرار التفاعلية -->
+                    <button type="submit" id="hidden-submit-btn" class="hidden"></button>
+                </form>
+            </section>
+
+            <!-- صف زر الشراء ومحدد الكمية أسفل الاستمارة مباشرة كما في لقطة الشاشة 02.34.30 -->
+            <div class="flex items-center justify-between gap-3 px-4 mt-4" dir="ltr">
+                <!-- زر الطلب الرئيسي بنص "اضغط هنا للطلب" باللون البرتقالي للعلامة التجارية وبحجم ممتاز ومتجاوب -->
+                <button id="submit-btn" onclick="triggerFormSubmit()" class="flex-1 py-3.5 px-4 bg-[#F59E0B] hover:bg-[#D97706] active:scale-[0.98] text-white text-lg font-black rounded-xl shadow-md transition-all duration-200 flex items-center justify-center gap-2 pulse-animation">
+                    <span dir="rtl">اضغط هنا للطلب</span>
+                </button>
+
+                <!-- حقل تحديد الكمية بجانب الزر تماماً في نفس الصف - تم تعديله ليصبح الناقص على اليسار والزائد على اليمين بدقة متناهية -->
+                <div class="flex items-center bg-gray-100 border border-gray-200 rounded-xl px-2 py-1.5 shrink-0">
+                    <button type="button" onclick="decrementQty()" class="w-8 h-8 rounded-lg text-gray-700 hover:bg-gray-200 font-bold text-lg focus:outline-none" aria-label="تقليل الكمية">-</button>
+                    <span id="form-qty" class="w-8 text-center font-extrabold text-base text-black">1</span>
+                    <button type="button" onclick="incrementQty()" class="w-8 h-8 rounded-lg text-gray-700 hover:bg-gray-200 font-bold text-lg focus:outline-none" aria-label="زيادة الكمية">+</button>
+                </div>
+            </div>
+
+            <!-- قسم نفاذ المخزون والزوار النشطين المماثل للمعاينة 02.26.37 -->
+            <section class="px-5 mt-6 space-y-3 text-center">
+                <!-- نص نفاذ المخزون بجرأة وبساطة -->
+                <p class="text-base font-black text-black">سارع! فقط <span id="stock-count" class="text-red-600">4</span> قطعة متبقية في المخزن!</p>
+
+                <!-- مؤشر عدد المشاهدين مع الرقم 6 محاط بصندوق برتقالي ممركز -->
+                <p class="text-sm font-semibold text-gray-700 flex items-center justify-center gap-2">
+                    <span>يشاهده</span>
+                    <span id="live-viewers-badge" class="bg-[#F59E0B] text-white font-extrabold text-sm px-2.5 py-1 rounded-md">6</span>
+                    <span>metaspheres</span>
+                </p>
+
+                <!-- شريط التقدم المخطط والمتحرك بالكامل بتمريرة تفاعلية أنيقة -->
+                <div class="w-full bg-gray-200 h-3.5 rounded-full overflow-hidden border border-gray-100 shadow-inner">
+                    <div class="h-full w-4/5 striped-progress-bar rounded-full"></div>
+                </div>
+            </section>
+
+            <!-- العداد التنازلي التفاعلي المصمم بمحاذاة بنيوية متناهية ومطابقة 100% للمعاينة -->
+            <section class="mt-8 px-6 text-center" aria-label="العرض ينتهي قريباً">
+                <div class="flex items-center justify-center gap-2 max-w-[320px] mx-auto select-none" dir="ltr">
+                    <!-- ثانية -->
+                    <div class="flex flex-col items-center w-14">
+                        <span id="timer-sec-large" class="text-4xl sm:text-5xl font-black text-black tabular-nums">56</span>
+                        <span class="text-[10px] text-gray-400 font-bold mt-1">ثانية</span>
+                    </div>
+                    
+                    <span class="text-2xl text-gray-400 font-bold pb-4 animate-pulse" aria-hidden="true">:</span>
+                    
+                    <!-- دقيقة -->
+                    <div class="flex flex-col items-center w-14">
+                        <span id="timer-min-large" class="text-4xl sm:text-5xl font-black text-black tabular-nums">59</span>
+                        <span class="text-[10px] text-gray-400 font-bold mt-1">دقيقة</span>
+                    </div>
+                    
+                    <span class="text-2xl text-gray-400 font-bold pb-4 animate-pulse" aria-hidden="true">:</span>
+                    
+                    <!-- ساعة -->
+                    <div class="flex flex-col items-center w-14">
+                        <span id="timer-hour-large" class="text-4xl sm:text-5xl font-black text-black tabular-nums">00</span>
+                        <span class="text-[10px] text-gray-400 font-bold mt-1">ساعة</span>
+                    </div>
+                    
+                    <span class="text-2xl text-gray-400 font-bold pb-4 animate-pulse" aria-hidden="true">:</span>
+                    
+                    <!-- يوم -->
+                    <div class="flex flex-col items-center w-14">
+                        <span id="timer-day-large" class="text-4xl sm:text-5xl font-black text-black tabular-nums">00</span>
+                        <span class="text-[10px] text-gray-400 font-bold mt-1">يوم</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 9. عنوان تحفيزي فرعي ضخم محاط بخطين متطابقين تماماً مع اللقطة -->
+            <section class="p-4 text-center border-y border-gray-200 mt-8 mx-4">
+                <h2 class="text-xl font-extrabold text-black leading-snug">
+                    المنتج الأكثر مبيعاً في العالم أخيراً بالمغرب
+                </h2>
+            </section>
+
+            <!-- 10. صورة كاملة العرض IMAGE_5 -->
+            <section class="p-4">
+                <div class="rounded-2xl overflow-hidden shadow-md bg-gray-100 aspect-video">
+                    <svg class="w-full h-full" viewBox="0 0 400 225" aria-label="توضيح استخدام المنتج المريح">
+                        <rect width="400" height="225" fill="#E5E7EB"/>
+                        <!-- محاكاة استخدام المكنسة لغسيل الأسطح -->
+                        <circle cx="200" cy="112" r="50" fill="#F59E0B" fill-opacity="0.2"/>
+                        <path d="M120 140 L280 80" stroke="#F59E0B" stroke-width="12" stroke-linecap="round"/>
+                        <path d="M160 160 C 200 130, 240 130, 280 160" stroke="#9CA3AF" stroke-width="4" stroke-dasharray="6 6" fill="none"/>
+                        <text x="50%" y="50%" font-family="Cairo" font-weight="extrabold" font-size="18" fill="#374151" text-anchor="middle">IMAGE_5</text>
+                        <text x="50%" y="65%" font-family="Cairo" font-size="12" fill="#4B5563" text-anchor="middle">تصميم يتناسب تماماً مع راحة اليد</text>
+                    </svg>
+                </div>
+            </section>
+
+            <!-- قسم الميزة 11: تنوع الاستخدام (مدمجة العنوان والمحتوى مع أيقونات الصح المربّعة) -->
+            <section class="p-5 mt-4">
+                <div class="text-base text-gray-700 leading-relaxed mb-4">
+                    <div class="flex items-start gap-2">
+                        <!-- أيقونة اختيار برتقالية مربعة أنيقة تناسب الهوية -->
+                        <svg class="w-5 h-5 text-[#F59E0B] shrink-0 mt-1" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
+                            <rect x="2" y="2" width="20" height="20" rx="4" stroke="#F59E0B" stroke-width="2" fill="none"></rect>
+                        </svg>
+                        <p>
+                            <span class="font-extrabold text-black text-lg">تنوع الاستخدام:</span> 
+                            تم تصميمه للاستخدام في سيارتك وفي منزلك على حد سواء. يأتي مع ملحقات متنوعة تناسب مختلف الأسطح وأنواع الأوساخ.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 2x2 image grid: IMAGE_6, IMAGE_7, IMAGE_8, IMAGE_9 متراصة بضيق ومثالية بجمالية عالية -->
+                <div class="grid grid-cols-2 gap-1.5 mt-2">
+                    <div class="rounded-xl overflow-hidden shadow-sm aspect-square bg-gray-50 border border-gray-100">
+                        <svg class="w-full h-full" viewBox="0 0 150 150" aria-label="تنظيف السيارة">
+                            <rect width="150" height="150" fill="#F3F4F6"/>
+                            <circle cx="75" cy="75" r="30" fill="#FEF3C7"/>
+                            <!-- رسم أيقونة سيارة صغيرة -->
+                            <path d="M45 85 H105 L95 70 H55 L45 85 Z" fill="#F59E0B"/>
+                            <text x="50%" y="85%" font-family="Cairo" font-weight="bold" font-size="10" fill="#4B5563" text-anchor="middle">IMAGE_6</text>
+                        </svg>
+                    </div>
+                    <div class="rounded-xl overflow-hidden shadow-sm aspect-square bg-gray-50 border border-gray-100">
+                        <svg class="w-full h-full" viewBox="0 0 150 150" aria-label="أثاث المنزل">
+                            <rect width="150" height="150" fill="#F3F4F6"/>
+                            <circle cx="75" cy="75" r="30" fill="#FEF3C7"/>
+                            <!-- رسم أيقونة صوفا منزلية -->
+                            <path d="M45 85 H105 V75 H45 V85 Z M50 75 H100 V65 H50 V75 Z" fill="#F59E0B"/>
+                            <text x="50%" y="85%" font-family="Cairo" font-weight="bold" font-size="10" fill="#4B5563" text-anchor="middle">IMAGE_7</text>
+                        </svg>
+                    </div>
+                    <div class="rounded-xl overflow-hidden shadow-sm aspect-square bg-gray-50 border border-gray-100">
+                        <svg class="w-full h-full" viewBox="0 0 150 150" aria-label="لوحة المفاتيح">
+                            <rect width="150" height="150" fill="#F3F4F6"/>
+                            <circle cx="75" cy="75" r="30" fill="#FEF3C7"/>
+                            <!-- رسم لوحة مفاتيح / كمبيوتر -->
+                            <rect x="45" y="65" width="60" height="25" rx="4" fill="#F59E0B"/>
+                            <rect x="50" y="70" width="50" height="5" fill="#374151"/>
+                            <text x="50%" y="85%" font-family="Cairo" font-weight="bold" font-size="10" fill="#4B5563" text-anchor="middle">IMAGE_8</text>
+                        </svg>
+                    </div>
+                    <div class="rounded-xl overflow-hidden shadow-sm aspect-square bg-gray-50 border border-gray-100">
+                        <svg class="w-full h-full" viewBox="0 0 150 150" aria-label="الزوايا الصعبة">
+                            <rect width="150" height="150" fill="#F3F4F6"/>
+                            <circle cx="75" cy="75" r="30" fill="#FEF3C7"/>
+                            <!-- رسم زوايا ضيقة -->
+                            <path d="M40 50 L110 110" stroke="#F59E0B" stroke-width="8" stroke-linecap="round"/>
+                            <text x="50%" y="85%" font-family="Cairo" font-weight="bold" font-size="10" fill="#4B5563" text-anchor="middle">IMAGE_9</text>
+                        </svg>
+                    </div>
+                </div>
+            </section>
+
+            <!-- قسم الميزة 12: استخدام مزدوج -->
+            <section class="p-5 mt-2">
+                <div class="text-base text-gray-700 leading-relaxed mb-4">
+                    <div class="flex items-start gap-2">
+                        <svg class="w-5 h-5 text-[#F59E0B] shrink-0 mt-1" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
+                            <rect x="2" y="2" width="20" height="20" rx="4" stroke="#F59E0B" stroke-width="2" fill="none"></rect>
+                        </svg>
+                        <p>
+                            <span class="font-extrabold text-black text-lg">استخدام مزدوج:</span> 
+                            يقدم مكنسة الشفط والنفخ تنوعًا فريدًا عن طريق دمج وظائف الشفط والنفخ في نفس الوقت، مما يتيح لك تنظيف وتطهير بشكل فعال باستخدام جهاز واحد.
+                        </p>
+                    </div>
+                </div>
+                <!-- IMAGE_10 -->
+                <div class="rounded-2xl overflow-hidden shadow-md bg-gray-100 aspect-video border border-gray-100">
+                    <svg class="w-full h-full" viewBox="0 0 400 225" aria-label="شفط ونفخ مزدوج">
+                        <rect width="400" height="225" fill="#F9FAFB"/>
+                        <!-- رسم تمثيلي لوظيفتين -->
+                        <circle cx="130" cy="112" r="45" fill="#FEF3C7"/>
+                        <text x="130" y="117" font-family="Cairo" font-weight="extrabold" font-size="14" fill="#B45309" text-anchor="middle">1. شفط قوي</text>
+                        
+                        <circle cx="270" cy="112" r="45" fill="#FEF3C7"/>
+                        <text x="270" y="117" font-family="Cairo" font-weight="extrabold" font-size="14" fill="#B45309" text-anchor="middle">2. نفخ الهواء</text>
+                        
+                        <path d="M175 112 H225" stroke="#F59E0B" stroke-width="4" stroke-dasharray="4 4"/>
+                        <text x="50%" y="85%" font-family="Cairo" font-weight="bold" font-size="14" fill="#374151" text-anchor="middle">IMAGE_10</text>
+                    </svg>
+                </div>
+            </section>
+
+            <!-- section 13: High Suction Power -->
+            <section class="p-5 mt-2">
+                <div class="text-base text-gray-700 leading-relaxed mb-4">
+                    <div class="flex items-start gap-2">
+                        <svg class="w-5 h-5 text-[#F59E0B] shrink-0 mt-1" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
+                            <rect x="2" y="2" width="20" height="20" rx="4" stroke="#F59E0B" stroke-width="2" fill="none"></rect>
+                        </svg>
+                        <p>
+                            <span class="font-extrabold text-black text-lg">قوة الشفط العالية:</span> 
+                            على الرغم من حجمها الصغير، تقدم هذه المكنسة قوة شفط عالية للتخلص بسهولة من الفتات، الغبار، شعر الحيوانات الأليفة، وغيرها من الفوضى.
+                        </p>
+                    </div>
+                </div>
+                <!-- IMAGE_11 -->
+                <div class="rounded-2xl overflow-hidden shadow-md bg-gray-100 aspect-video border border-gray-100">
+                    <svg class="w-full h-full" viewBox="0 0 400 225" aria-label="توضيح قوة الشفط التوربيني">
+                        <rect width="400" height="225" fill="#F3F4F6"/>
+                        <circle cx="200" cy="112" r="60" fill="#F59E0B" fill-opacity="0.1"/>
+                        <path d="M140 140 Q 200 60, 260 140" stroke="#F59E0B" stroke-width="12" fill="none" stroke-linecap="round"/>
+                        <circle cx="200" cy="100" r="12" fill="#374151"/>
+                        <text x="50%" y="80%" font-family="Cairo" font-weight="black" font-size="18" fill="#D97706" text-anchor="middle">IMAGE_11</text>
+                    </svg>
+                </div>
+            </section>
+
+            <!-- section 14: Wireless & Portable Design -->
+            <section class="p-5 mt-2">
+                <div class="text-base text-gray-700 leading-relaxed mb-4">
+                    <div class="flex items-start gap-2">
+                        <svg class="w-5 h-5 text-[#F59E0B] shrink-0 mt-1" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
+                            <rect x="2" y="2" width="20" height="20" rx="4" stroke="#F59E0B" stroke-width="2" fill="none"></rect>
+                        </svg>
+                        <p>
+                            <span class="font-extrabold text-black text-lg">تصميم لاسلكي ومحمول:</span> 
+                            مكنسة كهربائية لاسلكية توفر حرية التنقل دون الحاجة للكابلات. صغيرة الحجم وخفيفة الوزن، مما يجعلها مثالية للاستخدام في السيارة والمنزل.
+                        </p>
+                    </div>
+                </div>
+                <!-- IMAGE_12 -->
+                <div class="rounded-2xl overflow-hidden shadow-md bg-gray-100 aspect-video border border-gray-100">
+                    <svg class="w-full h-full" viewBox="0 0 400 225" aria-label="بطارية تدوم طويلاً">
+                        <rect width="400" height="225" fill="#F9FAFB"/>
+                        <!-- رمز بطارية ممتلئة ولاسلكي -->
+                        <rect x="150" y="62" width="100" height="50" rx="10" fill="none" stroke="#F59E0B" stroke-width="6"/>
+                        <rect x="160" y="72" width="70" height="30" rx="5" fill="#F59E0B"/>
+                        <rect x="253" y="77" width="10" height="20" rx="3" fill="#F59E0B"/>
+                        <text x="50%" y="80%" font-family="Cairo" font-weight="extrabold" font-size="16" fill="#374151" text-anchor="middle">IMAGE_12</text>
+                    </svg>
+                </div>
+            </section>
+
+            <!-- section 15: Product Dimensions -->
+            <section class="p-5 mt-4">
+                <h3 class="text-2xl font-black text-black mb-3">أبعاد وتصميم المنتج المدمج</h3>
+                <div class="rounded-2xl overflow-hidden shadow-md bg-gray-100 aspect-video border border-gray-100">
+                    <svg class="w-full h-full" viewBox="0 0 400 225" aria-label="أبعاد وتصميم المنتج">
+                        <rect width="400" height="225" fill="#F3F4F6"/>
+                        <!-- محاكاة القياسات والابعاد -->
+                        <line x1="80" y1="140" x2="320" y2="140" stroke="#9CA3AF" stroke-width="2" stroke-dasharray="4 4"/>
+                        <line x1="80" y1="130" x2="80" y2="150" stroke="#374151" stroke-width="3"/>
+                        <line x1="320" y1="130" x2="320" y2="150" stroke="#374151" stroke-width="3"/>
+                        <text x="50%" y="55%" font-family="Cairo" font-weight="extrabold" font-size="16" fill="#F59E0B" text-anchor="middle">طول مناسب للوصول لجميع الزوايا</text>
+                        <text x="50%" y="75%" font-family="Cairo" font-weight="bold" font-size="14" fill="#4B5563" text-anchor="middle">IMAGE_13</text>
+                    </svg>
+                </div>
+            </section>
+
+            <!-- section 16: Return Guarantee -->
+            <section class="m-5 p-5 bg-green-50 rounded-2xl border border-green-200 text-center">
+                <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3" aria-hidden="true">
+                    <svg class="w-7 h-7 text-green-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                    </svg>
+                </div>
+                <h4 class="text-lg font-black text-green-900 mb-1">ضمان رضا واسترجاع مضمون</h4>
+                <p class="text-sm text-green-700 font-bold leading-relaxed">
+                    يمكن استرجاع المنتج واسترداد المبلغ بالكامل في غضون 6 أيام من تاريخ الشراء إن لم يعجبك! رضاكم هو أولويتنا الأولى دائماً.
+                </p>
+            </section>
+
+            <footer class="py-8 text-center text-xs text-gray-400 bg-gray-50 border-t border-gray-100">
+                <p>© 2026 متجركم الإلكتروني. جميع الحقوق محفوظة.</p>
+                <p class="mt-1">صمم هذا القسم خصيصاً للتجارة الإلكترونية والدفع عند الاستلام بالمغرب.</p>
+            </footer>
+        </div>
+
+    </main>
+
+    <!-- الشريط السفلي الثابت للتحويل السريع (Sticky Bottom Order Bar) - مفعل بشكل دائم بدون اختفاء ومطابق تماماً للمعاينة -->
+    <section id="sticky-bar" class="fixed bottom-0 left-0 right-0 max-w-[480px] mx-auto bg-white border-t border-gray-100 shadow-[0_-8px_20px_rgba(0,0,0,0.08)] px-4 py-3 z-40 flex items-center justify-between gap-3" dir="ltr">
+        <!-- زر الشراء السريع المتناسق تماماً ومحاذاة ممتازة على اليسار -->
+        <button onclick="scrollToCheckoutAndFocus()" class="flex-1 bg-[#F59E0B] hover:bg-[#D97706] active:scale-[0.98] text-white py-3.5 px-4 rounded-xl font-extrabold text-base shadow-md transition-all duration-200 flex items-center justify-center gap-2">
+            <span dir="rtl">اضغط هنا للطلب</span>
+        </button>
+
+        <!-- حقل تحديد الكمية بجانب الزر على اليمين - تم ضبطه ليكون الناقص على اليسار والزائد على اليمين بدقة متناهية -->
+        <div class="flex items-center bg-gray-50 border border-gray-200 rounded-xl px-1.5 py-1">
+            <button onclick="decrementQty()" class="w-8 h-8 rounded-lg text-gray-700 hover:bg-gray-200 font-bold text-lg focus:outline-none" aria-label="تقليل الكمية">-</button>
+            <span id="sticky-qty" class="w-8 text-center font-extrabold text-base text-black">1</span>
+            <button onclick="incrementQty()" class="w-8 h-8 rounded-lg text-gray-700 hover:bg-gray-200 font-bold text-lg focus:outline-none" aria-label="زيادة الكمية">+</button>
+        </div>
+    </section>
+
+    <!-- السكريبتات الذكية للتفاعل وزيادة نسبة التحويل -->
+    <script>
+        const basePrice = 199; 
+        let quantity = 1;
+
+        // الرابط البرمجي لـ Google Apps Script الخاص بجدول البيانات
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx_mptD_sy4IwzC950Z79gaEE92XspvluImwC1IdNjeiVHVJNZVuUYaPiPwIUiUcdDQ/exec";
+
+        // زيادة ونقصان الكمية ومزامنة الواجهة بالكامل
+        // تمت مواءمة عمليات الحساب البرمجية لتعتمد على السعر والعملة بشكل ممتاز
+        function incrementQty() {
+            quantity++;
+            updateQuantityUI();
+        }
+
+        // تقليل الكمية المطلوبة بشرط عدم النزول عن حبة واحدة
+        function decrementQty() {
+            if (quantity > 1) {
+                quantity--;
+                updateQuantityUI();
+            }
+        }
+
+        // تحديث إجمالي السعر ومزامنته مع جميع الأزرار وعناصر الواجهة بالعملة الجديدة
+        function updateQuantityUI() {
+            const formQty = document.getElementById('form-qty');
+            const stickyQty = document.getElementById('sticky-qty');
+            if (formQty) formQty.innerText = quantity;
+            if (stickyQty) stickyQty.innerText = quantity;
+            
+            const totalPrice = quantity * basePrice;
+            const totalPriceText = document.getElementById('total-price-text');
+            if (totalPriceText) {
+                totalPriceText.innerText = `${totalPrice} درهم مغربي`;
+            }
+
+            // مزامنة مع المدخلات المخفية للاستمارة قبل الإرسال
+            const hiddenQty = document.getElementById('hidden-quantity');
+            const hiddenTotal = document.getElementById('hidden-total');
+            if (hiddenQty) hiddenQty.value = quantity;
+            if (hiddenTotal) hiddenTotal.value = totalPrice;
+        }
+
+        // النزول السلس للفورم مع إحداث تأثير بصري مميز لجذب الانتباه
+        // تمت مواءمة اهتزاز وضبط التركيز للنماذج بشكل احترافي
+        function scrollToCheckoutAndFocus() {
+            const checkoutSection = document.getElementById('checkout-section');
+            if (checkoutSection) {
+                checkoutSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                
+                setTimeout(() => {
+                    checkoutSection.classList.add('shake-animation', 'bg-brand-100/50');
+                    const nameInput = document.getElementById('customer-name');
+                    if (nameInput) nameInput.focus();
+                }, 600);
+
+                setTimeout(() => {
+                    checkoutSection.classList.remove('shake-animation', 'bg-brand-100/50');
+                }, 1500);
+            }
+        }
+
+        // --- نظام التحقق الذكي من المدخلات ---
+        function validateNameInput() {
+            const nameField = document.getElementById('customer-name');
+            const errorName = document.getElementById('error-name');
+            if (!nameField || !errorName) return false;
+
+            const value = nameField.value.trim();
+            if (value === "" || value.length < 3) {
+                errorName.classList.remove('hidden');
+                errorName.classList.add('block');
+                nameField.style.borderColor = '#dc2626';
+                return false;
+            } else {
+                errorName.classList.add('hidden');
+                errorName.classList.remove('block');
+                nameField.style.borderColor = '#d1d5db';
+                return true;
+            }
+        }
+
+        // معالجة الهاتف بالمغرب (صالح لكل الشبكات المحلية والتنظيمات المعتمدة)
+        function validatePhoneInput() {
+            const phoneField = document.getElementById('customer-phone');
+            const errorPhone = document.getElementById('error-phone');
+            if (!phoneField || !errorPhone) return false;
+
+            // تنظيف الحقل من الفراغات والأقواس والشرطات لتسهيل تجربة الإدخال على الزبون
+            const rawValue = phoneField.value.trim();
+            const cleanValue = rawValue.replace(/[\s\-\(\)]/g, '');
+            const phoneRegex = /^(?:0|\+212|00212)?[567]\d{8}$/;
+            
+            if (!phoneRegex.test(cleanValue)) {
+                errorPhone.classList.remove('hidden');
+                errorPhone.classList.add('block');
+                phoneField.style.borderColor = '#dc2626';
+                return false;
+            } else {
+                errorPhone.classList.add('hidden');
+                errorPhone.classList.remove('block');
+                phoneField.style.borderColor = '#d1d5db';
+                return true;
+            }
+        }
+
+        function validateCityInput() {
+            const cityField = document.getElementById('customer-city');
+            const errorCity = document.getElementById('error-city');
+            if (!cityField || !errorCity) return false;
+
+            const value = cityField.value.trim();
+            if (value === "" || value.length < 3) {
+                errorCity.classList.remove('hidden');
+                errorCity.classList.add('block');
+                cityField.style.borderColor = '#dc2626';
+                return false;
+            } else {
+                errorCity.classList.add('hidden');
+                errorCity.classList.remove('block');
+                cityField.style.borderColor = '#d1d5db';
+                return true;
+            }
+        }
+
+        // إرسال الاستمارة عند الضغط على زر الطلب الخارجي
+        function triggerFormSubmit() {
+            const isNameValid = validateNameInput();
+            const isPhoneValid = validatePhoneInput();
+            const isCityValid = validateCityInput();
+
+            if (isNameValid && isPhoneValid && isCityValid) {
+                // تفعيل عملية الإرسال من خلال نقر زر الإرسال الخفي المدمج بالاستمارة
+                document.getElementById('hidden-submit-btn').click();
+            } else {
+                scrollToCheckoutAndFocus();
+            }
+        }
+
+        // معالج حدث الإرسال التلقائي للطلب وإرساله لـ Google Sheets
+        document.getElementById('order-form').addEventListener('submit', function(e) {
+            e.preventDefault(); // منع إعادة تحميل الصفحة
+            
+            const btn = document.getElementById('submit-btn');
+            const originalHTML = btn.innerHTML;
+            
+            btn.disabled = true;
+            btn.innerText = "جاري تأكيد الطلب... ⏳"; // إظهار حالة التحميل
+
+            // مزامنة القيم الحسابية في الحقول المخفية للتأكيد النهائي
+            document.getElementById('hidden-quantity').value = quantity;
+            document.getElementById('hidden-total').value = quantity * basePrice;
+
+            // حزم معلومات الاستمارة تلقائياً
+            const formData = new FormData(this);
+            const data = new URLSearchParams(formData);
+
+            // إرسال البيانات فوراً لجدول بيانات جوجل الخاص بك
+            fetch(SCRIPT_URL, {
+                method: 'POST',
+                body: data
+            })
+            .then(res => res.text())
+            .then(response => {
+                // تجهيز معلومات ملخص الطلب لعرضها في شاشة الشكر والنجاح
+                const name = document.getElementById('customer-name').value.trim();
+                const phone = document.getElementById('customer-phone').value.trim();
+                const city = document.getElementById('customer-city').value.trim();
+                const totalPrice = quantity * basePrice;
+
+                document.getElementById('summary-name').innerText = name;
+                document.getElementById('summary-phone').innerText = phone;
+                document.getElementById('summary-city').innerText = city;
+                document.getElementById('summary-qty').innerText = quantity;
+                document.getElementById('summary-total').innerText = `${totalPrice} درهم مغربي`;
+
+                // --- تتبع حدث الشراء في فيسبوك بيكسل (Meta Pixel Purchase Tracking) ---
+                const bundleValue = totalPrice;
+                if (!sessionStorage.getItem('orderPlaced')) {
+                    fbq('track', 'Purchase', {
+                        currency: 'MAD', 
+                        value: bundleValue
+                    });
+                    sessionStorage.setItem('orderPlaced', 'true');
+                }
+
+                // تبديل الواجهات: إخفاء واجهة الشراء والطلب السفلي وعرض شاشة شكرًا لك
+                document.getElementById('main-content').style.display = 'none';
+                document.getElementById('sticky-bar').style.display = 'none';
+                document.getElementById('thank-you').style.display = 'block';
+                window.scrollTo(0, 0);
+            })
+            .catch(error => {
+                btn.disabled = false;
+                btn.innerHTML = originalHTML;
+                alert("حدث خطأ في الشبكة، المرجو المحاولة مرة أخرى.");
+            });
+        });
+
+        const safeStorage = {
+            getItem(key) {
+                try {
+                    return localStorage.getItem(key);
+                } catch (e) {
+                    return null;
+                }
+            },
+            setItem(key, value) {
+                try {
+                    localStorage.setItem(key, value);
+                } catch (e) {
+                    // حماية صامتة في بيئة iFrame و iOS Private Browsing
+                }
+            },
+            removeItem(key) {
+                try {
+                    localStorage.removeItem(key);
+                } catch (e) {
+                    // حماية صامتة
+                }
+            }
+        };
+
+        // العداد التنازلي التفاعلي المباشر (ساعة واحدة كحد أقصى للواقعية)
+        let totalSeconds;
+        function initCountdown() {
+            const storedTime = safeStorage.getItem('ayamall_seconds_left');
+            if (storedTime) {
+                totalSeconds = parseInt(storedTime);
+                if (totalSeconds <= 0 || totalSeconds > 3600 || isNaN(totalSeconds)) {
+                    totalSeconds = 3600;
+                    safeStorage.setItem('ayamall_seconds_left', totalSeconds);
+                }
+            } else {
+                totalSeconds = 3600; // ساعة واحدة
+                safeStorage.setItem('ayamall_seconds_left', totalSeconds);
+            }
+        }
+
+        function startCountdown() {
+            initCountdown();
+            const timerSecLarge = document.getElementById('timer-sec-large');
+            const timerMinLarge = document.getElementById('timer-min-large');
+            const timerHourLarge = document.getElementById('timer-hour-large');
+            const timerDayLarge = document.getElementById('timer-day-large');
+
+            const interval = setInterval(() => {
+                if (totalSeconds <= 0) {
+                    // إعادة تهيئة العداد تلقائياً لساعة جديدة للحفاظ على الاستعجال عند انتهاء المدة
+                    totalSeconds = 3600;
+                    safeStorage.setItem('ayamall_seconds_left', totalSeconds);
+                }
+                totalSeconds--;
+                safeStorage.setItem('ayamall_seconds_left', totalSeconds);
+
+                const days = Math.floor(totalSeconds / (3600 * 24));
+                const hours = Math.floor((totalSeconds % (3600 * 24)) / 3600);
+                const minutes = Math.floor((totalSeconds % 3600) / 60);
+                const seconds = totalSeconds % 60;
+
+                if (timerDayLarge) timerDayLarge.innerText = String(days).padStart(2, '0');
+                if (timerHourLarge) timerHourLarge.innerText = String(hours).padStart(2, '0');
+                if (timerMinLarge) timerMinLarge.innerText = String(minutes).padStart(2, '0');
+                if (timerSecLarge) timerSecLarge.innerText = String(seconds).padStart(2, '0');
+            }, 1000);
+        }
+
+        // مؤشر الزوار المباشر (تحديث طبيعي وهادئ كل 3 دقائق لواقعية قصوى)
+        function simulateLiveViewers() {
+            const viewerBadge = document.getElementById('live-viewers-badge');
+            if (!viewerBadge) return;
+            
+            setInterval(() => {
+                const randomViewers = Math.floor(Math.random() * (9 - 5 + 1)) + 5;
+                viewerBadge.innerText = randomViewers;
+            }, 180000); 
+        }
+
+        // عداد نفاذ الكمية المتبقية
+        function simulateStockCount() {
+            const stockCount = document.getElementById('stock-count');
+            if (!stockCount) return;
+            
+            setTimeout(() => {
+                stockCount.innerText = "3";
+            }, 25000);
+        }
+
+        window.onload = function() {
+            startCountdown();
+            simulateLiveViewers();
+            simulateStockCount();
+        };
+    </script>
+</body>
+</html>
