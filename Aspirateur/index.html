@@ -329,10 +329,10 @@
                 </h2>
             </section>
 
-            <!-- 10. صورة كاملة العرض IMAGE_5 -->
+            <!-- 10. صورة كاملة العرض IMAGE_5 (تدعم الآن صيغة GIF المتحركة لتوضيح حركة تنظيف مقاعد السيارة بالمكنسة) -->
             <section class="p-4">
                 <div class="rounded-2xl overflow-hidden shadow-md bg-gray-100 aspect-video">
-                    <img src="image_5.jpg" alt="تصميم يتناسب تماماً مع راحة اليد" class="w-full h-full object-cover rounded-2xl" onerror="this.src='https://placehold.co/400x225/E5E7EB/374151?text=IMAGE_5'">
+                    <img src="image_5.gif" alt="توضيح استخدام المكنسة بشكل متحرك وسريع" class="w-full h-full object-cover rounded-2xl" onerror="this.src='https://placehold.co/400x225/E5E7EB/374151?text=IMAGE_5_GIF'">
                 </div>
             </section>
 
@@ -352,20 +352,9 @@
                     </div>
                 </div>
 
-                <!-- 2x2 image grid: IMAGE_6, IMAGE_7, IMAGE_8, IMAGE_9 متراصة بضيق ومثالية بجمالية عالية -->
-                <div class="grid grid-cols-2 gap-1.5 mt-2">
-                    <div class="rounded-xl overflow-hidden shadow-sm aspect-square bg-gray-50 border border-gray-100">
-                        <img src="image_6.jpg" alt="تنظيف السيارة" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/150x150/F3F4F6/4B5563?text=IMAGE_6'">
-                    </div>
-                    <div class="rounded-xl overflow-hidden shadow-sm aspect-square bg-gray-50 border border-gray-100">
-                        <img src="image_7.jpg" alt="أثاث المنزل" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/150x150/F3F4F6/4B5563?text=IMAGE_7'">
-                    </div>
-                    <div class="rounded-xl overflow-hidden shadow-sm aspect-square bg-gray-50 border border-gray-100">
-                        <img src="image_8.jpg" alt="لوحة المفاتيح" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/150x150/F3F4F6/4B5563?text=IMAGE_8'">
-                    </div>
-                    <div class="rounded-xl overflow-hidden shadow-sm aspect-square bg-gray-50 border border-gray-100">
-                        <img src="image_9.jpg" alt="الزوايا الصعبة" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/150x150/F3F4F6/4B5563?text=IMAGE_9'">
-                    </div>
+                <!-- تم تحويل شبكة الصور الـ 4 القديمة إلى صورة واحدة مدمجة وأنيقة لتفادي أي مشاكل أو فجوات كما في المعاينة Screen Shot 2026-06-14 at 17.50.08.png -->
+                <div class="rounded-2xl overflow-hidden shadow-md bg-gray-50 aspect-video border border-gray-100 mt-2">
+                    <img src="image_6.jpg" alt="تنوع استخدام المكنسة اللاسلكية في السيارة والمنزل" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/400x225/F3F4F6/4B5563?text=IMAGE_6_COMBINED'">
                 </div>
             </section>
 
@@ -383,9 +372,9 @@
                         </p>
                     </div>
                 </div>
-                <!-- IMAGE_10 -->
+                <!-- IMAGE_10 تم تحويلها إلى GIF متحرك لتوضيح خاصيتي الشفط والنفخ بشكل تفاعلي مميز ومبهر للزبون -->
                 <div class="rounded-2xl overflow-hidden shadow-md bg-gray-100 aspect-video border border-gray-100">
-                    <img src="image_10.jpg" alt="جهاز ذكي بوظيفتين" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/400x225/F9FAFB/374151?text=IMAGE_10'">
+                    <img src="image_10.gif" alt="جهاز ذكي بوظيفتين (شفط ونفخ) متحرك وسريع" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/400x225/F9FAFB/374151?text=IMAGE_10_GIF'">
                 </div>
             </section>
 
@@ -419,7 +408,7 @@
                         </svg>
                         <p>
                             <span class="font-extrabold text-black text-lg">تصميم لاسلكي ومحمول:</span> 
-                            كنسة كهربائية لاسلكية توفر حرية التنقل دون الحاجة للكابلات. صغيرة الحجم وخفيفة الوزن، مما يجعلها مثالية للاستخدام في السيارة والمنزل.
+                            مكنسة كهربائية لاسلكية توفر حرية التنقل دون الحاجة للكابلات. صغيرة الحجم وخفيفة الوزن، مما يجعلها مثالية للاستخدام في السيارة والمنزل.
                         </p>
                     </div>
                 </div>
@@ -516,8 +505,7 @@
             if (hiddenTotal) hiddenTotal.value = totalPrice;
         }
 
-        // النزول السلس للفورم مع إحداث تأثير بصري مميز لجذب الانتباه
-        // تمت مواءمة اهتزاز وضبط التركيز للنماذج بشكل احترافي
+        // --- نظام التوجيه والاهتزاز للمدخلات ---
         function scrollToCheckoutAndFocus() {
             const checkoutSection = document.getElementById('checkout-section');
             if (checkoutSection) {
@@ -751,7 +739,7 @@
             }, 180000); 
         }
 
-        // حداد نفاذ الكمية المتبقية
+        // عداد نفاذ الكمية المتبقية
         function simulateStockCount() {
             const stockCount = document.getElementById('stock-count');
             if (!stockCount) return;
