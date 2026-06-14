@@ -189,22 +189,22 @@
                 <p class="text-gray-500 text-xs">محمولة، لاسلكية وقوية جداً لتنظيف السيارة والمنزل بالكامل</p>
             </section>
 
-            <!-- معرض الصور الرئيسي المبسط - صورة واحدة رئيسية فقط وبدون سلايدر (تدعم التبديل التلقائي لـ image_1.jpg) -->
+            <!-- معرض الصور الرئيسي المبسط - تم ترقيته لعرض الصورة كاملة h-auto object-contain لمنع القص -->
             <section class="px-4">
-                <div class="relative overflow-hidden rounded-3xl shadow-lg bg-gray-50 aspect-square border border-gray-100">
-                    <div id="main-image-container" class="w-full h-full flex items-center justify-center">
-                        <img src="image_1.jpg" alt="المكنسة اللاسلكية الأصلية 3 في 1" class="w-full h-full object-cover rounded-3xl" onerror="this.src='https://placehold.co/400x400/F3F4F6/6B7280?text=IMAGE_1'">
+                <div class="relative overflow-hidden rounded-3xl shadow-lg bg-gray-50 border border-gray-100">
+                    <div id="main-image-container" class="w-full h-auto flex items-center justify-center">
+                        <img src="image_1.jpg" alt="المكنسة اللاسلكية الأصلية 3 في 1" class="w-full h-auto object-contain rounded-3xl" onerror="this.src='https://placehold.co/400x400/F3F4F6/6B7280?text=IMAGE_1'">
                     </div>
                     <span class="absolute top-3 left-3 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow">خصم 60%</span>
                 </div>
             </section>
 
-            <!-- قسم السعر المتناسق تماماً مع لقطة الشاشة المرفقة 16.42.02 (السعر الجديد يمين والسعر الأصلي يسار) -->
+            <!-- قسم السعر المتناسق تماماً مع لقطة الشاشة المرفقة 16.42.02 (السعر الجديد يمين والسعر الأصلي المشطوب يسار) -->
             <section class="flex items-center justify-between px-6 mt-6">
                 <!-- السعر الجديد الأكبر على اليمين باللون البرتقالي المطابق للهوية -->
                 <span id="total-price-text" class="text-3xl font-extrabold text-[#F59E0B]">199 درهم مغربي</span>
-                <!-- السعر القديم المشطوب على اليسار -->
-                <span class="text-xl text-gray-400 line-through font-bold">400 درهم مغربي</span>
+                <!-- السعر القديم المشطوب على اليسار تم تعديله من 400 إلى 300 -->
+                <span class="text-xl text-gray-400 line-through font-bold">300 درهم مغربي</span>
             </section>
 
             <!-- استمارة معلومات الزبون (COD Form) المبسطة جداً بدون رسائل الخطأ الحمراء الإضافية ومحاطة بإطار منقط رائع -->
@@ -278,7 +278,7 @@
                 <p class="text-sm font-semibold text-gray-700 flex items-center justify-center gap-2">
                     <span>يشاهده</span>
                     <span id="live-viewers-badge" class="bg-[#F59E0B] text-white font-extrabold text-sm px-2.5 py-1 rounded-md">6</span>
-                    <span>metaspheres</span>
+                    <span>متصفح في الوقت الحالي.</span>
                 </p>
 
                 <!-- شريط التقدم المخطط والمتحرك بالكامل بتمريرة تفاعلية أنيقة -->
@@ -329,10 +329,10 @@
                 </h2>
             </section>
 
-            <!-- 10. صورة كاملة العرض IMAGE_5 (تدعم الآن صيغة GIF المتحركة لتوضيح حركة تنظيف مقاعد السيارة بالمكنسة) -->
+            <!-- 10. صورة كاملة العرض IMAGE_5 - تم تحويلها لـ h-auto لمنع قص حركة الـ GIF -->
             <section class="p-4">
-                <div class="rounded-2xl overflow-hidden shadow-md bg-gray-100 aspect-video">
-                    <img src="image_5.gif" alt="توضيح استخدام المكنسة بشكل متحرك وسريع" class="w-full h-full object-cover rounded-2xl" onerror="this.src='https://placehold.co/400x225/E5E7EB/374151?text=IMAGE_5_GIF'">
+                <div class="rounded-2xl overflow-hidden shadow-md bg-gray-100">
+                    <img src="image_5.gif" alt="توضيح استخدام المكنسة بشكل متحرك وسريع" class="w-full h-auto object-contain rounded-2xl" onerror="this.src='https://placehold.co/400x225/E5E7EB/374151?text=IMAGE_5_GIF'">
                 </div>
             </section>
 
@@ -352,9 +352,9 @@
                     </div>
                 </div>
 
-                <!-- تم تحويل شبكة الصور الـ 4 القديمة إلى صورة واحدة مدمجة وأنيقة لتفادي أي مشاكل أو فجوات كما في المعاينة Screen Shot 2026-06-14 at 17.50.08.png -->
-                <div class="rounded-2xl overflow-hidden shadow-md bg-gray-50 aspect-video border border-gray-100 mt-2">
-                    <img src="image_6.jpg" alt="تنوع استخدام المكنسة اللاسلكية في السيارة والمنزل" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/400x225/F3F4F6/4B5563?text=IMAGE_6_COMBINED'">
+                <!-- تم تحويل إطار صورة الميزات الكبرى ليعمل بـ h-auto بالكامل لمنع أي قص للتفاصيل والغرافيكس -->
+                <div class="rounded-2xl overflow-hidden shadow-md bg-gray-50 border border-gray-100 mt-2">
+                    <img src="image_6.jpg" alt="تنوع استخدام المكنسة اللاسلكية في السيارة والمنزل" class="w-full h-auto object-contain" onerror="this.src='https://placehold.co/400x225/F3F4F6/4B5563?text=IMAGE_6_COMBINED'">
                 </div>
             </section>
 
@@ -372,9 +372,9 @@
                         </p>
                     </div>
                 </div>
-                <!-- IMAGE_10 تم تحويلها إلى GIF متحرك لتوضيح خاصيتي الشفط والنفخ بشكل تفاعلي مميز ومبهر للزبون -->
-                <div class="rounded-2xl overflow-hidden shadow-md bg-gray-100 aspect-video border border-gray-100">
-                    <img src="image_10.gif" alt="جهاز ذكي بوظيفتين (شفط ونفخ) متحرك وسريع" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/400x225/F9FAFB/374151?text=IMAGE_10_GIF'">
+                <!-- IMAGE_10 تم تحويلها لـ h-auto لمنع قص حركة الـ GIF -->
+                <div class="rounded-2xl overflow-hidden shadow-md bg-gray-100 border border-gray-100">
+                    <img src="image_10.gif" alt="جهاز ذكي بوظيفتين (شفط ونفخ) متحرك وسريع" class="w-full h-auto object-contain" onerror="this.src='https://placehold.co/400x225/F9FAFB/374151?text=IMAGE_10_GIF'">
                 </div>
             </section>
 
@@ -392,9 +392,9 @@
                         </p>
                     </div>
                 </div>
-                <!-- IMAGE_11 -->
-                <div class="rounded-2xl overflow-hidden shadow-md bg-gray-100 aspect-video border border-gray-100">
-                    <img src="image_11.jpg" alt="قوة محرك توربيني" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/400x225/F3F4F6/D97706?text=IMAGE_11'">
+                <!-- IMAGE_11 تم تحرير الأبعاد -->
+                <div class="rounded-2xl overflow-hidden shadow-md bg-gray-100 border border-gray-100">
+                    <img src="image_11.jpg" alt="قوة محرك توربيني" class="w-full h-auto object-contain" onerror="this.src='https://placehold.co/400x225/F3F4F6/D97706?text=IMAGE_11'">
                 </div>
             </section>
 
@@ -412,17 +412,18 @@
                         </p>
                     </div>
                 </div>
-                <!-- IMAGE_12 -->
-                <div class="rounded-2xl overflow-hidden shadow-md bg-gray-100 aspect-video border border-gray-100">
-                    <img src="image_12.jpg" alt="بطارية تدوم طويلاً" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/400x225/F9FAFB/374151?text=IMAGE_12'">
+                <!-- IMAGE_12 تم تحرير الأبعاد -->
+                <div class="rounded-2xl overflow-hidden shadow-md bg-gray-100 border border-gray-100">
+                    <img src="image_12.jpg" alt="بطارية تدوم طويلاً" class="w-full h-auto object-contain" onerror="this.src='https://placehold.co/400x225/F9FAFB/374151?text=IMAGE_12'">
                 </div>
             </section>
 
             <!-- section 15: Product Dimensions -->
             <section class="p-5 mt-4">
                 <h3 class="text-2xl font-black text-black mb-3">أبعاد وتصميم المنتج المدمج</h3>
-                <div class="rounded-2xl overflow-hidden shadow-md bg-gray-100 aspect-video border border-gray-100">
-                    <img src="image_13.jpg" alt="طول مناسب للوصول لجميع الزوايا" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/400x225/F3F4F6/4B5563?text=IMAGE_13'">
+                <!-- IMAGE_13 تم تحويلها لـ h-auto لضمان عدم قص أي داتا هندسية أو أرقام القياسات وتظهر بالكامل كما في اللقطة -->
+                <div class="rounded-2xl overflow-hidden shadow-md bg-gray-100 border border-gray-100">
+                    <img src="image_13.jpg" alt="طول مناسب للوصول لجميع الزوايا" class="w-full h-auto object-contain" onerror="this.src='https://placehold.co/400x225/F3F4F6/4B5563?text=IMAGE_13'">
                 </div>
             </section>
 
@@ -544,6 +545,7 @@
         }
 
         // معالجة الهاتف بالمغرب (صالح لكل الشبكات المحلية والتنظيمات المعتمدة)
+        // الفلتر المطور والمصحح للمغرب لتفادي تهميش أي صيغة اتصال صحيحة
         function validatePhoneInput() {
             const phoneField = document.getElementById('customer-phone');
             const errorPhone = document.getElementById('error-phone');
