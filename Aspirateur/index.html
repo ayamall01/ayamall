@@ -225,9 +225,9 @@
                         </div>
                     </div>
 
-                    <!-- حقل رقم الهاتف -->
+                    <!-- حقل رقم الهاتف (تم تحديث الاسم البرمجي لـ tel ليتوافق مع Apps Script) -->
                     <div>
-                        <input type="tel" id="customer-phone" name="phone" required placeholder="الهاتف-Telephone" 
+                        <input type="tel" id="customer-phone" name="tel" required placeholder="الهاتف-Telephone" 
                             oninput="validatePhoneInput()"
                             class="w-full px-4 py-3 border border-gray-300 rounded-2xl focus:border-brand-500 focus:outline-none transition text-base font-semibold text-center placeholder-gray-400" dir="ltr">
                         <div id="error-phone" class="text-red-600 text-xs mt-1.5 text-center font-semibold hidden">
@@ -245,9 +245,10 @@
                         </div>
                     </div>
 
-                    <!-- مدخلات حسابية مخفية لإرسالها بالكامل كجزء من الاستمارة لـ Google Sheet -->
+                    <!-- مدخلات حسابية مخفية لإرسالها بالكامل كجزء من الاستمارة لـ Google Sheet (تمت مواءمة الأسماء البرمجية بالكامل) -->
                     <input type="hidden" id="hidden-quantity" name="quantity" value="1">
-                    <input type="hidden" id="hidden-total" name="total_price" value="199">
+                    <input type="hidden" id="hidden-bundle" name="bundle" value="199">
+                    <input type="hidden" id="hidden-address" name="address" value="">
                     
                     <!-- زر إرسال خفي مبرمج داخلياً ليتم استدعاؤه بنقرة الأزرار التفاعلية -->
                     <button type="submit" id="hidden-submit-btn" class="hidden"></button>
@@ -501,9 +502,9 @@
 
             // مزامنة مع المدخلات المخفية للاستمارة قبل الإرسال
             const hiddenQty = document.getElementById('hidden-quantity');
-            const hiddenTotal = document.getElementById('hidden-total');
+            const hiddenBundle = document.getElementById('hidden-bundle');
             if (hiddenQty) hiddenQty.value = quantity;
-            if (hiddenTotal) hiddenTotal.value = totalPrice;
+            if (hiddenBundle) hiddenBundle.value = `${totalPrice} درهم مغربي (${quantity} حبة)`;
         }
 
         // --- نظام التوجيه والاهتزاز للمدخلات ---
@@ -612,12 +613,25 @@
             btn.disabled = true;
             btn.innerText = "جاري تأكيد الطلب... ⏳"; // إظهار حالة التحميل
 
-            // مزامنة القيم الحسابية في الحقول المخفية للتأكيد النهائي
-            document.getElementById('hidden-quantity').value = quantity;
-            document.getElementById('hidden-total').value = quantity * basePrice;
+            const name = document.getElementById('customer-name').value.trim();
+            const rawPhone = document.getElementById('customer-phone').value.trim();
+            const phone = rawPhone.replace(/[\s\-\(\)]/g, ''); // إرسال الهاتف نظيفاً بالكامل
+            const city = document.getElementById('customer-city').value.trim();
+            const totalPrice = quantity * basePrice;
 
-            // حزم معلومات الاستمارة تلقائياً
-            const formData = new FormData(this);
+            // مزامنة القيم الحسابية في الحقول المخفية للتأكيد النهائي لضمان تطابق البيانات
+            document.getElementById('hidden-quantity').value = quantity;
+            document.getElementById('hidden-bundle').value = `${totalPrice} درهم مغربي (${quantity} حبة)`;
+            document.getElementById('hidden-address').value = city; // تمرير المدينة كعنوان لتعبئة العمود الأخير
+
+            // حزم معلومات الاستمارة وتعيين مفاتيح صريحة متطابقة 100% مع App Script
+            const formData = new FormData();
+            formData.append('name', name);
+            formData.append('tel', phone); // يطابق e.parameter.tel بدقة بالغة!
+            formData.append('city', city); // يطابق e.parameter.city بدقة بالغة!
+            formData.append('bundle', `${totalPrice} درهم مغربي (${quantity} حبة)`); // يطابق e.parameter.bundle بدقة بالغة!
+            formData.append('address', city); // يطابق e.parameter.address بدقة بالغة!
+
             const data = new URLSearchParams(formData);
 
             // إرسال البيانات فوراً لجدول بيانات جوجل الخاص بك
@@ -627,12 +641,7 @@
             })
             .then(res => res.text())
             .then(response => {
-                // تجهيز معلومات ملخص الطلب لعرضها في شاشة الشكر والنجاح
-                const name = document.getElementById('customer-name').value.trim();
-                const phone = document.getElementById('customer-phone').value.trim();
-                const city = document.getElementById('customer-city').value.trim();
-                const totalPrice = quantity * basePrice;
-
+                // تجهيز معلومات ملخص الطلب لعرضها في شاشة الشكر والنجاح للزبون
                 document.getElementById('summary-name').innerText = name;
                 document.getElementById('summary-phone').innerText = phone;
                 document.getElementById('summary-city').innerText = city;
